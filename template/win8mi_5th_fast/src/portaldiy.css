@@ -1,0 +1,700 @@
+/* CSS Document */
+
+body { background: #EBEBEB}
+.boxs { width: 268px; padding: 15px; margin: 0 0 30px 0; border: 1px solid #E0E0E0; overflow: hidden; background: #FFFFFF}
+.boxs2 { width: 298px; padding: 0; margin: 0 0 30px 0; border: 1px solid #E0E0E0; overflow: hidden; background: #FFFFFF}
+
+/* 门户首页幻灯片样式 */
+.top_box { margin: 0 0 15px 0}
+.focus_box { position: relative; height: 355px; background: url(banner_bg_new.gif) no-repeat 50% 0}
+.focus_box .bd { width: 670px; height: 330px; overflow: hidden}
+.focus_box li { position: relative}
+.focus_box h3 { position: absolute; top: 290px; left: 0; width: 630px; height: 40px; line-height: 40px; padding: 0 20px; overflow: hidden; font-size: 16px; text-align: left; background: url(png.png) repeat 0 0}
+.focus_box h3 a { color: #E6E6E6}
+.focus_box .bd img { width: 670px; height: 330px}
+
+.focus_box .prev, .focus_box .next { position: absolute; top: 140px; width: 45px; height: 45px; display: none; z-index: 9999; cursor: pointer}
+.focus_box:hover .prev, .focus_box:hover .next { display: block}
+.focus_box .prev { left: 0; background: url(arrow.png) no-repeat 0 0}
+.focus_box .prev:hover { left: 0; background: url(arrow2.png) no-repeat 0 0}
+.focus_box .next { right: 0; background: url(arrow.png) no-repeat -46px 0}
+.focus_box .next:hover { right: 0; background: url(arrow2.png) no-repeat -46px 0}
+
+.focus_box .hd { width: 160px;height: 20px;overflow: hidden;margin: 10px auto 0 auto; _margin: 0 auto}
+.focus_box .hd .prev:hover { background: url(1left.png) no-repeat 0 0}
+.focus_box .hd ul { position: absolute;bottom: 0;left: 50%; _left: 49%; margin-left: -58px; width: 116px;height: 14px;overflow: hidden}
+.focus_box .hd ul li { float: left; width: 13px; height: 13px; margin-left: 8px; display: block; overflow: hidden; cursor: pointer; text-indent: -9999px; background: url(bg_icon.png) no-repeat 0 -446px}
+.focus_box .hd ul li.on { background: url(bg_icon.png) no-repeat 0 -460px}
+
+
+/* 门户首页精彩活动样式 */
+.list_box3 { position: relative; width: 640px; height: 235px; padding: 8px 15px; margin-bottom: 30px; background: #FFFFFF}
+.list_focuss3 .bd3 { width: 640px; height: 150px; overflow: hidden}
+.list_focuss3 li { position: relative; width: 640px; height: 150px}
+.list_focuss3 h2 { position: absolute; top: 0; left: 240px; width: 400px; height: 22px; line-height: 22px; padding: 0; overflow: hidden; font-size: 16px; text-align: left; background: none}
+.list_focuss3 h2 a { color: #333333}
+.list_focuss3 p { position: absolute; left: 240px; top: 35px; width: 400px; height: 100px; line-height: 25px; color: #888888; text-indent: 20px; z-index: 60; text-align: left}
+.list_focuss3 span { position: absolute; left: 240px; top: 125px; width: 220px; height: 30px; line-height: 25px; z-index: 60; text-align: left}
+.list_focuss3 .events { position: absolute; right: 5px; bottom: 0; width: 85px; height: 28px; line-height: 28px; padding: 0 0 0 12px; text-align: left; background: #555555}
+.list_focuss3 .events a { color: #FFFFFF; font-size: 14px}
+.list_focuss3 .events a:hover { text-decoration: none}
+.list_focuss3 .bd3 img { position: relative; width: 220px; height: 150px; z-index: 60}
+
+.list_focuss3 .hd3 { position: absolute; right: 0; bottom: 0; width: 60px; height: 33px; margin: 10px auto 0 auto; overflow: hidden; z-index: 50}
+
+.list_focuss3 .hd3 .prev { width: 33px; height: 33px; background: url(point_z.png) no-repeat 0 0}
+.list_focuss3 .hd3 .prev:hover { background: url(1left.png) no-repeat 0 0}
+.list_focuss3 .hd3 ul { float: left; padding-top: 9px; overflow: hidden}
+.list_focuss3 .hd3 .next { width: 33px; height: 33px; background: url(point_r.png) no-repeat 0 0}
+.list_focuss3 .hd3 .next:hover { background: url(1right.png) no-repeat 0 0}
+.list_focuss3 .hd3 ul li, .list_focuss3 .hd3 ul li.on, .list_focuss3 .hd3 .next, .list_focuss3 .hd3 .prev { float: left; vertical-align: middle;overflow: hidden;display: inline-block;cursor: pointer}
+.list_focuss3 .hd3 ul li { width: 18px; height: 18px; cursor: pointer; font-size: 0; line-height: 0; background: url(point.png) no-repeat 0 0}
+.list_focuss3 .hd3 ul li.on { background: url(point_on.png) no-repeat 0 0}
+
+
+/* 门户首页右侧资讯列表样式 */
+.righttop dl {
+	height: 73px;
+	overflow: hidden;
+    border-bottom: 1px dotted #E6E6E6;
+    padding: 15px 0;
+    margin: 0;
+}
+.righttop dl span {
+	position: relative;
+    width: 73;
+    margin-right: 15px;
+    float: left;
+    height: 73px;
+}
+.righttop dl span em {
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    color: #FFF;
+    background: none repeat 0 0 #4A86B8;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.righttop dt {
+    height: 22px;
+	line-height: 22px;
+    overflow: hidden;
+	padding: 0;
+    margin-bottom: 8px;
+}
+.righttop dt a {
+    font-size: 16px;
+    font-weight: normal;
+}
+.righttop dt a:hover { color: #4A86B8}
+.righttop .xld dd {
+    line-height: 20px;
+    color: #7F7F7F;
+    height: 38px;
+    overflow: hidden;
+}
+.righttop .newslist li {
+    height: 33px;
+    line-height: 33px;
+    font-size: 14px;
+    overflow: hidden;
+}
+.righttop .newslist span {
+    width: 20px;
+    height: 20px;
+    display: block;
+    line-height: 20px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+    background: none repeat scroll 0% 0% #CDCDCD;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+
+.textads { margin-bottom: 20px}
+a.textad {
+    display: block;
+    background: none repeat 0 0 #F6F6F6;
+    border: 1px solid #E3E3E3;
+    box-shadow: 0px 2px 1px #F6F6F6, 0 1px 0 #FFFFFF inset;
+    text-shadow: 0 1px 0 #FFFFFF;
+    color: #8C8C8C;
+    font-size: 10px;
+    line-height: 15px;
+    padding-top: 14px;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+a.textad:hover { text-decoration: none !important; background: #FFFFFF}
+a.textad span {
+    display: block;
+    padding: 0 20px 10px 20px;
+}
+a.textad span.textad-title {
+    color: #555555;
+    font-size: 15px;
+    font-weight: bold;
+}
+a.textad span.textad-link {
+	padding: 0 0 10px 38px;
+	font-family: Arial,sans-serif;
+    color: #4A86B8;
+    font-weight: bold;
+	background: url(trans.png) no-repeat 20px 2px
+}
+a.textad:hover .textad-link { background: url(trans2.png) no-repeat 20px 2px}
+
+.image-border-font {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 80;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 门户首页样式 */
+.part1 { width: 1000px; height: 355px; overflow: hidden; border: 0; padding: 0; margin: 35px 0 0 0; background: none}
+.part1-l { float: left; width: 670px; height: 355px; overflow: hidden; border: 0; padding: 0; margin: 0; background: none}
+.part1-r { float: right; width: 300px; height: 355px; overflow: hidden; border: 0; padding: 0; margin: 0; background: none}
+
+
+.part2 { width: 1000px; overflow: hidden; border: 0; padding: 0; margin: 25px 0 0 0; background: none}
+.part2-l { float: left; width: 675px; overflow: hidden; border: 0; padding: 0; margin: 0; background: none}
+.part2-r { float: right; width: 300px; overflow: hidden; border: 0; padding: 0; margin: 0; background: none}
+
+.part3 { width: 1000px; height: 630px; overflow: hidden; border: 0; padding: 0; margin: 0 0 15px 0; background: none}
+.part3-l { float: left; width: 411px; height: 550px; overflow: hidden; border: 0; padding: 0; margin: 0; background: none}
+.part3-r { float: right; width: 599px; height: 550px; overflow: hidden; border: 0; padding: 0; margin: 0; background: none}
+
+
+/* taber */
+.taber { margin: 5px 0 20px 0}
+.taber .tab-title { height: 40px; line-height: 40px; background: none}
+.taber .tb { width: 268px; padding-left: 0; height: 40px; line-height: 40px; background: #444444}
+.taber .tb li { margin: 0}
+.taber .tb a { width: 134px; padding: 0; font-size: 14px; text-align: center; border: 0; color: #FFFFFF; height: 40px; line-height: 40px; margin-right: 0; background: none !important}
+.taber .tb .a a { color: #FFFFFF ; line-height: 40px; font-weight: 400; background: #72BCDE !important}
+.taber .tb-c { padding: 0; margin: 10px 0; background: none}
+
+
+/* 门户首页右侧资讯列表 */
+.right_list {}
+.right_box { float: left; width: 60px; height: 60px; margin-right: 15px; overflow: hidden}
+.right_list li { float: left; width: 100%; height: 60px; margin: 0; padding: 15px 0; border-bottom: 1px dotted #E6E6E6}
+.right_list img { display: block; width: 60px; height: 60px; transition: all 0.5s ease 0s; background: url(loading.gif) no-repeat scroll center center transparent}
+
+.ie6 .right_box { overflow: visible}
+.ie7 .right_box { overflow: visible}
+.ie8 .right_box { overflow: visible}
+
+.ie6 .right_list img { border: 1px solid #D7D7D7}
+.ie7 .right_list img { border: 1px solid #D7D7D7}
+.ie8 .right_list img { border: 1px solid #D7D7D7}
+
+.right_box a:hover img { transition: all 0.5s ease 0s; transform: scale(1.2); opacity: 0.9}
+.right_list .t { line-height: 18px; margin-bottom: 5px; margin-right: 10px; overflow: hidden}
+.right_list .t a { font-size: 13px; font-weight: 100 ;color: #666666}
+.right_list .t a:hover { color: #4A86B8}
+.right_list .v { float: left; height: 20px; line-height: 20px; padding-left: 23px; margin-right: 15px; font-size: 10px; color: #999999; background: url(views.png) no-repeat left 1px}
+.right_list .c { float: left; width: 100px; height: 20px; padding-left: 23px; line-height: 20px; font-size: 10px; font-weight: 100; text-align: justify; color: #9C9C9C; overflow: hidden; background: url(date.png) no-repeat left 2px}
+
+
+/* 门户首页顶部右侧信息 */
+.web_info {
+    padding: 25px 20px;
+    margin-bottom: 13px;
+    background: none repeat scroll 0% 0% #F7F7F7;
+    color: #A0A0A0;
+}
+.web_info li {
+    height: 64px;
+    line-height: 18px;
+    padding-left: 58px;
+    margin-bottom: 21px;
+    border-bottom: 1px solid #ECECEC;
+    position: relative;
+}
+.web_info li i {
+    width: 50px;
+    height: 45px;
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 10px;
+}
+.web_info li i.info_member { background: url(member.png) no-repeat left top}
+.web_info .hd_t {
+    color: #666666;
+    font-size: 14px;
+    line-height: 18px;
+    padding-left: 10px;
+}
+.web_info .hd_b {
+    color: #A0A0A0;
+    line-height: 18px;
+    margin-top: 5px;
+    padding-left: 10px;
+}
+.web_info em {
+    color: #F47400;
+    font-family: Georgia;
+    text-decoration: none;
+    font-size: 28px;
+    line-height: 28px;
+    margin-right: 9px;
+}
+.web_info li i.info_forum { background: url(infox.png) no-repeat 5px -1px}
+.post_btns {
+    margin-top: 10px;
+    width: 230px;
+    height: 50px;
+}
+.post_btns a {
+    width: 230px;
+    height: 50px;
+	line-height: 45px;
+    display: block;
+	border-radius: 5px;
+	background: url(post.png) no-repeat 0 0
+}
+.post_btns b {
+    color: #F6F6F6;
+    font-size: 18px;
+    height: 50px;
+	font-weight: 600;
+    text-align: center;
+    line-height: 45px;
+	padding: 0 0 0 65px;
+    text-shadow: 0 1px 0 #22939C;
+}
+
+/* 门户首页第一资讯 */
+.first_news li { position: relative; width: 680px; height: 220px; margin-bottom: 30px; overflow: hidden}
+.photoboxs { float: left; width: 325px; height: 220px; overflow: hidden; margin-right: 20px}
+.first_news img { display: block; float: left; width: 325px; height: 220px; transition: all 0.5s ease 0s; background: url(loading.gif) no-repeat scroll center center transparent}
+.photoboxs a:hover img { transition: all 0.5s ease 0s; transform: scale(1.2); opacity: 0.9}
+.first_news .t { width: 325px; height: 26px; line-height: 26px; margin-bottom: 13px; overflow: hidden}
+.first_news .t a { font-size: 20px; font-weight: 100; color: #3D3D3D}
+.first_news .t a:hover { color: #333333}
+.first_news .c { height: 136px; line-height: 26px; margin: 15px 0 10px 0; font-size: 13px; font-weight: 100; text-align: justify; color: #888888}
+.covers { height: 30px; line-height: 30px; color: #9C9C9C}
+.covers em { padding-left: 28px}
+.covers .date { float: left;background: url(datex.png) no-repeat scroll 0 3px transparent}
+.covers .replys { float: left;margin-left: 20px;background: url(replysx.png) no-repeat scroll 0 7px transparent}
+.covers .category { float: left;margin-left: 20px;background: url(categoryx.png) no-repeat scroll 0 6px transparent}
+.covers .more { float: left;margin-left: 20px;background: url(morex.png) no-repeat scroll 0 4px transparent}
+
+/* 门户首页列表样式 */
+.news_list li { float: left; width: 640px; overflow: hidden; padding: 0 0 18px 0; margin: 18px 0 0 0; border-bottom: 1px dotted #EEEEEE; position: relative}
+.photobox { float: left; width: 220px; height: 150px; margin-right: 20px; overflow: hidden}
+.news_list img { display: block; float: left; width: 220px; height: 150px; transition: all 0.5s ease 0s;background: url(loading.gif) no-repeat scroll center center transparent}
+
+.ie6 .photobox { overflow: visible}
+.ie7 .photobox { overflow: visible}
+.ie8 .photobox { overflow: visible}
+
+.ie6 .news_list img { border: 1px solid #D6D6D6}
+.ie7 .news_list img { border: 1px solid #D6D6D6}
+.ie8 .news_list img { border: 1px solid #D6D6D6}
+
+.photobox a:hover img { transition: all 0.5s ease 0s; transform: scale(1.2); opacity: 0.9}
+.news_list .t { width: 400px; _width: 380px; height: 26px; line-height: 26px; margin-bottom: 10px; overflow: hidden}
+.news_list .c { height: 78px; line-height: 26px; overflow: hidden; margin: 0 0 5px 0; font-size: 12px; font-weight: 100; color: #888888; text-indent: 20px}
+.news_list .t a { font-size: 16px; font-weight: 400; color: #333333}
+.news_list .t a:hover { color: #4A86B8}
+.cover { height: 30px; line-height: 30px; color: #9C9C9C}
+.cover em { padding-left: 25px}
+.cover em a { color: #9C9C9C}
+.cover .date { float: left; margin-left: 0; background: url(date.png) no-repeat 0 7px}
+.cover .replys { float: left; margin-left: 20px;background: url(replysx.png) no-repeat 0 8px}
+.cover .views { float: left; margin-left: 20px;background: url(views.png) no-repeat 0 7px}
+.cover .more { float: left; margin-left: 20px;background: url(morex.png) no-repeat 0 5px}
+
+
+/* 门户首页细图资讯列表样式 */
+.small_list {}
+.small_box { float: left; width: 80px; height: 65px; overflow: hidden; margin-right: 12px}
+.small_list li { float: left; width: 325px; height: 70px; margin: 0 30px 15px 0}
+.small_list img { display: block; width: 80px; height: 65px; transition: all 0.5s ease 0s; background: url(loading.gif) no-repeat scroll center center transparent}
+.small_box a:hover img { transition: all 0.5s ease 0s; transform: scale(1.2); opacity: 0.9}
+.small_list .t { width: 230px; height: 20px; line-height: 20px; margin-bottom: 5px; overflow: hidden}
+.small_list .t a { font-size: 16px; font-weight: 100 ;color: #666666}
+.small_list .t a:hover { color: #333333}
+.small_list .c { width: 220px; height: 44px; line-height: 21px; font-size: 12px; font-weight: 100; text-align: justify; color: #999999; overflow: hidden}
+
+
+/* 通用标题样式 */
+.tit01 { position: relative; margin-bottom: 20px; padding-bottom: 8px; _padding-bottom: 0; border-bottom: 1px solid #E6E6E6; height: 34px}
+.tit01 h3 { position: absolute; left: 0; bottom: -1px; line-height: 34px; color: #3E4142; padding: 0 0 5px 0; font-size: 17px; font-weight: 400; border-top: 0; display: inline-block; background: none; border-bottom: 1px solid #444444}
+
+/* 门户首页图文展示样式 */
+.picboxs { margin: 20px 0 15px 0}
+.block-grid-item {
+    display: inline;
+    margin: 0 0 10px 0;
+    padding: 0;
+    height: 175px;
+    float: left;
+	overflow: hidden;
+    list-style: none outside none;
+}
+.vw-post-box-boxed, .vw-post-box-big-boxed {
+    position: relative;
+    background-color: #000000;
+    width: 100%;
+    height: 175px;
+}
+.vw-post-box-boxed .vw-post-box-thumbnail, .vw-post-box-big-boxed .vw-post-box-thumbnail {
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.25s ease-out 0s;
+}
+.vw-post-box-boxed:hover .vw-post-box-thumbnail, .vw-post-box-big-boxed:hover .vw-post-box-thumbnail {
+    opacity: 0.5;
+}
+.vw-post-box-boxed .vw-post-box-overlay, .vw-post-box-big-boxed .vw-post-box-overlay {
+    position: absolute;
+    padding: 10px 15px 20px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 30%, rgba(0, 0, 0, 0.8) 100%) repeat scroll 0% 0% transparent;
+}
+.vw-label, .vw-post-categories a {
+    font-size: 11px;
+    letter-spacing: 1px;
+    line-height: 1em;
+	margin-bottom: 5px;
+    padding: 3px 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 4px;
+}
+.vw-post-categories a { color: #FFFFFF; background-color: #4A86B8}
+.vw-post-box-boxed .vw-post-box-post-title a { color: #FFFFFF}
+.vw-post-box-boxed .vw-post-review-star, .vw-post-box-big-boxed .vw-post-review-star {
+    display: block;
+    line-height: 16px;
+    margin-top: 5px;
+}
+.vw-post-review-star img {
+    max-width: 14px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+
+
+/* 门户首页图片精选样式 */
+.gallery li { float: left;position: relative}
+.g-bg { position: absolute;display: block;height: 100%;width: 100%;top: 0;left: 0;transition: all 0.2s ease-in-out 0s;background: url(gallery.png) no-repeat scroll center center / 0 0 rgba(2, 150, 118, 0); opacity: 0; filter: alpha(opacity=0)}
+.g-bg h4 { opacity: 0; filter: alpha(opacity=0); position: absolute; color: #FFFFFF; left: 0; bottom: 10px; width: 100%;text-align: center; text-shadow: 0 1px 2px #000000; z-index: 160; _display: none}
+a.g-bg:hover { background: url(gallery.png) no-repeat scroll center center / 32px 32px rgba(2, 150, 118, 0.6); opacity: 1; filter: alpha(opacity=100)}
+a.g-bg:hover h4 { font-size: 14px; bottom: 15px; font-weight: 500; opacity: 1; filter: alpha(opacity=100)}
+
+
+.vw-post-box-large { width: 323px; margin-top: 15px; position: relative}
+.vw-post-box-medium { float: left; position: relative; width: 205px; margin: 0 30px 0 0}
+.vw-post-box-medium .vw-post-box-meta { width: 205px}
+.vw-post-box-medium .vw-post-box-post-title { height: 38px; overflow: hidden}
+.vw-post-box-article .vw-post-box-thumbnail, .vw-post-box-large .vw-post-box-thumbnail, .vw-post-box-medium .vw-post-box-thumbnail, .vw-post-box-small .vw-post-box-thumbnail, .vw-post-box-classic .vw-post-box-thumbnail, .vw-instant-search-result-thumbnail { background: url(plus.png) no-repeat scroll center center #111111}
+
+.vw-post-box-article .vw-post-box-thumbnail:hover img.wp-post-image, .vw-post-box-large .vw-post-box-thumbnail:hover img.wp-post-image, .vw-post-box-medium .vw-post-box-thumbnail:hover img.wp-post-image, .vw-post-box-small .vw-post-box-thumbnail:hover img.wp-post-image, .vw-post-box-classic .vw-post-box-thumbnail:hover img.wp-post-image, .vw-instant-search-result-thumbnail:hover img.wp-post-image { opacity: 0.3}
+
+.vw-post-box-article .vw-post-box-thumbnail img.wp-post-image, .vw-post-box-large .vw-post-box-thumbnail img.wp-post-image, .vw-post-box-medium .vw-post-box-thumbnail img.wp-post-image, .vw-post-box-small .vw-post-box-thumbnail img.wp-post-image, .vw-post-box-classic .vw-post-box-thumbnail img.wp-post-image, .vw-instant-search-result-thumbnail img.wp-post-image { transition: opacity 0.2s ease-out 0s}
+
+.ie6 .vw-post-box-large .vw-post-box-thumbnail img.wp-post-image { border: 1px solid #D7D7D7}
+.ie7 .vw-post-box-large .vw-post-box-thumbnail img.wp-post-image { border: 1px solid #D7D7D7}
+.ie8 .vw-post-box-large .vw-post-box-thumbnail img.wp-post-image { border: 1px solid #D7D7D7}
+
+.vw-post-categories { margin-bottom: 8px; position: absolute; left: 0; top: 155px}
+.vw-post-box-style-top-thumbnail .vw-post-box-thumbnail { margin-bottom: 10px}
+.vw-post-box-thumbnail { display: inline-block}
+.vw-post-box-style-top-thumbnail .vw-post-box-post-title { margin-top: 0.2em; margin-bottom: 0.8em}
+.vw-post-box-large .vw-post-box-post-title { width: 323px; height: 30px; line-height: 30px; font-size: 1.25em; color: #444444; overflow: hidden}
+.vw-post-box-large .vw-post-box-post-title a:hover { color: #4A86B8}
+.vw-post-box-meta { width: 323px; height: 20px; margin: 5px 0; font-size: 12px; line-height: 15px; color: #999999}
+.vw-post-box-meta a { color: #999999}
+.vw-post-meta, .vw-post-box-meta { color: #999999}
+.vw-post-meta-left { float: left}
+.vw-post-meta-right { float: right}
+i.icon-entypo-clock { float: left; display: block; width: 14px; height: 14px; margin-right: 6px; background: url(date.png) no-repeat left top}
+i.icon-entypo-eye { float: left; display: block; width: 16px; height: 16px; margin-right: 6px; background: url(views.png) no-repeat left 0}
+span.vw-post-views-count { float: left; margin-right: 12px}
+i.icon-entypo-chat { float: left; display: block; width: 14px; height: 14px; margin-right: 6px; background: url(replysx.png) no-repeat left 1px}
+.vw-post-box-excerpt { margin-bottom: 10px}
+.vw-post-box-excerpt p { color: #777777; font-weight: 100; line-height: 22px}
+.vw-read-more { font-size: 0.8em; font-weight: 400; color: #333333}
+
+
+.boxs {}
+.boxs .frame-1-1-l { float: left; width: 323px}
+.boxs .frame-1-1-r { float: right; width: 323px}
+
+
+
+/* 门户首页关注我们样式 */
+#care ul {
+    width: 285px;
+}
+#care li {
+    width: 32%;
+    height: 120px;
+	margin: 0 0 0 2px;
+    background: none repeat scroll 0% 0% #FFF;
+    float: left;
+}
+#care em {
+    width: 83px;
+    height: 73px;
+    display: block;
+    overflow: hidden;
+}
+#care em i {
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+    background: url(care.png) no-repeat scroll 0% 0% transparent;
+    display: block;
+    overflow: hidden;
+}
+#care .info_num {
+    width: 83px;
+    text-align: center;
+    color: #444;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+}
+#care .info_num p {
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    font-weight: 100;
+}
+#care .toadypost i {
+    background-position: 0px -50px;
+}
+#care .allpost i {
+    background-position: 0px 0px;
+}
+#care .alluser i {
+    background-position: 0px -100px;
+}
+#care a:hover .toadypost i {
+    background-position: -50px -50px;
+}
+#care a:hover .allpost i {
+    background-position: -50px 0px;
+}
+#care a:hover .alluser i {
+    background-position: -50px -100px;
+}
+
+
+/* 幻灯片样式 */
+.list_box { padding: 5px 15px 10px 15px}
+.list_focuss .bd {
+    width: 268px;
+    height: 200px;
+    overflow: hidden;
+}
+.list_focuss li { position: relative}
+.list_focuss h3 {
+	position: absolute;
+	top: 160px;
+	left: 0;
+	color: #FFFFFF;
+	width: 248px;
+    height: 40px;
+    line-height: 40px;
+	padding: 0 10px;
+    overflow: hidden;
+    font-size: 14px;
+    text-align: center;
+	background: url(png.png) repeat 0 0
+}
+.list_focuss h3 a { color: #FFFFFF}
+.list_focuss .bd img { width: 268px; height: 200px}
+.list_focuss .hd { width: 100px;height: 5px;overflow: hidden;margin: 15px auto 10px auto}
+.list_focuss .hd ul { float: left; padding-top: 0; overflow: hidden}
+.list_focuss .hd ul li { float: left; width: 15px; height: 5px; margin: 0 4px 0 0; cursor: pointer; text-indent: -9999px; overflow: hidden; background: #555555}
+.list_focuss .hd ul li.on { background: #4A86B8}
+
+
+/* 热门资讯 */
+.hot_read { height: 290px; padding: 5px 15px 0 15px; margin: 0 0 10px 0; overflow: hidden}
+.hot_read li { float: left; width: 268px; height: 73px; overflow: hidden; padding-bottom: 15px; margin-bottom: 13px; border-bottom: 1px dashed #EEEEEE}
+.hot_read h3 { height: 25px; line-height: 25px; padding-bottom: 0; margin: 0 0 6px 0; overflow: hidden}
+.hot_read h3 a { color: #666666; font-size: 15px}
+.hot_read h3 a:hover { color: #4A86B8}
+.hot_read .pic { float: left; width: 73px; margin-right: 12px}
+.hot_read p { height: 45px; line-height: 22px; color: #8C8C8C; text-align: justify; overflow: hidden}
+.hot_read p a { color: #4A86B8}
+
+
+.mb30 { margin-bottom: 30px}
+
+
+/* 阅读排行 */
+.hbody { width: 640px; padding: 12px 15px; background: #FFFFFF}
+.hbody .hd ul { float: right; margin-right: 3px}
+.hbody .hd li {
+    float: left;
+    text-align: center;
+    height: 33px;
+    line-height: 26px;
+	color: #888888;
+    font-size: 12px;
+    margin: 9px 0 0 13px;
+	padding: 0 1px;
+    cursor: pointer;
+	transition: all 0.3s ease 0s
+}
+.hbody .hd li.on { height: 33px; line-height: 26px; color: #4A86B8; padding: 0 1px; margin: 9px 0 0 13px; border-radius: 0; border-bottom: 1px solid #4A86B8; background: none}
+.date, .author {
+    margin-left: 5px;
+    display: block;
+    float: right;
+    font-size: 12px;
+    overflow: hidden;
+    text-align: right;
+    color: #999999;
+}
+
+.picimage span { float: left}
+.picont-picpre img { width: 50px; height: 50px; box-shadow: 1px 1px 1px #CCCCCC; border-radius: 2px}
+
+
+/* 门户首页阅读更多样式 */
+.more_info { width: 673px; height: 38px; line-height: 38px; margin: 0 0 15px 0; border: 1px solid #E9E9E9; text-align: center; background: #F6F6F6}
+.more_info:hover { background: #4A86B8}
+.more_info a { display: block; width: 675px; height: 40px; line-height: 40px; color: #888888; font-size: 15px; font-family: Tahoma, Geneva, sans-serif}
+.more_info em { font-size: 13px}
+.more_info a:hover { color: #FFFFFF; text-decoration: none}
+
+
+/* 门户首页图片轮播样式 */
+.index_photo { width: 1000px; overflow: hidden}
+.ie6 .index_photo, .ie7 .index_photo { position: relative}
+.index_photo .photo_ctrl { float: right; height: 25px; margin: 6px 1px 0 0; _margin: 3px 0 0 0}
+.index_photo .photo_ctrl a { float: left; width: 25px; height: 25px; text-indent: -9999px; margin-left: 2px; cursor: pointer; transition: all 0.3s ease 0s}
+.index_photo .photo_ctrl a.prev { background: url(car-pre.png) no-repeat center center #4A86B8}
+.index_photo .photo_ctrl a.prev:hover { background: url(car-pre.png) no-repeat center center #333333}
+.index_photo .photo_ctrl a.next { background: url(car-next.png) no-repeat center center #4A86B8}
+.index_photo .photo_ctrl a.next:hover { background: url(car-next.png) no-repeat center center #333333}
+.index_photo .bd li { float: left; width: 232px; margin: 0 24px 0 0; border-bottom: 3px solid #4A86B8}
+.index_photo .bd .imgbox { position: relative; width: 232px; height: 180px; overflow: hidden; display: block}
+img.rotates { width: 100%; _width: 232px; display: block; transition: all 0.4s ease 0s; opacity: 1; filter: Alpha(opacity=100); margin: 0 auto}
+img.rotates:hover { transform: scale(1.2) rotate(5deg); opacity: 0.5; filter: Alpha(opacity=50)}
+.imglink { display: block; padding: 0; background: none repeat 0 0 #000000}
+.index_photo .bd .txt h3 { font-size: 16px;height: 22px;overflow: hidden;line-height: 22px;color: #333333;font-weight: 400;margin: 8px 0}
+span.author3 { padding-left: 22px; margin-right: 5px; background: url(author3.png) no-repeat left center}
+span.date3 { padding-left: 18px; background: url(time.png) no-repeat left center}
+.cover { height: 30px; line-height: 30px; color: #9C9C9C}
+.index_photo .bd .txt p { font-size: 13px; line-height: 22px; height: 44px; overflow: hidden; color: #555555; padding-bottom: 15px; margin-top: 5px; margin-bottom: 2px; border-bottom: 1px solid #4A86B8}
+.fa { display: inline-block}
+.overlay_icon { color: #2F88D6;border-radius: 7%;text-align: center;line-height: 30px;width: 30px;height: 30px;opacity: 0;filter: Alpha(opacity=0);font-size: 20px;position: absolute;z-index: 2;top: 30%;left: 50%;margin-top: -10px;margin-left: -20px;cursor: pointer;text-decoration: none;font-weight: normal;font-style: normal;transition: all 0.3s ease 0s; background: url(view.png) no-repeat 0 0}
+.ie6 .overlay_icon { display: none}
+.imgbox:hover .overlay_icon { z-index: 999;top: 50%;opacity: 1; filter: Alpha(opacity=100); text-decoration: none;font-weight: normal;font-style: normal}
+
+
+/* 门户首页上榜栏目样式 */
+.rank-list ul { width: 705px; height: 88px}
+.rank-list li { float: left; width: 205px; height: 68px; margin: 0 30px 20px 0; overflow: hidden}
+.rank-list li .pic { float: left; width: 80px; margin: 0 10px 0 0; border-bottom: 2px solid #4A86B8}
+.rank-list li .info { float: left; width: 115px}
+.rank-list li .info p { height: 44px; line-height: 22px; margin: 0 0 5px 0; overflow: hidden}
+.rank-list li .info p a { font-size: 12px}
+.rank-list li .info span { padding: 0 0 0 25px; color: #999999; background: url(date.png) no-repeat left 1px}
+
+/* 门户首页最新动态样式 */
+.portal_tits {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #E8E8E8;
+    position: relative;
+    margin-bottom: 15px;
+	background: #F6F6F6
+}
+.portal_tits h2 {
+    font-size: 16px;
+    padding-left: 18px;
+    float: left;
+    color: #333333;
+}
+.news_line { padding: 0 0 5px 0; border: 1px solid #E0E0E0; background: #FFFFFF}
+.news_line .next {
+    position: absolute;
+    right: 20px;
+    font-size: 12px;
+    font-weight: 400;
+	color: #777777;
+    cursor: pointer;
+    padding-left: 25px;
+    background: url(icon1.png) no-repeat -384px 12px
+}
+.news_line .bd2 {
+	height: 270px;
+    padding: 5px 20px;
+	margin: 0 0 10px 0;
+	overflow: hidden
+}
+.news_line li {
+	height: auto !important;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #F2F2F2;
+}
+.news_line .desc-box {
+    font-size: 14px;
+    color: #999999;
+    line-height: 26px;
+}
+.news_line .desc-box h3 {
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: -5px;
+    color: #555555;
+    height: 23px;
+	line-height: 23px;
+    overflow: hidden;
+}
+.news_line .desc-box h3 a { color: #555555}
+.news_line .next:hover { color: #2393DF; text-decoration: none; background-position: -384px -38px}
+.meta {
+    margin-top: 8px;
+}
+.meta span {
+    color: #AFAFAF;
+    margin-right: 13px;
+}
+.meta .meta-date {
+	font-size: 12px;
+    padding-left: 23px;
+    background: url(date.png) no-repeat 0 1px;
+}
+
+/*资讯排行*/
+.ranking ul { height: 280px}
+.ranking ul li { width: 268px; height: 28px; line-height: 28px; padding: 3px 0; border-bottom: 0; overflow: hidden}
+.ranking ul li em { padding: 0 12px 0 0; font-size: 16px; font-family: Georgia; color: #666666}
+.ranking ul li a { height: 28px; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; overflow: hidden}
+.ranking ul li a:hover { text-decoration: none; color: #72BCDE}
+.ranking ul li.top_1 em, .ranking ul li.top_2 em, .ranking ul li.top_3 em { color: #72BCDE; font-family: Georgia; font-size: 18px}
+
+
+.read_more { width: 670px; height: 40px; line-height: 40px; margin: 25px 0 0 0; border: 0; text-align: center; background: #FFFFFF}
+.read_more a { font-size: 16px; color: #555555}
+.read_more a:hover { color: #4A86B8; text-decoration: none}
