@@ -11,7 +11,6 @@ if(!defined('IN_DISCUZ') || !defined('IN_MODCP')) {
 	exit('Access Denied');
 }
 
-
 $modact = empty($_GET['modact']) || !in_array($_GET['modact'] , array('delete', 'ignore', 'validate')) ? 'ignore' : $_GET['modact'];
 
 if($op == 'members') {
@@ -106,13 +105,8 @@ if($op == 'members') {
 		}
 
 	} else {
-		$count = C::t('common_member_validate')->fetch_all_status_by_count();
-
-		$page = max(1, intval($_G['page']));
-		$_G['setting']['memberperpage'] = 20;
-		$start_limit = ($page - 1) * $_G['setting']['memberperpage'];
-
-		$multipage = multi(C::t('common_member_validate')->count_by_status(0), $_G['setting']['memberperpage'], $page, "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&fid=$_G[fid]&filter=$filter");
+		$count = '';
+		$multipage = '';
 
 		$vuids = array();
 		$memberlist = $member_validate = $common_member = $member_status = array();
@@ -120,7 +114,10 @@ if($op == 'members') {
 			$uids = array_keys($member_validate);
 			$common_member = C::t('common_member')->fetch_all($uids, false, 0);
 			$member_status = C::t('common_member_status')->fetch_all($uids, false, 0);
+			$member_verify_info = C::t('common_member_verify_info')->fetch_all($uids, false, 0);
 		}
+		//field4即现所在分部
+		$admin_field4 = getuserprofile('field4');
 		foreach($member_validate as $uid => $member) {
 			$member = array_merge($member, $common_member[$uid], $member_status[$uid]);
 			if($member['groupid'] != 8) {
@@ -132,11 +129,19 @@ if($op == 'members') {
 			$member['moddate'] = $member['moddate'] ? dgmdate($member['moddate']) : $lang['none'];
 			$member['message'] = dhtmlspecialchars($member['message']);
 			$member['admin'] = $member['admin'] ? "<a href=\"home.php?mod=space&username=".rawurlencode($member['admin'])."\" target=\"_blank\">$member[admin]</a>" : $lang['none'];
-			$memberlist[] = $member;
+			if (isset($member_verify_info[$uid])) {
+				$member = array_merge($member, unserialize($member_verify_info[$uid]['field']));
+			}
+
+			if ($admin_field4 == $member['field4']) {
+				$memberlist[] = $member;
+			}
 		}
 		if($vuids) {
 			C::t('common_member_validate')->delete($vuids, 'UNBUFFERED');
 		}
+
+		loadcache('profilesetting');
 
 		return true;
 	}
