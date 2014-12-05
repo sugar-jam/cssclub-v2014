@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: discuzcode.func.php 35103 2014-11-18 10:10:29Z nemohou $
+ *      $Id: discuzcode.func.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -207,6 +207,7 @@ function mobile_discuzcode($param) {
 
 	unset($msglower);
 	$message = preg_replace("/(\[groupid=\d+\].*\[\/groupid\])/i", '', $message);
+	$message = preg_replace("/(\r\n|\n|\r){3,}/i", "\\1\\1\\1", $message);
 	return $message;
 }
 
@@ -282,22 +283,27 @@ function mobile_parsetable($width, $bgcolor, $message) {
 		if(!preg_match("/^\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td([=\d,%]+)?\]/", $message) && !preg_match("/^<tr[^>]*?>\s*<td[^>]*?>/", $message)) {
 			return str_replace('\\"', '"', preg_replace("/\[tr(?:=([\(\)\s%,#\w]+))?\]|\[td([=\d,%]+)?\]|\[\/td\]|\[\/tr\]/", '', $message));
 		}
-		return '<ul>'.
+		return '<table class="dzcode_table" cellspacing="0" '.
+			($bgcolor ? ' bgcolor="'.$bgcolor.'">' : '>').
 			str_replace('\\"', '"', preg_replace(array(
-					"/\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td(?:=(\d{1,4}%?))?\]/i",
-					"/\[\/td\]\s*\[td(?:=(\d{1,4}%?))?\]/i",
-					"/\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td(?:=(\d{1,2}),(\d{1,2})(?:,(\d{1,4}%?))?)?\]/i",
-					"/\[\/td\]\s*\[td(?:=(\d{1,2}),(\d{1,2})(?:,(\d{1,4}%?))?)?\]/i",
+					"/\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td(?:=(\d{1,4}%?))?\]/ie",
+					"/\[\/td\]\s*\[td(?:=(\d{1,4}%?))?\]/ie",
+					"/\[tr(?:=([\(\)\s%,#\w]+))?\]\s*\[td(?:=(\d{1,2}),(\d{1,2})(?:,(\d{1,4}%?))?)?\]/ie",
+					"/\[\/td\]\s*\[td(?:=(\d{1,2}),(\d{1,2})(?:,(\d{1,4}%?))?)?\]/ie",
 					"/\[\/td\]\s*\[\/tr\]\s*/i"
 				), array(
-					"<li>",
-					"</li><li>",
-					"<li>",
-					"</li><li>",
-					"</li>"
+					"mobile_parsetrtd('\\1', '0', '0', '\\2')",
+					"mobile_parsetrtd('td', '0', '0', '\\1')",
+					"mobile_parsetrtd('\\1', '\\2', '\\3', '\\4')",
+					"mobile_parsetrtd('td', '\\1', '\\2', '\\3')",
+					'</td></tr>'
 				), $message)
-			).'</ul>';
+			).'</table>';
 	}
+}
+
+function mobile_parsetrtd($bgcolor, $colspan, $rowspan, $width) {
+	return ($bgcolor == 'td' ? '</td></tr>' : '<tr'.($bgcolor ? ' style="background-color:'.$bgcolor.'"' : '').'>').'<td class="dzcode_td">';
 }
 
 ?>

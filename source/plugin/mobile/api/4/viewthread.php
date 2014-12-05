@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: viewthread.php 35042 2014-10-29 09:49:28Z nemohou $
+ *      $Id: viewthread.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');
@@ -31,6 +31,7 @@ class mobile_api {
 		}
 
 		$_G['thread']['lastpost'] = dgmdate($_G['thread']['lastpost']);
+		$_G['thread']['ordertype'] = $GLOBALS['ordertype'];
 		$_G['thread']['recommend'] = $_G['uid'] && C::t('forum_memberrecommend')->fetch_by_recommenduid_tid($_G['uid'], $_G['tid']) ? 1 : 0;
 		if (!empty($_GET['viewpid'])) {
 			$GLOBALS['postlist'][$_GET['viewpid']] = $GLOBALS['post'];

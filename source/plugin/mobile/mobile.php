@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.php 35103 2014-11-18 10:10:29Z nemohou $
+ *      $Id: mobile.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 define('IN_MOBILE_API', 1);
@@ -35,10 +35,6 @@ if(!in_array($_GET['module'], $modules)) {
 }
 $_GET['version'] = !empty($_GET['version']) ? intval($_GET['version']) : (!$defaultversions[$_GET['module']] ? 1 : $defaultversions[$_GET['module']]);
 $_GET['version'] = $_GET['version'] > MOBILE_PLUGIN_VERSION ? MOBILE_PLUGIN_VERSION : $_GET['version'];
-
-if($_GET['version'] != 4) {
-	$_GET['mobile'] = 'no';
-}
 
 if(empty($_GET['module']) || empty($_GET['version']) || !preg_match('/^[\w\.]+$/', $_GET['module']) || !preg_match('/^[\d\.]+$/', $_GET['version'])) {
 	mobile_core::result(array('error' => 'param_error'));
