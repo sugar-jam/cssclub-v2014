@@ -155,8 +155,8 @@
 						<td width="90%">
 							<span class="ftid">
 								<select name="filter" id="filter" width="150" class="ps">
-									<option value="0" $filtercheck[0]>{lang mod_moderate_member_never} ( $count[0] )</option>
-									<option value="1" $filtercheck[1]>{lang mod_moderate_member_already} ( $count[1] )</option>
+									<option value="0" $filtercheck[0]>{lang mod_moderate_member_never}<!--{if $count[0]}-->( $count[0] )<!--{/if}--></option>
+									<option value="1" $filtercheck[1]>{lang mod_moderate_member_already}<!--{if $count[1]}--> ( $count[1] )<!--{/if}--></option>
 								</select>
 							</span>
 						</td>
@@ -188,6 +188,9 @@
 							<td><input type="checkbox" name="moderate[]" id="pidcheck_{$member[uid]}" class="pc" value="$member[uid]" onclick="recountobj()" /></td>
 							<td valign="top">
 								<h5>$member[username]</h5>
+								<!--{if !empty($member['realname'])}-->
+								<p>{$_G[cache][profilesetting][realname][title]}: $member[realname]</p>
+								<!--{/if}-->
 								<p>{lang mod_moderate_member_register_dateline}: $member[regdate]</p>
 								<p>{lang mod_moderate_member_register_ip}: $member[regip]</p>
 								<p>Email: $member[email]</p>
