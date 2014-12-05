@@ -1,0 +1,110 @@
+<!--{template common/header}-->
+
+<div id="wp" class="wp win8mi_wp">
+	<div id="pt" class="bm cl">
+		<div class="z">
+			<a href="./" class="nvhm" title="首页">$_G[setting][bbname]</a> <em>›</em>
+			<a href="home.php?mod=spacecp">申请</a>
+		</div>
+	</div>
+
+	<div id="ct" class="ct2_a wp cl">
+		<div class="mn">
+			<div class="bm bw0">
+				<h1 class="mt">个人资料</h1>
+				<table class="tfm" id="profilelist" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<th>姓名</th>
+							<td>{echo profile_show('realname', $space)}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>性别</th>
+							<td>{echo profile_show('gender', $space)}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>奖金类型</th>
+							<td>{echo profile_show('field2', $space)}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>目前所在分部</th>
+							<td>{echo profile_show('field4', $space)}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>团队内编号</th>
+							<td>{$_G['uid']}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>获奖时间</th>
+							<td>{echo profile_show('field1', $space)}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>获奖所在学校</th>
+							<td>{echo profile_show('field3', $space)}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>目前所在学校（单位）</th>
+							<td>{echo profile_show('company', $space)}</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>本学年内个人情况</th>
+							<td></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>社区服务及公益情况</th>
+							<td></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>获奖、科研情况</th>
+							<td></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>担任职务</th>
+							<td></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>社团参与情况</th>
+							<td></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>&nbsp;</th>
+							<td colspan="2">
+								<input name="profilesubmit" value="true" type="hidden">
+								<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true" class="pn pnc"><strong>申请</strong></button>
+								<span id="submit_result" class="rq"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="appl">
+			<div class="tbn">
+				<h2 class="mt bbda">申请分类</h2>
+				<ul>
+					<li><a href="###">游学申请</a></li>
+					<li><a href="###">留学申请</a></li>
+					<li><a href="###">创业申请</a></li>
+					<li><a href="###">奖学金申请</a></li>
+					<li><a href="###">助学金申请</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--{template common/footer}-->
