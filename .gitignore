@@ -1,0 +1,4 @@
+/config/*.php
+/uc_server/data/
+/uc_client/data/
+/data/
