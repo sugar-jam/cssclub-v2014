@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id$
+ *      $Id: wsq_stat.inc.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -64,7 +64,7 @@ jq(function () {
 </script>
 <div id="chart-container" style="min-width:800px;height:400px"></div>
 EOF;
-
+$xa = array_reverse($xa, true);
 showtableheader('');
 showsubtitle(array('', 'UV', 'PV', $lang['stat_newthread'], $lang['stat_reply'], $lang['stat_share'], $lang['stat_reflow']));
 foreach($xa as $key=>$value) {

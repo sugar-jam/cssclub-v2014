@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: response.class.php 35012 2014-10-11 07:48:33Z nemohou $
+ *      $Id: response.class.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -127,18 +127,20 @@ class WSQResponse {
 			return;
 		}
 		if($_G['wechat']['setting']['wsq_siteid'] && !defined('IN_MOBILE_API')) {
-			$_G['wechat']['setting']['wsq_wapdefault'] = !IS_ROBOT ? $_G['wechat']['setting']['wsq_wapdefault'] : false;
+			$_G['wechat']['setting']['wsq_wapdefault'] = !self::_checkrobot() ? $_G['wechat']['setting']['wsq_wapdefault'] : false;
 			$in_wechat = $_G['wechat']['setting']['wsq_wapdefault'] ? true : strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false;
 			$fromwap = $_G['wechat']['setting']['wsq_wapdefault'] && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') === false;
 			$url = wsq::$WSQ_DOMAIN.'siteid='.$_G['wechat']['setting']['wsq_siteid'].($fromwap ? '&source=wap' : '').'&c=index&a=';
 			if($type) {
 				$modid = $_G['basescript'].'::'.CURMODULE;
-				if($in_wechat && ($modid == 'forum::viewthread' || $modid == 'group::viewthread') && !empty($_GET['tid'])) {
-					dheader('location: '.$url.'viewthread&tid='.$_GET['tid']);
-				} elseif($in_wechat && ($modid == 'forum::forumdisplay' || $modid == 'group::forumdisplay') && !empty($_GET['fid'])) {
-					dheader('location: '.$url.'index&fid='.$_GET['fid']);
-				} elseif($in_wechat && $modid == 'forum::index') {
-					dheader('location: '.$url.'index');
+				if($in_wechat) {
+					if(($modid == 'forum::viewthread' || $modid == 'group::viewthread') && !empty($_GET['tid'])) {
+						dheader('location: '.$url.'viewthread&tid='.$_GET['tid']);
+					} elseif(($modid == 'forum::forumdisplay' || $modid == 'group::forumdisplay') && !empty($_GET['fid'])) {
+						dheader('location: '.$url.'index&fid='.$_GET['fid']);
+					} elseif($modid == 'forum::index') {
+						dheader('location: '.$url.'index');
+					}
 				}
 			} else {
 				if(isset($_GET['referer'])) {
@@ -214,27 +216,31 @@ class WSQResponse {
 		return 0;
 	}
 
+	public static function masssendFinish($param) {
+	    list($data) = $param;
+	    if(!$data['msg_id']) {
+		exit;
+	    }
+	    $updatedata = array(
+		'res_status' => $data['status'],
+		'res_totalcount' => $data['totalcount'],
+		'res_filtercount' => $data['filtercount'],
+		'res_sentcount' => $data['sentcount'],
+		'res_errorcount' => $data['errorcount'],
+		'res_finish_at' => $data['time']
+	    );
+	    DB::update('mobile_wechat_masssend', $updatedata, "msg_id='$data[msg_id]'");
+	}
+
+	private static function _checkrobot() {
+		return IS_ROBOT || strpos($_SERVER['HTTP_USER_AGENT'], 'spi_der') !== false;
+	}
+
 	private static function _init() {
 		global $_G;
 		if(!$_G['wechat']['setting']) {
 			$_G['wechat']['setting'] = unserialize($_G['setting']['mobilewechat']);
 		}
 	}
-
-    public static function masssendFinish($param) {
-        list($data) = $param;
-        if(!$data['msg_id']) {
-            exit;
-        }
-        $updatedata = array(
-            'res_status' => $data['status'],
-            'res_totalcount' => $data['totalcount'],
-            'res_filtercount' => $data['filtercount'],
-            'res_sentcount' => $data['sentcount'],
-            'res_errorcount' => $data['errorcount'],
-            'res_finish_at' => $data['time']
-        );
-        DB::update('mobile_wechat_masssend', $updatedata, "msg_id='$data[msg_id]'");
-    }
 
 }

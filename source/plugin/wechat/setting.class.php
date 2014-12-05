@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: setting.class.php 34892 2014-08-20 07:26:59Z nemohou $
+ *      $Id: setting.class.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -63,6 +63,7 @@ EOF;
 				array(lang('plugin/wechat', 'menu_wechat_resource'), 'plugins&operation=config&identifier=wechat&pmod=resource_setting', $_GET['pmod'] == 'resource_setting'),
 				array(lang('plugin/wechat', 'menu_wechat_masssend'), 'plugins&operation=config&identifier=wechat&pmod=masssend_setting', $_GET['pmod'] == 'masssend_setting'),
 			))),
+			array(lang('plugin/wechat', 'menu_app'), 'plugins&operation=config&identifier=wechat&pmod=wsq_app', $_GET['pmod'] == 'wsq_app'),
 			array(lang('plugin/wechat', 'menu_api'), 'plugins&operation=config&identifier=wechat&pmod=api_setting', $_GET['pmod'] == 'api_setting'),
 		));
 		echo '</div>';

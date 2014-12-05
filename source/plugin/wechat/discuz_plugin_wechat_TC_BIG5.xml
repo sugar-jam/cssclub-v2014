@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[wechat/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.1.1]]></item>
+			<item id="version"><![CDATA[1.1.2]]></item>
 			<item id="__modules">
 				<item id="1">
 					<item id="name"><![CDATA[wechat]]></item>
@@ -169,6 +169,19 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
+				<item id="13">
+					<item id="name"><![CDATA[wsq_app]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[應用中心]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
 			</item>
 		</item>
 		<item id="version"><![CDATA[X2.5,X3,X3.1,X3.2]]></item>
@@ -273,7 +286,9 @@
 				<item id="wsq_fid_comment"><![CDATA[設置在微社區中默認顯示的版塊]]></item>
 				<item id="wsq_domain"><![CDATA[微社區二級域名]]></item>
 				<item id="wsq_domain_comment"><![CDATA[您可以設置一個二級域名直接訪問本站的微社區(僅限擁有“高級接口”服務的公眾號)。根域名設置完後，此處域名綁定才能生效</a>]]></item>
+				<item id="wechat_forumdisplay_reply"><![CDATA[帖子列表頁是否顯示最新回復]]></item>
 				<item id="wsq_api_register_error"><![CDATA[微社區注冊失敗，請稍後再試]]></item>
+				<item id="wsq_api_servertime_error"><![CDATA[服務器時間錯誤，請修改後再試]]></item>
 				<item id="wsq_api_edit_error"><![CDATA[微社區資料修改失敗，請稍後再試]]></item>
 				<item id="wsq_menu_at_error"><![CDATA[您需要填寫微信開發者 ID 後才能使用此功\能]]></item>
 				<item id="wsq_menu_name"><![CDATA[菜單標題]]></item>
@@ -296,6 +311,12 @@
 				<item id="wsq_apicredit_comment"><![CDATA[設置微社區使用的積分，設置為“無”表示不允許\微社區操作論壇積分]]></item>
 				<item id="wsq_apicredit_log_inc"><![CDATA[微社區增加]]></item>
 				<item id="wsq_apicredit_log_dec"><![CDATA[微社區扣減]]></item>
+				<item id="wsq_global_banner"><![CDATA[是否展示全局活動 Banner]]></item>
+				<item id="wsq_global_banner_comment"><![CDATA[選擇“是”，微社區頂部將展示當前的微社區全局活動]]></item>
+				<item id="wsq_viewapp_local"><![CDATA[本地應用]]></item>
+				<item id="wsq_viewapp_local_comment"><![CDATA[通過 Discuz! 應用中心安裝在站長本地的插件應用，查看應用列表請<a href="http://addon.discuz.com/?!wsqapp" class="bold">點擊這里</a>]]></item>
+				<item id="wsq_viewapp_online"><![CDATA[線上應用]]></item>
+				<item id="wsq_viewapp_online_comment"><![CDATA[線上應用主要是通過接口調用的方式為站長提供運營組件、全局活動等功\能（如刮刮卡，紅包等）<br />使用線上應用前需要先在微社區應用平台（<a href="http://mp.wsq.qq.com/bindSite" target="_blank" class="bold">http://mp.wsq.qq.com/bindSite</a>）綁定站點，已綁定的站點請直接管理應用（<a href="http://mp.wsq.qq.com" target="_blank" class="bold">http://mp.wsq.qq.com</a>）]]></item>
 				<item id="api_wsq"><![CDATA[微社區接口]]></item>
 				<item id="api_wechat"><![CDATA[微信接口]]></item>
 				<item id="response_keyword"><![CDATA[關鍵詞]]></item>
@@ -413,6 +434,7 @@
 				<item id="menu_wechat_menu"><![CDATA[菜單設置]]></item>
 				<item id="menu_wechat_resource"><![CDATA[素材設置]]></item>
 				<item id="menu_wechat_masssend"><![CDATA[群發設置]]></item>
+				<item id="menu_app"><![CDATA[應用中心]]></item>
 				<item id="menu_api"><![CDATA[接口設置]]></item>
 				<item id="resource_select"><![CDATA[選擇素材]]></item>
 				<item id="resource_type_all"><![CDATA[全部素材]]></item>

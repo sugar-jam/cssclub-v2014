@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wsq.class.php 35048 2014-10-31 03:01:35Z nemohou $
+ *      $Id: wsq.class.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -93,7 +93,7 @@ class wsq {
 		}
 	}
 
-	public static function register($sitename, $siteurl, $sitelogo, $sitesummary, $mptype, $qrtype, $siteip, $followurl, $appid, $appsecret, $setting) {
+	public static function register($sitename, $siteurl, $sitelogo, $sitesummary, $mptype, $qrtype, $siteip, $followurl, $appid, $appsecret, $globalbanner, $setting) {
 		global $_G;
 		$get = array(
 			'c' => 'site',
@@ -111,7 +111,9 @@ class wsq {
 			'followurl' => $followurl,
 			'appid' => $appid,
 			'appsecret' => $appsecret,
+			'globalbanner' => $globalbanner,
 			'setting' => serialize($setting),
+			'tt' => TIMESTAMP,
 		);
 		$post = self::_convert($post);
 		return self::_dfsockopen($get, $post);
@@ -213,7 +215,7 @@ class wsq {
 		return !$return->code;
 	}
 
-	public static function edit($sitename, $siteurl, $sitelogo, $sitesummary, $mptype, $qrtype, $siteip, $followurl, $appid, $appsecret, $setting) {
+	public static function edit($sitename, $siteurl, $sitelogo, $sitesummary, $mptype, $qrtype, $siteip, $followurl, $appid, $appsecret, $globalbanner, $setting) {
 		global $_G;
 		$get = array(
 			'c' => 'site',
@@ -232,7 +234,9 @@ class wsq {
 			'followurl' => $followurl,
 			'appid' => $appid,
 			'appsecret' => $appsecret,
+			'globalbanner' => $globalbanner,
 			'setting' => serialize($setting),
+			'tt' => TIMESTAMP,
 		);
 		$post = self::_convert($post);
 		$post['signature'] = self::_make_sign(array_merge($get, $post), self::_token());

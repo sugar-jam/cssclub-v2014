@@ -4,10 +4,10 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: checkupdate.inc.php 35011 2014-10-11 06:05:59Z nemohou $
+ *      $Id: checkupdate.inc.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
-define('PLUGIN_RELEASE', '20140812');
+define('PLUGIN_RELEASE', '20141201');
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -101,6 +101,7 @@ EOF;
 		'wechat_confirmtype' => '0',
 		'wechat_newusergroupid' => $_G['setting']['newusergroupid'],
 		'wsq_wapdefault' => 1,
+		'wsq_global_banner' => 1,
 	);
 
 	require_once DISCUZ_ROOT.'./source/plugin/wechat/install/update.func.php';

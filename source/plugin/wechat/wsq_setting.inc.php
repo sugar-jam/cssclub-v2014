@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wsq_setting.inc.php 34983 2014-09-22 06:16:09Z nemohou $
+ *      $Id: wsq_setting.inc.php 35127 2014-12-02 08:17:18Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -65,6 +65,8 @@ if(!submitcheck('settingsubmit')) {
 		$apicredits .= '<option value="'.$i.'" '.($i == intval($setting['wsq_apicredit']) ? 'selected' : '').'>'.$extcredit.'</option>';
 	}
 
+	$setting['wechat_forumdisplay_reply'] = isset($setting['wechat_forumdisplay_reply']) ? $setting['wechat_forumdisplay_reply'] : 1;
+
 	showtips(lang('plugin/wechat', 'wsq_tips', array('ADMINSCRIPT' => ADMINSCRIPT.'?action=', 'apiurl' => $apilisturl)));
 	showformheader('plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=wsq_setting', 'enctype');
 
@@ -91,11 +93,13 @@ if(!submitcheck('settingsubmit')) {
 	} else {
 		showsetting(lang('plugin/wechat', 'wsq_domain'), 'setting[wsq_domain]', '', 'text', 1, 0, lang('plugin/wechat', 'wsq_domain_comment'));
 	}
+	showsetting(lang('plugin/wechat', 'wechat_forumdisplay_reply'), 'setting[wechat_forumdisplay_reply]', $setting['wechat_forumdisplay_reply'], 'radio', 0, 1);
 	showsetting(lang('plugin/wechat', 'wechat_float_qrcode'), 'setting[wechat_float_qrcode]', $setting['wechat_float_qrcode'], 'radio', 0, 1);
 	showsetting(lang('plugin/wechat', 'wechat_float_text'), 'setting[wechat_float_text]', $setting['wechat_float_text'], 'text');
 	showtagfooter('tbody');
 	showsetting(lang('plugin/wechat', 'wsq_wapdefault'), 'setting[wsq_wapdefault]', $setting['wsq_wapdefault'], 'radio');
 	showsetting(lang('plugin/wechat', 'wsq_apicredit'), '', '', '<select name="setting[wsq_apicredit]">'.$apicredits.'</select>', 0, 0, lang('plugin/wechat', 'wsq_apicredit_comment'));
+	showsetting(lang('plugin/wechat', 'wsq_global_banner'), 'setting[wsq_global_banner]', $setting['wsq_global_banner'], 'radio', 0, 0, lang('plugin/wechat', 'wsq_global_banner_comment'));
 	showsubmit('settingsubmit');
 	showtablefooter();
 
@@ -130,9 +134,13 @@ if(!submitcheck('settingsubmit')) {
 			$setting['wechat_followurl'],
 			$setting['wechat_appId'],
 			$setting['wechat_appsecret'],
+			$_GET['setting']['wsq_global_banner'],
 			$_GET['setting'] + $setting
 		);
 		if(!$siteinfo || $siteinfo->code) {
+            if($siteinfo->code == 14) {
+                cpmsg(lang('plugin/wechat', 'wsq_api_servertime_error', '', 'error'));
+            }
 			cpmsg(lang('plugin/wechat', 'wsq_api_register_error'), '', 'error');
 		}
 		$_GET['setting']['wsq_siteid'] = $siteinfo->res->siteid;
@@ -149,9 +157,13 @@ if(!submitcheck('settingsubmit')) {
 			$setting['wechat_followurl'],
 			$setting['wechat_appId'],
 			$setting['wechat_appsecret'],
+			$_GET['setting']['wsq_global_banner'],
 			$_GET['setting'] + $setting
 		);
 		if(!$siteinfo || $siteinfo->code) {
+            if($siteinfo->code == 14) {
+                cpmsg(lang('plugin/wechat', 'wsq_api_servertime_error', '', 'error'));
+            }
 			cpmsg(lang('plugin/wechat', 'wsq_api_edit_error'), '', 'error');
 		}
 	}

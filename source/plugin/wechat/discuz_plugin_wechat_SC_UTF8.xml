@@ -11,7 +11,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[wechat/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.1.1]]></item>
+			<item id="version"><![CDATA[1.1.2]]></item>
 			<item id="__modules">
 				<item id="1">
 					<item id="name"><![CDATA[wechat]]></item>
@@ -143,7 +143,7 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
-			<item id="11">
+				<item id="11">
 					<item id="name"><![CDATA[masssend_setting]]></item>
 					<item id="param"><![CDATA[]]></item>
 					<item id="menu"><![CDATA[群发设置]]></item>
@@ -156,7 +156,7 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
-                <item id="12">
+                		<item id="12">
 					<item id="name"><![CDATA[wsq_stat]]></item>
 					<item id="param"><![CDATA[]]></item>
 					<item id="menu"><![CDATA[微社区统计]]></item>
@@ -164,6 +164,19 @@
 					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
 					<item id="displayorder"><![CDATA[]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="13">
+					<item id="name"><![CDATA[wsq_app]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[应用中心]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
 					<item id="navtitle"><![CDATA[]]></item>
 					<item id="navicon"><![CDATA[]]></item>
 					<item id="navsubname"><![CDATA[]]></item>
@@ -273,7 +286,9 @@
 				<item id="wsq_fid_comment"><![CDATA[设置在微社区中默认显示的版块]]></item>
 				<item id="wsq_domain"><![CDATA[微社区二级域名]]></item>
 				<item id="wsq_domain_comment"><![CDATA[您可以设置一个二级域名直接访问本站的微社区(仅限拥有“高级接口”服务的公众号)。根域名设置完后，此处域名绑定才能生效</a>]]></item>
+				<item id="wechat_forumdisplay_reply"><![CDATA[帖子列表页是否显示最新回复]]></item>
 				<item id="wsq_api_register_error"><![CDATA[微社区注册失败，请稍后再试]]></item>
+				<item id="wsq_api_servertime_error"><![CDATA[服务器时间错误，请修改后再试]]></item>
 				<item id="wsq_api_edit_error"><![CDATA[微社区资料修改失败，请稍后再试]]></item>
 				<item id="wsq_menu_at_error"><![CDATA[您需要填写微信开发者 ID 后才能使用此功能]]></item>
 				<item id="wsq_menu_name"><![CDATA[菜单标题]]></item>
@@ -296,6 +311,12 @@
 				<item id="wsq_apicredit_comment"><![CDATA[设置微社区使用的积分，设置为“无”表示不允许微社区操作论坛积分]]></item>
 				<item id="wsq_apicredit_log_inc"><![CDATA[微社区增加]]></item>
 				<item id="wsq_apicredit_log_dec"><![CDATA[微社区扣减]]></item>
+				<item id="wsq_global_banner"><![CDATA[是否展示全局活动 Banner]]></item>
+				<item id="wsq_global_banner_comment"><![CDATA[选择“是”，微社区顶部将展示当前的微社区全局活动]]></item>
+				<item id="wsq_viewapp_local"><![CDATA[本地应用]]></item>
+				<item id="wsq_viewapp_local_comment"><![CDATA[通过 Discuz! 应用中心安装在站长本地的插件应用，查看应用列表请<a href="http://addon.discuz.com/?!wsqapp" class="bold">点击这里</a>]]></item>
+				<item id="wsq_viewapp_online"><![CDATA[线上应用]]></item>
+				<item id="wsq_viewapp_online_comment"><![CDATA[线上应用主要是通过接口调用的方式为站长提供运营组件、全局活动等功能（如刮刮卡，红包等）<br />使用线上应用前需要先在微社区应用平台（<a href="http://mp.wsq.qq.com/bindSite" target="_blank" class="bold">http://mp.wsq.qq.com/bindSite</a>）绑定站点，已绑定的站点请直接管理应用（<a href="http://mp.wsq.qq.com" target="_blank" class="bold">http://mp.wsq.qq.com</a>）]]></item>
 				<item id="api_wsq"><![CDATA[微社区接口]]></item>
 				<item id="api_wechat"><![CDATA[微信接口]]></item>
 				<item id="response_keyword"><![CDATA[关键词]]></item>
@@ -413,6 +434,7 @@
         <item id="menu_wechat_menu"><![CDATA[菜单设置]]></item>
         <item id="menu_wechat_resource"><![CDATA[素材设置]]></item>
         <item id="menu_wechat_masssend"><![CDATA[群发设置]]></item>
+        <item id="menu_app"><![CDATA[应用中心]]></item>
         <item id="menu_api"><![CDATA[接口设置]]></item>
         <item id="resource_select"><![CDATA[选择素材]]></item>
         <item id="resource_type_all"><![CDATA[全部素材]]></item>
