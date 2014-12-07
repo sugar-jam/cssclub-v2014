@@ -1,0 +1,31 @@
+/* CSS Document */
+
+/* 全局样式 */
+body { font: 14px/1.4 "Segoe UI","SegoeUI","微软雅黑","STHeitiTC-Light",STXihei,"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif}
+.ie7 body { font: 14px/1.4 "Microsoft Yahei","Segoe UI","SegoeUI","STHeitiTC-Light",STXihei,"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif}
+a:hover { color: #00BBF1}
+article, header, footer {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* 门户首页幻灯片样式 */
+.foucebox { float: left; width: 745px; height: 340px; margin: 0 auto; background: none}
+.foucebox .bd { float: left; position: relative; right: auto; overflow: hidden; margin-right: 0; width: 594px; height: 332px; border: 3px solid #DCDCDC; background: none repeat 0 0 #DCDCDC}
+.foucebox .showDiv { position: relative; width: 594px; height: 332px}
+.foucebox .showDiv img { width: 594px; height: 332px}
+.foucebox .showDiv p { position: absolute ; left: 20px; bottom: 10px !important; padding-right: 20px; color: #EEEEEE; z-index: 9; height: 66px}
+.foucebox .showDiv h2 { position: absolute ;left: 20px; bottom: 90px !important; width: 380px; height: 34px; padding-left: 0; _padding-left: 0; font-size: 24px; font-family:"Microsoft Yahei"; line-height: 34px; z-index: 9; overflow: hidden; background: none}
+.foucebox .showDiv h2 a { color: #FFFFFF; font-weight: 600}
+.foucebox .foucebox_bg { position: absolute; left: 0; bottom: 0; width: 594px; height: 140px; z-index: 8; overflow: hidden; background: url(focusbg.png) repeat 0 0}
+
+.foucebox .hd { float: right; width: 140px; height: 340px}
+.foucebox .hd ul li { width: 132px; height: 74px; float: left; margin: 0 0 12px 4px; display: inline; position: relative}
+.ie6 .foucebox .hd ul li { margin: 0 0 6px 4px}
+.foucebox .hd ul a { display: block; width: 114px; height: 74px}
+.foucebox .hd ul img{ width: 132px; height: 74px; border: 3px solid #DCDCDC}
+.foucebox .hd ul a:hover .mask, .foucebox .hd ul .on .mask { display: none; position: relative}
+.foucebox .hd ul a:hover img, .foucebox .hd ul .on img { border-color: #00BBF1}
+.foucebox .hd ul a:hover{ color: #FFFFFF}
+.foucebox .hd ul a:hover .txt_bg { background: #70A20F}

@@ -1,0 +1,275 @@
+/* ----------------------------------
+
+The ALL CSS by win8mi
+(C) win8mi Inc.
+http://www.xdmb.net
+
+-------------------------------------*/
+
+/* --------------------------------------------------------------------------------------------------- 通用保留部分开始 */
+
+/* 通用无边框
+------------------------------------------------*/
+body, input, button, select, textarea { font: 12px/1.5 "Microsoft Yahei","Segoe UI","SegoeUI","STHeitiTC-Light",STXihei,"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif; color: #696969}
+input, button, select, textarea { font-family: "微软雅黑","STHeitiTC-Light",STXihei,"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif}
+a:hover { text-decoration: none}
+.xi2, .xi2 a, .xi3 a { color: #666666}
+
+/* reset
+------------------------------------------------*/
+
+html, body, div, h1, h2, h3, h4, h5, h6, p, img, dl, dt, dd, ol, ul, li,form, table, tr, th, td { margin: 0; padding: 0; border: 0}
+h1,h2,h3,h4,h5,h6 { font-weight: normal}
+table { border-collapse: collapse; border-spacing: 0}
+.frame, .block, .temp { padding: 0;margin: 0;background: none;border: none}
+.wp, .win8mi_con{ width: 1200px; margin: 0 auto}
+.wp1200 { width: 1200px; margin: 0 auto}
+.win8mi_wp { margin:0 auto; padding: 0; background: #FFFFFF}
+#pt { margin: 5px 0}
+.bbs { border-bottom: 1px solid #EEEEEE !important}
+.bm { border: 0}
+.ct2_a .mn { width: 1030px}
+.ct3_a .mn { width: 800px}
+#mood_mystatus { width: 645px !important}
+
+.ad .plc, .ad .pls { background: #F0F4F8 !important}
+.pls { background: #FBFBFB !important; border-right: 1px solid #F0F4F8 !important}
+.pi { border-bottom: 1px dashed #EEEEEE !important}
+.pls .avatar img{ border: 1px solid #F0F4F8 !important; background: #FFFFFF !important}
+.tns th { border-right: 1px solid #F0F0F0 !important}
+
+.ct2 .mn { width: 950px}
+.ct2_a, .ct3_a { border-color: #EEEEEE !important}
+.tbn li { border-bottom: 1px dashed #EEE}
+.tbn li.a { border-top: 1px solid #EEE}
+.list2 { background: none}
+.tl .ts th, .tl .ts td { background: #F9F9F9 !important}
+#separatorline { padding: 5px 0}
+#separatorline .ts th, #separatorline .ts td { padding: 5px 0}
+a.xst:hover { color: #00BBF1 !important}
+#f_pst .bm_c { padding: 0 !important; padding-top: 10px !important}
+.pg_viewthread #f_pst { border: 4px solid #F0F4F8}
+#threadlist { border: 0}
+#postlist { border: 1px solid #EEEEEE; border-top: 3px solid {ALLCOL}}
+#thread_types { padding: 0}
+
+/* public
+------------------------------------------------*/
+.link, .link a, a.link { color: #515151}
+a:hover, .link:hover, .link a:hover, a:hover.link { color: {HOVERCOL}}
+
+.topbg { background: url("{STYLEIMGDIR}/topbg.png") repeat}
+.blackbg { background: url("{STYLEIMGDIR}/black.png") repeat}
+.ie6 .blackbg { background: #3A3A3A}
+
+.bcw{ background: #FFFFFF}
+.mt20{ margin-top:20px;}
+.mr20{ margin-right:20px;}
+.mt30{ margin-top:30px;}
+.mb10{ margin-bottom:10px;}
+.mb20{ margin-bottom:20px;}
+.mr30{ margin-right:30px;}
+.mb30{ margin-bottom:30px;}
+.mt10{ margin-top:10px;}
+.mr10{ margin-right:10px;}
+.ml10{ margin-left:10px;}
+.pb10{ padding-bottom:10px;}
+.p15{ padding:0 15px;}
+
+/*DIY
+------------------------------------------------*/
+.sslct_btn i { background: {ALLCOL}}
+#samplepanel { position: fixed; z-index: 100; width: 100%; background: #FFFFFF}
+
+
+/* header
+------------------------------------------------*/
+.topwrap { width: 1200px; height: 30px; line-height: 30px; margin: 0 auto}
+.topwrap a { color: #FFFFFF; font-size: 11px; padding: 0 8px}
+.topbar { width: 100%; height: 30px; line-height: 30px; background: #00BBF1}
+#toptb { color: #666666; border: 0 !important; padding: 5px 0; border-bottom: 1px solid #EEEEEE !important; background: #F7F7F7 !important}
+#toptb a { color: #666666}
+.user_link i, .usernav li .png i, .userinfo .arrow, .user_list .i_qq, .user_list .i_wb, .nav_icon { display: block; background: url("{STYLEIMGDIR}/all_icon.png") no-repeat}
+
+.hdr { height: 120px; transition: all 0.5s ease 0s; background: #FFFFFF}
+.nav_box { width: 100%; min-width: 1200px; height: 50px; margin-bottom: 0; overflow: visible; z-index: 180; background: #3A3A3A}
+.nav_box .wp1200 { background: #3A3A3A}
+
+
+/* nav
+------------------------------------------------*/
+.nav { float: left; width: 450px; height: 40px; margin: 40px 0 0 0; overflow: hidden; transition: all 0.5s ease 0s}
+.nav li { float: left; width:55px;}
+.nav li span { display: none}
+.nav li a { display: inline-block; color: #BBBBBB; vertical-align: top; font-weight: 700; font-size: 18px; line-height: 2; border: 0px solid #FFFFFF; transition: border 0.2s ease 0s; font-family: "Microsoft Yahei"}
+.nav li.a.hover a { color: #444444}
+.nav li.hover a { color: #444444}
+.nav li a:hover { color: #444444; border-bottom-width: 3px; border-color: #00BBF1}
+.nav li.a a { color: #444444; border-bottom-width: 3px; border-color: #00BBF1}
+.nav li.a a:hover { color: #444444}
+
+.hd_logo { float: left; display: block; margin: 25px 100px 0 0; position:relative;}
+.hd_logo img {width:80px; height:80px; display: block; position:absolute; top:0; left:0;}
+.hd_logo h2 {margin-left:100px; font-size: 20pt; line-height: 80px;}
+
+/* 全局导航固定样式 */
+.headboxfixed { position: fixed; top: 0; width: 100%; z-index: 180; left: 0; padding-bottom: 0; margin-top: 0; border-bottom: 1px solid #E6E6E6; opacity: 0.9; }
+.ie6 .headboxfixed { background: none}
+
+/* subnav
+------------------------------------------------*/
+.p_pop, .p_pof, .sllt { box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); border: 1px solid #DDDDDD}
+.sub_nav .p_pop, #scbar_type_menu { border: 1px solid #DDDDDD; z-index: 100; font-size: 14px; background: #FFFFFF; background: rgba(255, 255, 255, .95); padding: 0; box-shadow: 2px 2px 2px rgba(100, 100, 100, 0.6)}
+.sub_nav .p_pop li, #scbar_type_menu li { }
+.sub_nav .p_pop li a, #scbar_type_menu li a { margin: 5px 0; padding: 3px 18px; height: 28px;line-height: 28px; color: #898989; font-size:14px; border:none; border-radius: 0 !important; border-bottom: 1px solid #F4F4F4}
+.sub_nav .p_pop li a:hover, #scbar_type_menu li a:hover { color: #FFFFFF; background: {ALLCOL}}
+.sub_nav .h_pop { min-width: 90px; padding: 6px; margin: 10px 0 0 0; border: 0; background: #333333}
+.sub_nav .h_pop li a { border: 0; color: #FFFFFF; transition: all 0.5s ease 0s}
+.sub_nav .h_pop li a:hover { color: #FFFFFF; background: #00BBF1}
+
+
+/* user
+------------------------------------------------*/
+.user_list .i_qq, .user_list .i_wb { width: 34px; height: 34px; margin: 5px 0 0 5px; text-indent: -9999px}
+.user_list .i_qq { background-position: -180px 0}
+.user_list a:hover .i_qq { background-position: -270px 0}
+.user_list .i_wb { background-position: -136px 0; margin-right: 10px}
+.user_list a:hover .i_wb { background-position: -226px 0}
+.user_list a.qq_login { display: block; width: 28px; height: 36px; padding: 0; margin: 0 0 0 8px; text-indent: -9999px; background: url({STYLEIMGDIR}/qq.png) no-repeat 0 8px}
+.user_list a.qq_login:hover { background: url({STYLEIMGDIR}/qq2.png) no-repeat 0 8px}
+
+.userbox { float: right; height: 38px; line-height: 38px; padding: 0; margin: 38px 0 0 0; _margin: 37px 0 0 0; overflow: visible; transition: all 0.5s ease 0s}
+.usernav { float: left; height: 38px; padding: 0; overflow: hidden}
+.usernav .user_list { float: left; _padding: 2px 0; position: relative; overflow: visible}
+.usernav .menu-li span { display: none}
+.usernav .current, .usernav .user_list-hover { background-color: #1F5583}
+.usernav a:hover { text-decoration: none}
+.user_link { display: block; padding: 0 10px; color: #444444; _display: inline-block}
+.user_link i { display: block; width: 32px; height: 38px; cursor: pointer}
+.user_link:hover { color: #333333; background-color: none}
+
+a.login, a.register { height: 20px; line-height: 20px; padding: 4px 12px; color: #00BBF1; border: 1px solid #00BBF1; border-radius: 3px; margin: 6px 8px 0 0}
+a.login:hover, a.register:hover { color: #666666; border: 1px solid #666666}
+
+.notification i { background: url({STYLEIMGDIR}/notice.png) no-repeat 4px 10px}
+a:hover.notification i { background: url({STYLEIMGDIR}/notice.png) no-repeat 4px 10px}
+
+.msg i { background: url({STYLEIMGDIR}/mail.png) no-repeat 1px 10px}
+a:hover.msg i { background: url({STYLEIMGDIR}/mail.png) no-repeat 1px 10px}
+
+.flo i { background-position: -305px 9px}
+a:hover.flo i { background-position: -337px 9px}
+
+.userinfo { float: left; width: 44px; overflow: hidden; height: 20px; margin: 0; padding: 8px; *z-index: 200}
+a:hover.userinfo, .userinfo.hover { background: none}
+.userinfo .arrow { float: right; width: 8px; height: 6px; background-position: 0 -58px; margin-top: 10px; margin-left: 5px}
+.userinfo.hover .arrow{ background-position: 0 -115px}
+.userinfo .user_avt { float: left; width: 30px; height: 30px}
+.userinfo .user_avt img { width: 24px; height: 24px; margin: 0 0 0 1px; border-radius: 2px; box-shadow: 2px 2px 2px rgba(220, 220, 220, 1)}
+.userinfo .user_name { float: left; height: 30px; line-height: 30px; color: #FFFFFF; margin-left: 8px}
+
+.usernav li #msg_menu, .usernav li #nte_menu {transition:none; -moz-transition: none; -webkit-transition: none; -o-transition: none}
+.usernav li .unread_num { position: absolute; right: 3px; top: 20px; z-index: 10000; padding: 1px 4px; line-height: 12px; font-size: 11px; color: #FFFFFF; font-weight: 400; text-align: center; border-radius: 2px; cursor: pointer; opacity: 0.8; background: #EA4747}
+.sub_menu { min-width: 110px; _width: 110px; margin: 10px 0 0 5px; font-size: 14px; border: 1px solid #EEEEEE; box-shadow: 2px 2px 2px rgba(130, 130, 130, 0.6); background: #FFFFFF}
+.sub_menu li { padding: 0}
+.ie7 .sub_menu li, .ie6 .sub_menu li { display: inline;}
+.sub_menu a { display: block; width: auto; margin: 5px 0; padding: 2px 10px; color: #333;background-repeat: no-repeat;background-position: -200px 0}
+.sub_menu a:hover { background:#00BBF1; color:#FFF;font-weight: normal; text-decoration:none;background-repeat: no-repeat;background-position: -200px 0}
+.sub_menu .pipe{ display: none}
+
+
+/* 搜索
+------------------------------------------------*/
+#scbar { float: left; height: 32px; line-height: 32px; margin: 42px 0 0 0; background: #FFFFFF; border: 1px solid #DDDDDD; overflow: visible; transition: all 0.5s ease 0s}
+.scbar_txt_td {width: 160px;}
+.scbar_txt_td, .scbar_type_td { background:none;}
+.scbar_type_td { width: 40px}
+#scbar_type { padding-left: 0}
+.scbar_type_td #scbar_type{ border: none; background: none}
+.scbar_txt_td { border: none}
+#scbar_txt { border: 0; height: 30px; line-height: 30px; width: 160px; padding: 0 5px; font-size: 14px}
+.scbar_btn_td { width: 32px; height: 32px; display: block; background: none !important}
+#scbar_btn { display: block; width: 32px; height: 32px; line-height: 38px; background: url({STYLEIMGDIR}/spritex.png) no-repeat scroll -192px 0}
+#scbar_type_menu { margin: 0 0 0 -1px; border: 1px solid #DFDFDF}
+.ie7 #scbar_btn { margin: 0}
+#scbar .xg1 { color: #CCCCCC !important}
+
+
+/* 弹出层
+------------------------------------------------*/
+.m_l, .m_r, .t_l, .t_c, .t_r, .b_c, .b_l, .b_r {display: none;}
+.m_c{-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0 0 10px rgba(0,0,0,0.1);box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);border: 1px solid #DDD;border-radius: 5px;}
+.m_c .flb {line-height: 18px;padding: 9px 9px 8px 15px;border-top: 1px solid #FFF;border-bottom: 1px solid #E5E5E5;background: #F7F7F7; margin-bottom:10px;}
+.m_c .flbc{background: url("{STYLEIMGDIR}/sprite.png") no-repeat 10px 5px;}
+.m_c .flbc:hover {background-position: -11px 5px;}
+.m_c .flb em{ color:#4c4c4c;text-shadow: 0 1px 1px #fff;}
+.m_c .o{ background:#F3F3F3; border:none;}
+
+
+/* 用户名片
+------------------------------------------------*/
+.card{ background:none;border:none;box-shadow:none;border: 4px solid #F2F2F2;border: 4px solid rgba(0, 0, 0, 0.05);}
+.card .p_opt{ border:1px solid #E6E6E6;}
+.card_mn{ background:#FFF;}
+.card .o a {border: 1px solid #EEE;background:#FFF;color: #555;}
+.card a:hover {background-color: gainsboro !important;}
+
+
+/* 回复框
+------------------------------------------------*/
+#f_pst .tedt{ border:1px solid #DDDDDD}
+.tedt .bar { border-bottom: 1px solid #EEEEEE; background: #F9F9F9}
+.tedt .area{ padding: 0}
+#block_style .pt, .tedt .pt { overflow: auto; vertical-align: middle; resize: vertical}
+
+
+/* 输入框
+------------------------------------------------*/
+.px, .pt, .ps, select { padding: 4px 4px;line-height: 18px;border: 1px solid #CCC;background-color: white;box-shadow: 2px 2px 2px #F0F0F0 inset;vertical-align: middle;margin: 0;font-family: inherit;color: #333;}
+.rfm { border: none}
+
+/* 分页、发帖按钮
+------------------------------------------------*/
+.pn { height:26px; line-height:26px; color:#FFF; background:{ALLCOL};border:none;}
+.pn em, .pn span, .pn strong {padding: 0 15px;line-height: 26px;}
+.pr, .pc { margin:0 3px 3px 0;}
+#postbtn.pn.xg1{ background:#E5E5E5;}
+
+.pg, .pgb { line-height: 31px; }
+.pg a, .pg strong, .pgb a, .pg label { float: left;height: 24px;line-height: 24px;margin:0 6px 0 0;padding: 0 8px; background:#f0f4f8;overflow: hidden; border: none; }
+.pg strong { background-color: {ALLCOL}; color: #FFFFFF}
+.pg a:hover, .pgb a:hover{background-color: {ALLCOL}; color: #FFFFFF; text-decoration: none}
+.pg a.nxt { background:#f0f4f8; padding-right: 10px}
+.pg a:hover.nxt{ background: {ALLCOL}; color: #FFFFFF}
+.pg a.prev{ background-repeat:no-repeat;}
+.pgb a { background: #F0F4F8; padding-left: 12px}
+.dopt a { padding:0}
+.px { border: 1px solid #DDDDDD; border-radius: 0}
+
+
+.pgs #newspecial, .pgs #newspecialtmp { float: left; width: 92px; height: 32px; background:{ALLCOL} url({STYLEIMGDIR}/pn_post.png) no-repeat 0 0}
+#post_reply, #post_replytmp { float: left; width: 55px; height: 32px; background:{ALLCOL} url({STYLEIMGDIR}/pn_reply.png) no-repeat center center}
+#newspecial img, #newspecialtmp img, #post_reply img, #post_replytmp img { opacity: 0; filter: alpha(opacity=0); display:none;}
+#newspecial_menu { min-width: 102px!important;}
+#newspecial_menu .p_pop li a{ margin:0 auto;}
+
+
+#v_forums a { padding: 0; margin: 0; color: #333333; line-height:21px; background: #FFFFFF}
+
+
+/* icon
+------------------------------------------------*/
+#scrolltop{ margin-right: 30px; border: none; border-radius: 3px}
+#scrolltop a{ border: none}
+
+/* 全局通用页脚样式 */
+#footer { width: 100% !important; height: auto !important; margin: 15px auto 0 auto; background: #2D2F31}
+#ft { clear: both; padding: 20px 0; border-top: 0 !important; color: #FFFFFF; font-size: 12px; background: #2D2F31; position: relative;}
+#ft a { color: #FFFFFF}
+#ft .copyright { line-height: 2}
+#ft .followus { float: right; margin-top: 30px; width: 235px; height: 32px; position: absolute; top: 0; right: 0;}
+#ft .followus a { display: inline-block;margin: 0 1.2em 0 .5em;padding-left: 35px;color: #FFFFFF;line-height: 30px;background: url({STYLEIMGDIR}/spritex.png) no-repeat 0 0}
+#ft .followus a:hover { text-decoration: underline}
+#ft .followus .weibo { background-position: 0 -32px}
+
+/* --------------------------------------------------------------------------------------------------- 通用保留部分结束 */

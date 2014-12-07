@@ -1,0 +1,815 @@
+a.cats { font-size: 16px; padding: 0 10px 8px 3px}
+
+
+.win8mi_s { color: #888888; border: 1px solid #EEEEEE; padding: 10px; margin: 10px auto 15px auto; line-height: 23px; background: none repeat 0 0 #F6F6F6}
+.win8mi_s strong { color: #00BBF1; font-weight: 400 !important; font-size: 13px; padding-right: 8px}
+.bm_c { padding: 10px 0}
+.pgs { border-bottom: 0 !important}
+.bdimgshare-bg, .bdimgshare-content { display: none}
+.o a { color: #666666; line-height: 22px}
+.mt30 { margin-top: 30px !important}
+.ranking .top { background: none}
+#article_content img { max-width: 860px}
+.ct2 .mn { width: 860px; padding: 0 20px 0 0; border-right: 1px dashed #E8E8E8}
+.ct2 .sd { width: 300px}
+
+
+#nv_portal .vw .h, #nv_portal .vw .s, #nv_portal .vw .d, #nv_portal .vw .o, #nv_portal .vw .pren, #nv_forum .vw .h, #nv_forum .vw .s, #nv_forum .vw .d { margin-left: 0; margin-right: 0}
+.vw .o { border: 0}
+.vw .text { line-height: 24px;font-size: 13px;font-family: "微软雅黑","Microsoft YaHei","WenQuanYi Micro Hei"}
+.vw p { overflow: hidden; padding-bottom: 4px; padding-top: 6px; word-wrap: break-word}
+.vw .s { margin-bottom: 20px}
+.hm { text-align: left}
+.vw .ph { font-size: 26px; font-weight: 400; padding:  10px 0}
+#nv_portal .vw .h { margin-bottom: 0; border-bottom: 0; padding-bottom: 5px}
+.pgs { border-bottom: 0}
+.ie7 #a_favorite.oshr { margin-top: -18px}
+.ie7 .read { margin-top: -18px}
+.ie6 .read { margin-top: -18px !important}
+span.read a:hover { background: #ED4747 !important}
+
+.aprev { float: left; width: 260px; overflow: hidden}
+.anext { float: right; width: 260px; overflow: hidden}
+
+/* 评论样式 */
+.tedt { border: medium none; width: 860px; overflow: hidden}
+.tedt .area { width: 100%}
+.tedt .pt { width: 838px; min-height: 90px; _height: 90px; padding: 8px 10px !important; box-sizing: none !important; line-height: 1.6; border: 1px solid #DDDDDD; background-color: #F8F8F8; border-radius: 2px; box-shadow: 2px 2px 2px #F0F0F0 inset; overflow: hidden; vertical-align: middle; resize: vertical; color: rgb(130, 138, 147)}
+.tedt .pt.bgchange { color: rgb(187, 187, 187); background: #FFFFFF !important}
+
+#commentsubmit_btn strong { color: #FFFFFF; font-size: 12px; font-weight: 100; font-family: "Microsoft Yahei"}
+button#commentsubmit_btn.pn { float: right; border: 0 !important; height: 28px; padding: 0 3px; margin: 5px 1px 0 0 !important; overflow: visible !important; background: none repeat 0 0 #00BBF1}
+button#commentsubmit_btn.pn:hover { background: #00BBF1}
+#comment_ul ul { float: left; width: 860px; padding-left: 0}
+#comment_ul .mbm { }
+.portrait {
+	float: left;
+	width: 50px;
+}
+.avataright { float: right; width: 800px; padding-bottom: 5px}
+.portrait img {
+    width: 40px;
+    height: 40px;
+    max-width: 100%;
+	padding: 0;
+    border: 0;
+	border-radius: 50%
+}
+#comment_ul .username {
+    margin-right: 10px
+}
+#comment_ul .xg1, #comment_ul .xg1 a {
+    color: rgb(204, 204, 204) !important
+}
+#comment dd { float: right; width: 800px; padding-bottom: 10px; border-bottom: 1px dashed #EEEEEE}
+.card_mn { background: #FFFFFF}
+.commentbox { padding: 0 0 10px 0; width: 860px; border: 0; margin-bottom: 0; background: none}
+.acmt { margin-left: 1px; _margin-left: 0}
+.ie7 .acmt { margin-left: -9px}
+
+
+.tit01 .addnew {
+    margin-left: 10px;
+	padding: 0 0 0 20px;
+	margin-top: 15px;
+	color: #333333;
+    background: url(write.png) no-repeat scroll 0px 45% transparent;
+}
+.tit01 .rss {
+    margin-left: 15px;
+    margin-top: 15px;
+	padding: 0 0 0 20px;
+	color: #333333;
+    background: url(rss.png) no-repeat scroll 0px 45% transparent;
+}
+.tit01 {
+    margin-bottom: 20px;
+	padding-bottom: 8px;
+	_padding-bottom: 0;
+    border-bottom: 2px solid #EEEEEE;
+    height: 34px;
+}
+.tit01 h3 {
+    line-height: 34px;
+    color: #3E4142;
+    padding: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 400;
+    border-top: 0;
+    display: inline-block;
+    background: none repeat 0 0 #FFFFFF;
+    float: left;
+    border-bottom: 2px solid #00BBF1
+}
+.tit04 {
+    width: 100%;
+	padding-bottom: 0;
+    overflow: hidden;
+    border-bottom: 3px solid #ED4747;
+    margin-bottom: 8px;
+}
+.tit04 h3 {
+    float: left;
+    height: 35px;
+    padding-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ED4747;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    font-weight: normal;
+    overflow: hidden;
+}
+.tit05 {
+    width: 100%;
+    overflow: hidden;
+	padding: 0;
+    border-bottom: 3px solid #3EC491;
+}
+.tit05 h3 {
+    float: left;
+    height: 35px;
+    padding-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #00BBF1;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    font-weight: normal;
+    overflow: hidden;
+}
+
+.news_inner {
+    width: 100%;
+	height: 170px;
+    padding: 20px 0 23px 0;
+    border-bottom: 1px dashed #E8E8E8;
+    overflow: hidden;
+	transition: all 0.5s ease 0s;
+	background: #FFFFFF
+}
+.newspic01 {
+    float: left;
+	width: 245px;
+	height: 170px;
+    padding-right: 0;
+	overflow: hidden
+}
+..newspic01 img { width: 245px; height: 100%}
+.news_inner dl {
+    float: right;
+    width: 595px;
+	height: 180px;
+	overflow: hidden
+}
+.news_inner dl dt {
+    float: left;
+    width: 595px;
+    padding-bottom: 11px;
+	_padding-bottom: 0;
+    overflow: hidden;
+}
+.news_inner dl dt a {
+    float: left;
+    width: 595px;
+    height: 28px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: "微软雅黑","宋体",serif;
+    color: #444444;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+    overflow: hidden;
+}
+.news_inner dl dt a:hover { color: #00BBF1}
+.news_inner dl dd {
+    float: left;
+    width: 595px;
+    line-height: 20px;
+}
+.news_inner dl dd em { padding-left: 22px; background: url(actlits_09.png) no-repeat left center}
+.news_inner p.date { float: left; padding-left: 23px; margin-left: 20px; background: url(actlits_15-03.png) no-repeat left center}
+.news_inner .text {
+    float: left;
+    width: 595px;
+	color: #999999;
+    height: 66px;
+    padding-bottom: 10px;
+	margin: 10px 0 0 0;
+    font-size: 14px;
+    font-family: "微软雅黑","Microsoft YaHei","WenQuanYi Micro Hei";
+    line-height: 25px
+}
+.news_inner dl dd a {
+    color: #00BBF1;
+}
+.news_inner dl dd strong {
+    font-weight: bold;
+    color: #00BBF1;
+}
+
+
+/* 热门推荐 */
+.rmtj {
+    width: 100%;
+}
+.rmtj dl {
+    width: 100%;
+    overflow: hidden;
+	padding: 0 2px 12px 2px;
+    border-bottom: 1px dotted #C5C5C5;
+}
+.rmtj dl dt {
+    width: 100%;
+    padding: 10px 0 0 0;
+    overflow: hidden;
+}
+.rmtj dl dt a {
+    float: left;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: "微软雅黑";
+    color: #000000;
+    font-size: 16px;
+    font-weight: normal;
+    overflow: hidden;
+}
+.rmtj dl dt a:hover { color: #ED4747}
+.rmtj dl dd { width: 100%; height: 20px; line-height: 20px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden}
+
+
+.taber { padding-top: 10px}
+.taber .tb { height: 40px; overflow: visible; padding: 0 !important; background: #F3F3F3}
+.taber .tb a { border: 0; padding: 0; text-align: center}
+.taber .tb li { float: left; width: 93px; line-height: 40px; font-size: 14px; margin: 0; color: #333333; overflow: visible; background: #F3F3F3}
+.taber .tb li a { width: 93px; text-align: center; padding: 0; overflow: visible; font-family: "Microsoft Yahei"; color: #333333}
+.taber .tb .a { height: 40px; overflow: visible; background: #00BBF1}
+.taber .tb .a a { height: 40px; color: #FFFFFF; font-weight: 400; background: none}
+.taber .tb-c { width: 270px; padding: 10px 0 0 1px; _padding: 20px 0 0 1px; overflow: hidden}
+.taber .tab-title { height: 40px; background: none}
+
+
+/* 最新评论 */
+.comments_list {
+    width: 100%;
+}
+.rc-clearfix {
+    display: block;
+}
+.comments_list dl {
+    border-bottom: 1px dotted #C5C5C5;
+    overflow: hidden;
+    padding: 12px 0px;
+    width: 100%;
+}
+.comments_list dl dt {
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+.rc-item .rc-avatar {
+    background: none repeat 0 0 #FFFFFF;
+    padding: 1px;
+    border: 1px solid #999999;
+}
+.rc-item .rc-left {
+    display: inline;
+    float: left;
+    margin-right: 8px;
+}
+.comments_list dl dd {
+    float: right;
+    width: 188px;
+}
+.comments_list dl dd a {
+    width: 190px;
+    height: 22px;
+	line-height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    display: block;
+}
+.rc-item .rc-win8mistamp {
+    margin-left: 8px;
+    font-size: 11px;
+    color: #999999;
+}
+.comments_list dl dd a:hover {
+    color: #ED4747;
+    text-decoration: underline;
+}
+.acv_author {
+    color: #18A24C;
+    font-family: "微软雅黑";
+    font-size: 12px;
+}
+.acv_author a {
+    color: #18A24C;
+}
+.acv_comment {
+    padding: 2px;
+    background: none repeat scroll 0% 0% #FFF;
+    overflow: hidden;
+}
+.acv_comment a {
+    font-family: "微软雅黑";
+    font-size: 12px;
+}
+.votehot {
+    float: right;
+    padding-right: 10px;
+}
+a.ilike_icon:link, a.ilike_icon:hover, a.ilike_icon:visited, a.ilike_icon:active {
+    background: url(deng.png) no-repeat scroll 0px 0px transparent;
+    padding-left: 15px;
+}
+
+
+/* 今日热门 */
+.focus_box3 { float: left; width: 280px; position: relative; height: 260px; padding: 20px 0 0 0; overflow: hidden; background: #FFFFFF}
+.focus_box3 .bd3 li { display: block; height: 200px; position: relative}
+.focus_box3 .txt { background: none; position: absolute; width: 280px; height: auto; bottom: 0; left: 0; z-index: 2;overflow: hidden; padding: 0 0; transition: all 0.3s ease 0.3s; background: url(png.png)}
+.focus_box3 .txt h2 { float: left; width: 260px; padding: 8px 10px; height: auto; overflow: hidden}
+.focus_box3 .txt h2 a { font-size: 12px; line-height: 18px; color: #FFFFFF; text-decoration: none; font-weight: 400}
+.focus_box3 img{ display: block}
+.focus_box3 .btn3 { transition: all 0.2s ease 0.2s}
+.focus_box3 .btn3 a { float: left;  display: block; text-indent: -9999px}
+.focus_box3 .btn3 .prev { position: absolute; width: 30px; height: 45px; padding: 0; left: 0; top: 160px; background: url(arrowx.png) no-repeat left top}
+.focus_box3 .btn3 .prev:hover { background: url(arrowxs.png) no-repeat left top}
+.focus_box3 .btn3 .next { position: absolute; width: 30px; height: 45px; padding: 0; right: 0; top: 160px; background: url(arrowx.png) no-repeat -30px 0}
+.focus_box3 .btn3 .next:hover { background: url(arrowxs.png) no-repeat -30px 0}
+
+
+/* 文章列表页评论按钮样式 */
+.pg a, .pg strong, .pgb a, .pg label {
+    float: left;
+    display: inline;
+    margin-left: 4px;
+    padding: 1px 10px;
+    height: 26px;
+    border: 1px solid #F3E5E9;
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    color: #333333;
+    overflow: hidden;
+    text-decoration: none;
+}
+.pg a, .pg strong, .pgb a, .pg label {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 8px 0 0;
+    padding: 1px 10px;
+    background: none repeat 0 0 #F1EFF0;
+    overflow: hidden;
+    border: medium none;
+}
+.pg strong {
+    background-color: #00BBF1 !important;
+	font-weight: 600;
+    color: #FFFFFF;
+}
+.pg a:hover, .pgb a:hover {
+    border-color: #3184DB;
+    color: #3184DB;
+}
+.pg a:hover, .pgb a:hover {
+    background-color: #00BBF1;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.pg a.nxt, .pgb a {
+    padding: 1px 10px;
+}
+.pg a.nxt {
+    background: none repeat 0 0 #F1EFF0;
+    padding-right: 10px;
+	margin: 0
+}
+.pg a.nxt:hover {
+    background: none repeat scroll 0% 0% #00BBF1;
+    color: #FFFFFF;
+}
+.pg a.prev {
+    background-repeat: no-repeat;
+}
+.pg a.prev:hover { background-image: url(arw_l.gif)}
+
+
+/* 热门推荐 */
+.hotitem {
+    margin-bottom: 20px;
+}
+.hotitem .bd li {
+    width: 280px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+.categorybox {
+    z-index: 1;
+    background: none repeat scroll 0% 0% #00BBF1;
+    top: 0;
+    left: 0;
+    color: #FFFFFF;
+    padding: 8px 12px;
+    position: absolute;
+    font-size: 16px;
+	font-weight: 400;
+    line-height: 19px;
+    text-transform: uppercase;
+}
+.slider-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    transition: all 0.3s ease 0s;
+    opacity: 0;
+}
+.hotitem .bd .img-box {
+    width: 280px;
+    height: 200px;
+    position: relative;
+}
+.hotitem .bd .text-box {
+    position: absolute;
+    bottom: -74px;
+    left: 0px;
+    padding: 8px;
+    z-index: 1;
+	background: url(png.png)
+}
+.hotitem .bd .text-box span {
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    font-weight: 400
+}
+.hotitem .bd .text-box h3 {
+    color: #FFFFFF;
+    font-size: 13px;
+    height: 24px;
+    overflow: hidden;
+    margin-top: 6px;
+    width: 270px;
+}
+.hotitem .bd .text-box h3 a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.hotitem .bd .text-box p {
+    font-size: 14px;
+    height: 42px;
+    overflow: hidden;
+    color: #FFFFFF;
+}
+.slider-more {
+    background: url(read.png) no-repeat scroll 0% 0% transparent;
+    line-height: 18px;
+    padding-left: 22px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    height: 18px;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+
+/* 排行榜 */
+.ranking { padding-top: 0}
+.ranking .bd li {
+    height: 32px;
+    line-height: 32px;
+    width: 270px;
+    overflow: hidden;
+    color: #00BBF1;
+    float: left;
+}
+.ranking .bd .num {
+    background-color: #D7D8D7;
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    text-align: center;
+    color: #FFF;
+    font-family: Arial;
+    line-height: 17px;
+    margin-right: 8px;
+}
+.ranking .bd li a { font-size: 14px; color: #333333}
+.ranking .bd li a:hover { color: #00BBF1}
+.ranking .bd .top .num {
+    background-color: #00BBF1;
+}
+
+/* 美图样式 */
+.animated {
+    animation-duration: 1s;
+}
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+.mr20 {
+    margin-right: 20px;
+}
+.photolist li { float: left; width: 860px; height: 170px; overflow: hidden; margin: 0 0 20px 0; transition: all 0.5s ease 0s; background: #F6F6F6}
+.photolist li:hover { box-shadow: 2px 2px 3px #DDDDDD}
+.photolist { width: 860px}
+.picgallery { padding: 0}
+.picgallery .picimage {
+	float: left;
+    width: 50px;
+    height: 80px;
+	padding: 30px 40px 60px 30px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+	background: url(shadow.png) repeat-y left top
+}
+.pic_info { float: left; width: 700px; height: 125px; padding: 25px 10px 20px 20px; transition: all 0.5s ease 0s; background: #F6F6F6}
+.picimage img { width: 271px; height: 100%}
+.coverup {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.2s ease-in-out 0s;
+    background: url(gallery.png) no-repeat scroll center center / 0 0 rgba(1, 187, 240, 0);
+    opacity: 0;
+}
+a.coverup:hover {
+    background: url(gallery.png) no-repeat scroll center center / 32px 32px rgba(1, 187, 240, 0.6);
+    opacity: 1;
+}
+.picgallery h3 {
+	height: 26px;
+    line-height: 26px;
+	margin: 0 0 10px 0;
+    font-size: 16px;
+	overflow: hidden
+}
+.picgallery h3 a {
+    text-decoration: none;
+    color: #333333;
+	transition: all 0.5s ease 0s
+}
+.picgallery h3 a:hover { color: #00BBF1}
+.picont {
+    height: 30px;
+	padding: 3px 10px;
+    margin-top: 0;
+    font-size: 12px;
+	border-top: 1px solid #EEEEEE;
+	background: #F9F9F9
+}
+.picont span {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+}
+.picont span a {
+    text-decoration: none;
+}
+.picont .dateline {
+    position: relative;
+    height: 30px;
+    padding-right: 10px;
+    margin-right: 10px
+}
+.picgallery p {
+	height: 40px;
+    line-height: 20px;
+	margin: 8px 10px 0 0;
+	overflow: hidden;
+    font-size: 12px;
+    color: #999999;
+}
+.pic-tow-list .picgallery p {
+    height: 78px;
+    overflow: hidden;
+}
+
+
+/* 分享按钮样式 */
+.bdsharebuttonbox2 a, .bdsharebuttonbox2 .bds_more {
+    float: left;
+    font-size: 18px;
+    padding-left: 17px;
+    line-height: 16px;
+    height: 16px;
+    background-image: url(icons_0_16.png) !important;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin: 3px 6px 6px 0 !important;
+}
+.ie6 .bdsharebuttonbox2 a, .ie7 .bdsharebuttonbox2 a, .ie8 .bdsharebuttonbox2 a { margin: 3px 0 6px 0 !important}
+.bdsharebuttonbox2 .bds_qzone {
+    background-position: 0 -52px !important;
+}
+.bdsharebuttonbox2 .bds_tsina {
+    background-position: 0 -104px !important;
+}
+.bdsharebuttonbox2 .bds_tqq {
+    background-position: 0 -260px !important;
+}
+.bdsharebuttonbox2 .bds_renren {
+    background-position: 0 -208px !important;
+}
+.bdsharebuttonbox2 .bds_weixin {
+    background-position: 0 -1612px !important;
+}
+
+
+/* 热门观点样式 */
+.hot-view { margin-top: 15px}
+.t-h2 { height: 32px; line-height: 32px; background-color: #555555; padding: 0 12px; margin: 15px 0; position: relative; font-size: 12px}
+.t-h2 .more, .t-h2 em { font-size: 12px; color: #FFFFFF; font-style: normal}
+.t-h2 .more { position: absolute; right: 12px; top: 0}
+.view-box { width: 273px; height: 60px; border-bottom: 1px dotted #DDDDDD; margin-bottom: 0; padding: 15px 0 15px 3px}
+.pull-left { float: left}
+.view-box .img-box { width: 60px; text-align: left; margin: 0 10px 0 0}
+.view-box .img-box img { width: 60px}
+.view-box-ctt { margin-left: 75px}
+.view-box-ctt h4 { margin: 0; font-size: 14px; height: 24px; line-height: 24px; overflow: hidden}
+.view-box-ctt h4 a, .view-list .comment-box a { color: #333333}
+.box-other { color: #999999; font-size: 12px}
+.box-other .source-quote { margin-right: 5px}
+.source-quote a { color: #999999}
+.box-other win8mi { margin-right: 5px}
+i.icon-comment { display: inline-block; width: 14px; height: 14px; margin-top: 1px; line-height: 14px; vertical-align: text-top; background: url(replys.png) no-repeat left 1px !important}
+.icon-comment { background-position: -240px -120px}
+.comment-box .icon-comment { background-position: 0 -167px; margin: 1px 6px 0 5px}
+.view-box-ctt h4 a { color: #333333}
+.view-list .comment-box a { color: #999999}
+
+/* 本站作者样式 */
+.mls li { width: 68px; padding: 0 0 15px 0}
+
+
+/* 幻灯片样式 */
+.list_box {
+    margin-bottom: 15px;
+}
+.list_focuss .bd {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+}
+.list_focuss li { position: relative}
+.list_focuss h3 {
+	position: absolute;
+	top: 160px;
+	left: 0;
+	color: #FFFFFF;
+	width: 280px;
+    height: 40px;
+    line-height: 40px;
+	padding: 0 10px;
+    overflow: hidden;
+    font-size: 14px;
+    text-align: center;
+	background: url(png.png) repeat 0 0
+}
+.list_focuss h3 a { color: #FFFFFF}
+.list_focuss .bd img {
+    width: 300px;
+    height: 200px;
+}
+.list_focuss .hd {
+    width: 160px;
+    height: 33px;
+    overflow: hidden;
+    margin: 10px auto 0px;
+}
+.list_focuss .hd .prev {
+    width: 33px;
+    height: 33px;
+    background: url(point_z.png) no-repeat 0 0;
+}
+.list_focuss .hd .prev:hover { background: url(1left.png) no-repeat 0 0}
+.list_focuss .hd ul {
+    padding-top: 9px;
+    overflow: hidden;
+    float: left;
+}
+.list_focuss .hd .next {
+    width: 33px;
+    height: 33px;
+    background: url(point_r.png) no-repeat 0 0;
+}
+.list_focuss .hd .next:hover { background: url(1right.png) no-repeat 0 0}
+.list_focuss .hd ul li, .list_focuss .hd ul li.on, .list_focuss .hd .next, .list_focuss .hd .prev {
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    float: left;
+}
+.list_focuss .hd ul li {
+    background: url(point.png) no-repeat scroll 0px 0px transparent;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    font-size: 0px;
+    line-height: 0;
+}
+.list_focuss .hd ul li.on {
+    background: url(point_on.png) no-repeat scroll 0px 0px transparent;
+}
+
+
+/* 热门资讯 */
+.hot_read li {
+    width: 300px;
+    float: left;
+    overflow: hidden;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #EEE;
+}
+.hot_read h3 {
+    padding-bottom: 8px;
+}
+.hot_read h3 a {
+    font-size: 15px;
+}
+.hot_read h3 a:hover { color: #00BBF1}
+.hot_read .pic {
+    width: 120px;
+    float: left;
+    margin-right: 10px;
+}
+.hot_read p {
+    text-indent: 20px;
+    line-height: 24px;
+    color: #8C8C8C;
+}
+.hot_read p a {
+    color: #0A89DA;
+}
+
+
+.mb30 { margin-bottom: 30px}
+
+
+/* 阅读排行 */
+.hbody .hd ul {
+    float: right;
+    margin-right: 2px;
+}
+.hbody .hd li {
+    float: left;
+    text-align: center;
+    height: 36px;
+    line-height: 38px;
+    font-size: 15px;
+    margin: 0px 0px 0px 15px;
+    cursor: pointer;
+}
+.hbody .hd li.on {
+    color: #00BBF1;
+}
+.hbody .bd li {
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    float: left;
+    font-size: 15px;
+}
+.date, .author {
+    margin-left: 5px;
+    display: block;
+    float: right;
+    font-size: 12px;
+    overflow: hidden;
+    text-align: right;
+    color: #999;
+}
+.hbody .bd li .turn {
+    margin-right: 12px;
+    color: #ACACAC;
+    font-style: italic;
+}
+.hbody .bd li a {
+    font-size: 15px;
+}
+
+.picimage span { float: left}
+.picont-picpre img { width: 50px; height: 50px; box-shadow: 1px 1px 1px #CCCCCC; border-radius: 2px}
