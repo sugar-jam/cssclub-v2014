@@ -5,6 +5,8 @@
 			var mask = $(this).children('.mask');
 			mask.css('background', mask_colors[$(this).index()]);
 		});
+		$('.dxb_bc .xld .cl .mask').css('opacity', 0.8);
+		$('.dxb_bc .xld .cl').find('.mask, a dt, a dd').fadeIn();
 
 		$('.dxb_bc .xld .cl').mouseenter(function(){
 			var mask = $(this).children('.mask');
