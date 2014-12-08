@@ -1,4 +1,4 @@
-<?php echo 'Theme by win8mi  http://www.xdmb.net';exit;?>
+<?php echo 'Theme by Takashiro, based on win8mi_3rd_beta, win8mi';exit;?>
 <table cellpadding="0" cellspacing="0" class="atd">
 	<tr>
 	<!--{eval $clicknum = 0;}-->

@@ -1,4 +1,4 @@
-<?php echo 'Theme by win8mi  http://www.xdmb.net';exit;?>
+<?php echo 'Theme by Takashiro, based on win8mi_3rd_beta, win8mi';exit;?>
 <!--{subtemplate common/header_common}-->
 <meta name="application-name" content="$_G['setting']['bbname']" />
 <meta name="msapplication-tooltip" content="$_G['setting']['bbname']" />

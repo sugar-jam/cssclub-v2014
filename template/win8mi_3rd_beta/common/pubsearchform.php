@@ -1,4 +1,4 @@
-<?php echo 'Theme by win8mi  http://www.xdmb.net';exit;?>
+<?php echo 'Theme by Takashiro, based on win8mi_3rd_beta, win8mi';exit;?>
 <!--{if $_G['setting']['search']}-->
 	<!--{eval $slist = array();}-->
 	<!--{if $_G['fid'] && $_G['forum']['status'] != 3 && $mod != 'group'}--><!--{block slist[forumfid]}--><li><a href="javascript:;" rel="curforum" fid="$_G[fid]" >{lang search_this_forum}</a></li><!--{/block}--><!--{/if}-->
