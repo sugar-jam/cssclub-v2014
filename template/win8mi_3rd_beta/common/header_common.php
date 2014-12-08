@@ -22,6 +22,7 @@ $_G['setting']['seohead']
 <script type="text/javascript" src="$_G['style'][styleimgdir]/js/jquery.min.js"></script>
 <script type="text/javascript">jQuery.noConflict();</script>
 <script type="text/javascript" src="$_G['style'][styleimgdir]/js/nav.js"></script>
+<script type="text/javascript" src="$_G['style'][styleimgdir]/js/jquery.rotate.js"></script>
 
 <!--{if empty($_GET['diy'])}--><!--{eval $_GET['diy'] = '';}--><!--{/if}-->
 <!--{if !isset($topic)}--><!--{eval $topic = array();}--><!--{/if}-->
