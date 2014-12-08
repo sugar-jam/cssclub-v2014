@@ -7,7 +7,7 @@
 
 .dxb_bc .xld{height:194px;}
 .dxb_bc .xld .cl{width:364px; height:194px; overflow: hidden; position: relative;border:3px solid #F0F0F0;float:left; margin:0 15px;}
-.dxb_bc .xld .cl .mask{width:364px; height:194px; opacity: 0.8;position:absolute;top:0;left:0; z-index: 3;background:black;display:none;}
+.dxb_bc .xld .cl .mask{width:364px; height:194px; opacity: 0.8; filter:Alpha(Opacity=80); position:absolute;top:0;left:0; z-index: 3;background:black;display:none;}
 .dxb_bc .xld .cl a dt{padding:15px; position:absolute; top:0; left: 0; width: 334px; height: 70px; color:white; z-index: 4; font-size:16pt; font-weight: normal;display:none;}
 .dxb_bc .xld .cl a dd{padding:15px; position:absolute; bottom:0; left: 0; width: 334px; height: 84px; color:white; z-index: 4; font-size: 11pt;display: none;}
 
