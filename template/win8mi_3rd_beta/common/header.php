@@ -58,7 +58,6 @@ $diynav
 <!--{/if}-->
 
 <div class="header {if $_GET['diy'] == 'yes' && check_diy_perm($topic)}hide{/if}">
-  <div class="hdr" id="headnav">
     <div class="wp1200 cl">
       <!--{hook/global_cpnav_top}-->
       <!-- 站点LOGO -->
@@ -110,7 +109,6 @@ $diynav
         <!--{/if}-->
       </div>
     </div>
-  </div>
 </div>
 <div class="header_filler"></div>
 <!--{if !IS_ROBOT}-->
