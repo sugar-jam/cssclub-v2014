@@ -112,6 +112,7 @@ $diynav
     </div>
   </div>
 </div>
+<div class="header_filler"></div>
 <!--{if !IS_ROBOT}-->
 <!--{if $_G['uid']}-->
 <ul id="myprompt_menu" class="p_pop" style="display: none;">

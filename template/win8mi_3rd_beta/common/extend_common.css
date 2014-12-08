@@ -91,30 +91,13 @@ a:hover, .link:hover, .link a:hover, a:hover.link { color: {HOVERCOL}}
 #toptb a { color: #666666}
 .user_link i, .usernav li .png i, .userinfo .arrow, .user_list .i_qq, .user_list .i_wb, .nav_icon { display: block; background: url("{STYLEIMGDIR}/all_icon.png") no-repeat}
 
-.hdr { height: 120px; transition: all 0.5s ease 0s; background: #FFFFFF}
+.hdr { height: 100%; transition: all 0.5s ease 0s; background: #FFFFFF}
 .nav_box { width: 100%; min-width: 1200px; height: 50px; margin-bottom: 0; overflow: visible; z-index: 180; background: #3A3A3A}
 .nav_box .wp1200 { background: #3A3A3A}
 
-.hdr{height:auto;}
-
-/* nav
-------------------------------------------------*/
-.nav { float: left; width: 450px; height: 40px; margin: 40px 0 0 0; overflow: hidden;}
-.nav li { float: left; width:55px;}
-.nav li span { display: none}
-.nav li a { display: inline-block; color: #BBBBBB; vertical-align: top; font-weight: 700; font-size: 18px; line-height: 2; border: 0px solid #FFFFFF; transition: border 0.2s ease 0s; font-family: "Microsoft Yahei"}
-.nav li.a.hover a { color: #444444}
-.nav li.hover a { color: #444444}
-.nav li a:hover { color: #444444; border-bottom-width: 3px; border-color: #00BBF1}
-.nav li.a a { color: #444444; border-bottom-width: 3px; border-color: #00BBF1}
-.nav li.a a:hover { color: #444444}
-
-.hd_logo { float: left; display: block; margin: 25px 100px 0 0; position:relative;}
-.hd_logo img {width:80px; height:80px; display: block; position:absolute; top:0; left:0;}
-.hd_logo h2 {margin-left:100px; font-size: 20pt; line-height: 80px;}
-
-/* 全局导航固定样式 */
-.headboxfixed { position: fixed; top: 0; width: 100%; z-index: 180; left: 0; padding-bottom: 0; margin-top: 0; border-bottom: 1px solid #E6E6E6; opacity: 0.9; }
+.header{position: fixed; top: 0; left: 0; width: 100%; z-index: 180; padding-bottom: 0; margin-top: 0; transition:0.2s linear;}
+.header_filler {height:120px;}
+.headboxfixed {border-bottom: 1px solid #E6E6E6; opacity: 0.9; box-shadow: 0 0 5px #555; }
 .ie6 .headboxfixed { background: none}
 .headboxfixed .hd_logo{margin-top:0;}
 .headboxfixed .hd_logo h2{line-height:40px;}
@@ -122,6 +105,22 @@ a:hover, .link:hover, .link a:hover, a:hover.link { color: {HOVERCOL}}
 .headboxfixed .nav{margin-top:0;}
 .headboxfixed #scbar{margin-top:3px;}
 .headboxfixed .userbox{margin-top:0;}
+
+/* nav
+------------------------------------------------*/
+.nav { float: left; width: 450px; height: 40px; margin: 40px 0 0 0; overflow: hidden; transition:0.2s linear;}
+.nav li { float: left; width:55px;}
+.nav li span { display: none}
+.nav li a { display: inline-block; color: #BBBBBB; vertical-align: top; font-weight: 700; font-size: 18px; line-height: 2; border: 0px solid #FFFFFF; transition: border 0.2s linear; font-family: "Microsoft Yahei"}
+.nav li.a.hover a { color: #444444}
+.nav li.hover a { color: #444444}
+.nav li a:hover { color: #444444; border-bottom-width: 3px; border-color: #00BBF1}
+.nav li.a a { color: #444444; border-bottom-width: 3px; border-color: #00BBF1}
+.nav li.a a:hover { color: #444444}
+
+.hd_logo { float: left; display: block; margin: 25px 100px 0 0; position:relative; }
+.hd_logo img {width:80px; height:80px; display: block; position:absolute; top:0; left:0; }
+.hd_logo h2 {margin-left:100px; font-size: 20pt; line-height: 80px; transition: 0.2s linear;}
 
 /* subnav
 ------------------------------------------------*/
@@ -145,7 +144,7 @@ a:hover, .link:hover, .link a:hover, a:hover.link { color: {HOVERCOL}}
 .user_list a.qq_login { display: block; width: 28px; height: 36px; padding: 0; margin: 0 0 0 8px; text-indent: -9999px; background: url({STYLEIMGDIR}/qq.png) no-repeat 0 8px}
 .user_list a.qq_login:hover { background: url({STYLEIMGDIR}/qq2.png) no-repeat 0 8px}
 
-.userbox { float: right; height: 38px; line-height: 38px; padding: 0; margin: 38px 0 0 0; _margin: 37px 0 0 0; overflow: visible; transition: all 0.5s ease 0s}
+.userbox { float: right; height: 38px; line-height: 38px; padding: 0; margin: 38px 0 0 0; _margin: 37px 0 0 0; overflow: visible; transition: 0.2s linear}
 .usernav { float: left; height: 38px; padding: 0; overflow: hidden}
 .usernav .user_list { float: left; _padding: 2px 0; position: relative; overflow: visible}
 .usernav .menu-li span { display: none}
@@ -187,7 +186,7 @@ a:hover.userinfo, .userinfo.hover { background: none}
 
 /* 搜索
 ------------------------------------------------*/
-#scbar { float: left; height: 32px; line-height: 32px; margin: 42px 0 0 0; background: #FFFFFF; border: 1px solid #DDDDDD; overflow: visible; transition: all 0.5s ease 0s}
+#scbar { float: left; height: 32px; line-height: 32px; margin: 42px 0 0 0; background: #FFFFFF; border: 1px solid #DDDDDD; overflow: visible; transition: 0.2s linear}
 .scbar_txt_td {width: 160px;}
 .scbar_txt_td, .scbar_type_td { background:none;}
 .scbar_type_td { width: 40px}

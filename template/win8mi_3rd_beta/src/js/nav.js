@@ -22,21 +22,14 @@
 		});
 
 		var header = $('.header');
-		var filling_box = $('<div></div>');
-		header.after(filling_box);
 		var header_height = header.outerHeight();
 		$(window).scroll(function(){
 			var header = $('.header');
-			var filling_box = header.next();
 			var scroll_top = $(window).scrollTop();
 			if(scroll_top == 0){
 				header.removeClass('headboxfixed');
 			}else{
 				header.addClass('headboxfixed');
-				var filling_height = 40 - scroll_top;
-				if(filling_height > 0){
-					filling_box.css('height', filling_height);
-				}
 			}
 		});
 	});
