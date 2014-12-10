@@ -60,13 +60,11 @@ $diynav
 <div class="header {if $_GET['diy'] == 'yes' && check_diy_perm($topic)}hide{/if}">
 	<div class="wp1200 cl">
 		<!--{hook/global_cpnav_top}-->
-		<!-- 站点LOGO -->
 		<div class="hd_logo">
-			<!--{eval $mnid = getcurrentnav();}-->
 			<h2><!--{if !isset($_G['setting']['navlogos'][$mnid])}--><a href="{if $_G['setting']['domain']['app']['default']}http://{$_G['setting']['domain']['app']['default']}/{else}./{/if}" title="$_G['setting']['bbname']">{$_G['style']['boardlogo']}</a><!--{else}-->$_G['setting']['navlogos'][$mnid]<!--{/if}-->{$_G[setting][bbname]}</h2>
 		</div>
-		<!-- 导航 -->
 		<div class="nav">
+			<!--{eval $mnid = getcurrentnav();}-->
 			<ul>
 				<!--{loop $_G['setting']['navs'] $nav}-->
 				<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->
@@ -77,7 +75,6 @@ $diynav
 			<!--{hook/global_nav_extra}-->
 		</div>
 		<!--{subtemplate common/pubsearchform}-->
-		<!-- 用户信息 -->
 		<div class="userbox">
 			<!--{if $_G['uid']}-->
 			<ul class="usernav">
@@ -96,8 +93,6 @@ $diynav
 			<ul class="usernav user_part">
 				<li class="user_list"><a href="javascript:;" onClick="javascript:lsSubmit();" class="user_link login">{lang login}</a></li>
 				<li class="user_list"><a href="member.php?mod={$_G[setting][regname]}" class="user_link register">注册</a></li>
-
-				<!-- 第三方登录位置 -->
 				<li class="user_list"><a href="connect.php?mod=login&amp;op=init&amp;referer=forum.php&amp;statfrom=login" class="qq_login">QQ登录</a></li>
 			</ul>
 			<div style="display:none"><!--{template member/login_simple}--></div>
@@ -141,7 +136,6 @@ $diynav
 <!--{subtemplate common/header_qmenu}-->
 <!--{/if}-->
 
-<!-- 二级导航 -->
 <!--{if !empty($_G['setting']['plugins']['jsmenu'])}-->
 <ul class="p_pop h_pop" id="plugin_menu" style="display: none">
 	<!--{loop $_G['setting']['plugins']['jsmenu'] $module}-->
