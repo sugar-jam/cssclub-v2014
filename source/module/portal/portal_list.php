@@ -37,7 +37,7 @@ if(!isset($_G['makehtml'])) {
 $cat = category_remake($catid);
 $navid = 'mn_P'.$cat['topid'];
 foreach ($_G['setting']['navs'] as $navsvalue) {
-	if($navsvalue['navid'] == $navid && $navsvalue['available'] && $navsvalue['level'] == 0) {
+	if($navsvalue['navid'] == $navid && $navsvalue['available'] && (!$navsvalue['level'] || ($navsvalue['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))) {
 		$_G['mnid'] = $navid;
 		break;
 	}
