@@ -23,9 +23,19 @@ Powered by Takashiro Kazuichi
 
 /** end **/
 
-/** portal::view **/
-.bm_h{height:34px;line-height:34px;color:#3E4142;background:none;font-size:18px;}
-.bh_h h2{border-bottom:2px solid #00BBF1;display:}
+/** portal::view, portal::list **/
+.bm_h{height:34px;line-height:34px;color:#3E4142;background:none;}
+.bh_h h1.xs2, .bh_h h2{font-size:18px;border-bottom:2px solid #00BBF1;}
 
 .ct2 .mn{border-right: 1px dashed #E8E8E8;}
+/** end **/
+
+/** forum::index **/
+.bmw .bm_h{background: #F3F3F3; border: 0 solid; font-size: 13pt;}
+.bmw .bm_h a{color: black;}
+.bmw a:hover{color:#00BBF1;text-shadow:0 0 5px #00BBF1;}
+.bm_h{height: 2.5em; line-height: 2.5em;}
+.bm_h .o{margin-top: 13px;}
+.bm_h .o img{margin-top: 0;}
+.fl_g dt{font-size: 12pt; font-weight: normal;}
 /** end **/
