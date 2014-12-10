@@ -1,0 +1,46 @@
+<!--{if $verifyusers}-->
+	<form method="post" autocomplete="off" name="moderate" id="moderate" action="{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&id=takashiro_issapply:verifyinfo">
+		<input type="hidden" name="infloat" value="" />
+		<input type="hidden" name="modact" value="" />
+		<input type="hidden" name="dosubmit" value="yes" />
+		<input type="hidden" name="filter" value="$filter" />
+		<table cellspacing="0" cellpadding="0" class="dt">
+			<thead>
+				<tr>
+					<th>用户信息</th>
+					<th>申请更改资料内容</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<!--{loop $verifyusers $member}-->
+				<tr id="pid_{$member[uid]}" class="{echo swapclass('alt')}">
+					<td valign="top">
+						<h5>$member[username]</h5>
+						<!--{if !empty($member['realname'])}-->
+						<p>{$_G[cache][profilesetting][realname][title]}: $member[realname]</p>
+						<!--{/if}-->
+						<p>{$_G[cache][profilesetting][field1][title]}: $member[field1]</p>
+					</td>
+					<td valign="top">
+						<!--{loop $member['field'] $field $value}-->
+						<p><input type="checkbox" name="refusal[{$member[vid]}][$field]" />{$_G[cache][profilesetting][$field][title]}: $member[$field] --> $value</p>
+						<!--{/loop}-->
+					</td>
+					<td valign="top">
+						<p>申请提交时间: $member[dateline]</p>
+						<p>
+							<input type="radio" name="verify[{$member[vid]}]" id="verify_$member[vid]_pass" value="validate" /><label for="verify_$member[vid]_pass" onclick="$('refusal_reason_input_$member[vid]').style.display='none';">通过</label>
+							<input type="radio" name="verify[{$member[vid]}]" id="verify_$member[vid]_refuse" value="refusal" /><label for="verify_$member[vid]_refuse" onclick="$('refusal_reason_input_$member[vid]').style.display='block';">拒绝</label>
+						</p>
+						<p id="refusal_reason_input_$member[vid]" style="display:none">拒绝理由：<input type="text" name="reason[{$member[vid]}]" /></p>
+					</td>
+				</tr>
+			<!--{/loop}-->
+		</table>
+		<div class="um bw0 cl">
+			<button type="submit" name="passsubmit" class="pn"><strong>提交</strong></button>
+		</div>
+	</form>
+<!--{else}-->
+	<p class="emp">没有需要审核资料的用户</p>
+<!--{/if}-->
