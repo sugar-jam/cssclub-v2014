@@ -38,7 +38,15 @@ Powered by Takashiro Kazuichi
 .bm_h .o{margin-top: 13px;}
 .bm_h .o img{margin-top: 0;}
 .fl_g dt{font-size: 12pt; font-weight: normal;}
+.fl_icn_g{width: 80px; text-align: center;}
 
 .oll{background:#F5F5F5;}
 .oll .bm_h{border-bottom:0 solid;}
+
+#category_grid .newimgbox h4 span, #category_grid .subjectbox h4 span, #category_grid .replaybox h4 span, #category_grid .hottiebox:hover h4 span, #category_grid .goodtiebox:hover h4 span { width:6px; background:url({IMGDIR}/grid.png) no-repeat 0 0;transition:width 0.2s ease 0s; overflow:hidden; }
+#category_grid .newimgbox h4 span.tit_newimg { background-position:0 -30px; }
+#category_grid .subjectbox h4 span.tit_subject { background-position:0 0; }
+#category_grid .replaybox h4 span.tit_replay { background-position:0 -30px; }
+#category_grid .hottiebox h4 span.tit_hottie { background-position:0 -60px; }
+#category_grid .goodtiebox h4 span.tit_goodtie { background-position:0 -90px; }
 /** end **/
