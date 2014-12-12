@@ -59,9 +59,9 @@
     <div id="footer">
   <div id="ft" class="wp cl">
     <div class="followus">关注我们： <a target="_blank" href="#" class="weibo">新浪微博</a></div>
-    <p class="copyright">Copyright <!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.comsenz.com/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}-->
-            &copy; 2001-2013 <a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a> All rights reserved.<br>
-      Powered by Discuz! <em>$_G['setting']['version']</em> <!--{if $_G['setting']['icp']}--> <a href="http://www.miitbeian.gov.cn/" target="_blank">$_G['setting']['icp']</a> <!--{/if}--></p>
+    <p class="copyright">
+    	<p>Powered by Discuz! <em>$_G['setting']['version']</em>, <!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.comsenz.com/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}--> &copy; 2001-2013 <a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a> All rights reserved.</p>
+    	<p>浙江大学分部制作维护，<!--{if $_G['setting']['icp']}--> <a href="http://www.miitbeian.gov.cn/" target="_blank">$_G['setting']['icp']</a> <!--{/if}--></p>
   </div>
 </div>
 <!--{/if}-->
