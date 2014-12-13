@@ -101,7 +101,7 @@ foreach($_G['cache']['profilesetting'] as $fieldid => $field) {
 	}
 	if(
 		$field['available'] && (strlen($space[$fieldid]) > 0 || ($fieldid == 'birthcity' && strlen($space['birthprovince']) || $fieldid == 'residecity' && strlen($space['resideprovince']))) &&
-		($space['self'] || empty($privacy[$fieldid]) || ($isfriend && $privacy[$fieldid] == 1)) &&
+		($space['self'] || empty($privacy[$fieldid]) || ($isfriend && $privacy[$fieldid] == 1) || (!empty($_G['uid']) && !in_array($_G['groupid'], array(4, 5, 6, 7)) && $privacy[$fieldid] == 2)) &&
 		(!$_G['inajax'] && !$field['invisible'] || $_G['inajax'] && $field['showincard'])
 	) {
 		$val = profile_show($fieldid, $space);

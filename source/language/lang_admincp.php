@@ -3757,6 +3757,7 @@ $lang = array
 	'members_profile_edit_default_privacy' => '默认隐私',
 	'members_profile_edit_privacy_public' => '公开',
 	'members_profile_edit_privacy_friend' => '好友可见',
+	'members_profile_edit_privacy_register' => '注册用户可见',
 	'members_profile_edit_privacy_secret' => '保密',
 	'members_profile_edit_profile_view' => '资料页显示',
 	'members_profile_edit_card_view' => '名片中显示',

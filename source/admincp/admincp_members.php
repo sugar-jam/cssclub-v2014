@@ -2370,6 +2370,7 @@ EOF;
 			$privacyselect = array(
 				array('0', cplang('members_profile_edit_privacy_public')),
 				array('1', cplang('members_profile_edit_privacy_friend')),
+				array('2', cplang('members_profile_edit_privacy_register')),
 				array('3', cplang('members_profile_edit_privacy_secret'))
 			);
 			showsetting('members_profile_edit_default_privacy', array('privacy', $privacyselect), $_G['setting']['privacy']['profile'][$fieldid], 'select');
