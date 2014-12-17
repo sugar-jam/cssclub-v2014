@@ -7,16 +7,16 @@
 (function($) {
     $.cssHooks['rotate'] = {
 		get: function(elem, computed, extra){
-		    return elem.style['transform'].replace(/.*rotate\((.*)deg\).*/, '$1');
+			var value = elem.style['transform'];
+			if(value == undefined){
+				value = elem.style['-webkit-transform'];
+			}
+		    return value != 'undefined' ? value.replace(/.*rotate\((.*)deg\).*/, '$1') : '';
 		},
 		set: function(elem, value){
 		    value = parseInt(value);
-			$(elem).data('rotatation', value);
-			if (value == 0) {
-				elem.style['transform'] = '';
-			} else {
-				elem.style['transform'] = 'rotate(' + value%360 + 'deg)';
-			}
+			var transform = (value == 0) ? '' : 'rotate(' + (value % 360) + 'deg)';
+			elem.style['transform'] = elem.style['-webkit-transform'] = transform;
 		}
     };
     $.fx.step['rotate'] = function(fx){
