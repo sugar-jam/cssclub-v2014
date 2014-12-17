@@ -21,6 +21,15 @@ Powered by Takashiro Kazuichi
 
 .dxb_bc .x ul.mbm li{display:inline; line-height: 1.5em; margin:0 0.5em;}
 
+.imageslider{position: relative;}
+.imageslider .frames{width: 100%; height: 100%; position: relative;}
+.imageslider .frames a{position:relative; display:block; width:60%; height: 100%; border:#E2E2E2 3px solid; position: absolute; background: white; text-align: center; background-size: 100% 100%;}
+.imageslider .frames a span{position: absolute; top: 10px; right: 10px;}
+.imageslider .left_button, .imageslider .right_button{display:none; background: url({STYLEIMGDIR}/arrowxs.png) no-repeat; width:30px; height:45px; z-index: 4; position: absolute; cursor: pointer;}
+.imageslider .right_button{background-position: -30px 0; right:0;}
+.imageslider .left_button:hover{left:-2px;}
+.imageslider .right_button:hover{right:-2px;}
+
 /** end **/
 
 /** portal::view, portal::list **/
