@@ -267,13 +267,15 @@ a:hover.userinfo, .userinfo.hover { background: none}
 #scrolltop a{ border: none}
 
 /* 全局通用页脚样式 */
-#footer { width: 100% !important; height: auto !important; margin: 15px auto 0 auto; background: #2D2F31}
-#ft { clear: both; padding: 20px 0; border-top: 0 !important; color: #FFFFFF; font-size: 12px; background: #2D2F31; position: relative;}
-#ft a { color: #FFFFFF}
-#ft .copyright { line-height: 2}
-#ft .followus { float: right; margin-top: 30px; width: 235px; height: 32px; position: absolute; top: 0; right: 0;}
-#ft .followus a { display: inline-block;margin: 0 1.2em 0 .5em;padding-left: 35px;color: #FFFFFF;line-height: 30px;background: url({STYLEIMGDIR}/spritex.png) no-repeat 0 0}
-#ft .followus a:hover { text-decoration: underline}
-#ft .followus .weibo { background-position: 0 -32px}
+#footer { width: 100% !important; height: 50px; margin: 15px auto 0 auto; background: #2D2F31}
+#footer { clear: both; padding: 20px 0; border-top: 0 !important; color: #FFFFFF; font-size: 12px; background: #2D2F31; position: relative;}
+#footer a { color: #FFFFFF}
+#footer .copyright { line-height: 2; float: right; margin-right: 30px; }
+#footer .followus { margin: 30px 0 0 30px; width: 235px; height: 32px; position: absolute; top: 0; left: 0;}
+#footer .followus a { display: inline-block;margin: 0 1.2em 0 .5em;padding-left: 45px;color: #FFFFFF;line-height: 40px;background: url({STYLEIMGDIR}/follow-icon.png) no-repeat 0 0}
+#footer .followus a:hover { text-decoration: underline}
+#footer .followus .weixin { background-position: 0 -400px}
+
+.tip{width: auto;}
 
 /* --------------------------------------------------------------------------------------------------- 通用保留部分结束 */
