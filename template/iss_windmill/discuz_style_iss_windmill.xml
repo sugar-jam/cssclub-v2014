@@ -6,13 +6,13 @@
 	<item id="From"><![CDATA[planer]]></item>
 	<item id="Data">
 		<item id="styleid"><![CDATA[7]]></item>
-		<item id="name"><![CDATA[win8mi_3rd_beta]]></item>
+		<item id="name"><![CDATA[iss_windmill]]></item>
 		<item id="available"><![CDATA[1]]></item>
 		<item id="templateid"><![CDATA[7]]></item>
 		<item id="extstyle"><![CDATA[]]></item>
-		<item id="tplname"><![CDATA[win8mi_3rd_beta]]></item>
-		<item id="directory"><![CDATA[./template/win8mi_3rd_beta]]></item>
-		<item id="copyright"><![CDATA[win8mi-http://www.xdmb.net]]></item>
+		<item id="tplname"><![CDATA[iss_windmill]]></item>
+		<item id="directory"><![CDATA[./template/iss_windmill]]></item>
+		<item id="copyright"><![CDATA[takashiro, win8mi]]></item>
 		<item id="style">
 			<item id="smfontsize"><![CDATA[0.83em]]></item>
 			<item id="threadtitlefontsize"><![CDATA[14px]]></item>
@@ -25,7 +25,7 @@
 			<item id="footertext"><![CDATA[#666]]></item>
 			<item id="available"><![CDATA[]]></item>
 			<item id="boardimg"><![CDATA[logo.png]]></item>
-			<item id="styleimgdir"><![CDATA[template/win8mi_3rd_beta/src]]></item>
+			<item id="styleimgdir"><![CDATA[template/iss_windmill/src]]></item>
 			<item id="imgdir"><![CDATA[]]></item>
 			<item id="sidebgcolor"><![CDATA[ vlineb.png repeat-y 0 0]]></item>
 			<item id="font"><![CDATA['Microsoft Yahei','Simsun']]></item>
