@@ -2,12 +2,34 @@
 
 if(!defined('IN_DISCUZ')) exit('Access Denied');
 
-//全局嵌入点类（必须存在）
 class plugin_takashiro_autoverify {
+	protected static $SchoolPrefix = array(
+		'浙江大学' => 'ZJU',
+		'北京大学' => 'PKU',
+		'清华大学' => 'THU',
+		'上海交通大学' => 'SJT',
+		'复旦大学' => 'FDU',
+		'重庆大学' => 'CQU',
+		'四川大学' => 'SCU',
+		'电子科技大学' => 'UES',
+		'西南财经大学' => 'SWF',
+		'西南交通大学' => 'SWJ',
+	);
 
 }
 
-//脚本嵌入点类
+class plugin_takashiro_autoverify_home extends plugin_takashiro_autoverify {
+
+	function space_profile_baseinfo_top(){
+		$uid = intval($_GET['uid']);
+		$tablename = DB::TABLE('plugin_member_verify');
+		$info = DB::fetch_first("SELECT * FROM `{$tablename}` WHERE `uid`=$uid");
+		$hid = self::$SchoolPrefix[$info['awardschool']].$info['awardyear'].$info['subserial'];
+		return '<ul class="pf_l cl"><li><em>团内编号</em>'.$hid.'</li></ul>';
+	}
+
+}
+
 class plugin_takashiro_autoverify_member extends plugin_takashiro_autoverify {
 
 	function register_verify_message($value){
