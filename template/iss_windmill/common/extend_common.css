@@ -271,10 +271,10 @@ a:hover.userinfo, .userinfo.hover { background: none}
 #footer { clear: both; padding: 20px 0; border-top: 0 !important; color: #FFFFFF; font-size: 12px; background: #2D2F31; position: relative;}
 #footer a { color: #FFFFFF}
 #footer .copyright { line-height: 2; float: right; margin-right: 30px; }
-#footer .followus { margin: 30px 0 0 30px; width: 235px; height: 32px; position: absolute; top: 0; left: 0;}
-#footer .followus a { display: inline-block;margin: 0 1.2em 0 .5em;padding-left: 45px;color: #FFFFFF;line-height: 40px;background: url({STYLEIMGDIR}/follow-icon.png) no-repeat 0 0}
-#footer .followus a:hover { text-decoration: underline}
-#footer .followus .weixin { background-position: 0 -400px}
+#footer ul.followus { margin: 30px 0 0 30px; height: 32px; position: absolute; top: 0; left: 0;}
+#footer ul.followus li { display: inline-block;margin: 0 1.2em 0 .5em;padding-left: 45px;color: #FFFFFF;line-height: 40px;background: url({STYLEIMGDIR}/follow-icon.png) no-repeat 0 0}
+#footer ul.followus li.weixin { background-position: 0 -400px; }
+#footer ul.followus li.email { background-position: 0 -250px; }
 
 .tip{width: auto;}
 
