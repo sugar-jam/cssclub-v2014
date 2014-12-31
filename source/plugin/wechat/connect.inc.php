@@ -25,10 +25,10 @@ try {
 } catch(Exception $e) {
 	showmessage('qqconnect:connect_app_invalid');
 }
-// debug »ñÈ¡Î´ÊÚÈ¨µÄrequest token
+// debug è·å–æœªæˆæƒçš„request token
 if($op == 'init') {
 
-	// debug Í¨Öª½â°ó£¬ÂÛÌ³²à±£³ÖÔ­°ó¶¨¹ØÏµ£¬ÈÃÓÃ»§¿ÉÒÔÖØĞÂÊÚÈ¨·ÖÏí
+	// debug é€šçŸ¥è§£ç»‘ï¼Œè®ºå›ä¾§ä¿æŒåŸç»‘å®šå…³ç³»ï¼Œè®©ç”¨æˆ·å¯ä»¥é‡æ–°æˆæƒåˆ†äº«
 	if($_G['member']['conisbind'] && $_GET['reauthorize']) {
 		if($_GET['formhash'] == FORMHASH) {
 			$connectService->connectMergeMember();
@@ -42,9 +42,9 @@ if($op == 'init') {
 	if(!$_G['setting']['connect']['oauth2']) {
 		dsetcookie('con_request_token');
 		dsetcookie('con_request_token_secret');
-		// debug ÇëÇóÓÃ»§Î´ÊÚÈ¨µÄtmp token
+		// debug è¯·æ±‚ç”¨æˆ·æœªæˆæƒçš„tmp token
 		try {
-			// debug Òıµ¼ÓÃ»§ÖÁÓ¦ÓÃÊÚÈ¨Ò³
+			// debug å¼•å¯¼ç”¨æˆ·è‡³åº”ç”¨æˆæƒé¡µ
 			$response = $connectOAuthClient->connectGetRequestToken($callback);
 		} catch(Exception $e) {
 			showmessage('qqconnect:connect_get_request_token_failed_code', $referer, array('codeMessage' => getErrorMessage($e->getmessage()), 'code' => $e->getmessage()));
@@ -53,12 +53,12 @@ if($op == 'init') {
 		$request_token = $response['oauth_token'];
 		$request_token_secret = $response['oauth_token_secret'];
 
-		// debug ½«Î´ÊÚÈ¨µÄoauth_tokenºÍoauth_token_secret¼Çµ½cookieÖĞ
+		// debug å°†æœªæˆæƒçš„oauth_tokenå’Œoauth_token_secretè®°åˆ°cookieä¸­
 		dsetcookie('con_request_token', $request_token);
 		dsetcookie('con_request_token_secret', $request_token_secret);
 
 		$redirect = $connectOAuthClient->getOAuthAuthorizeURL($request_token);
-		// ÊÖ»úÓÃ»§Ôö¼Ósource²ÎÊı
+		// æ‰‹æœºç”¨æˆ·å¢åŠ sourceå‚æ•°
 		if(defined('IN_MOBILE') || $_GET['oauth_style'] == 'mobile') {
 			$redirect .= '&oauth_style=mobile';
 		}
@@ -76,13 +76,13 @@ if($op == 'init') {
 
 	dheader('Location:' . $redirect);
 
-// debug Callback´¦Àí
+// debug Callbackå¤„ç†
 } elseif($op == 'callback') {
 
 	$params = $_GET;
 
-	// debug ÔÚÂÛÌ³½«Ò³ÃæÖØ¶¨Ïòµ½connect½øĞĞµÇÂ¼ÊÚÈ¨Ç°ºÍconnect·µ»Øµ½ÂÛÌ³µÄcallbackÒ³ºó£¬IE9ÓÃÁË¼æÈİĞÔÊÓÍ¼À´½ÓÊÕcallback£¬Õâµ¼ÖÂÖ®Ç°µÄcookieÎŞ·¨È¡µ½ÁË
-	// debug Õâ¸ö²Ù×÷¾ÍÊÇÖØĞÂÔØÈëÒ»ÏÂ±¾Ò³ÃæÊ¹Ö®»Øµ½Õı³£ÊÓÍ¼£¬Ä¿µÄÊÇ½â¾öIE9¼æÈİÊÓÍ¼ÄÃ²»µ½cookie
+	// debug åœ¨è®ºå›å°†é¡µé¢é‡å®šå‘åˆ°connectè¿›è¡Œç™»å½•æˆæƒå‰å’Œconnectè¿”å›åˆ°è®ºå›çš„callbacké¡µåï¼ŒIE9ç”¨äº†å…¼å®¹æ€§è§†å›¾æ¥æ¥æ”¶callbackï¼Œè¿™å¯¼è‡´ä¹‹å‰çš„cookieæ— æ³•å–åˆ°äº†
+	// debug è¿™ä¸ªæ“ä½œå°±æ˜¯é‡æ–°è½½å…¥ä¸€ä¸‹æœ¬é¡µé¢ä½¿ä¹‹å›åˆ°æ­£å¸¸è§†å›¾ï¼Œç›®çš„æ˜¯è§£å†³IE9å…¼å®¹è§†å›¾æ‹¿ä¸åˆ°cookie
 	if(!isset($params['receive'])) {
 		$utilService = Cloud::loadClass('Service_Util');
 		echo '<script type="text/javascript">setTimeout("window.location.href=\'plugin.php?receive=yes&'.str_replace("'", "\'", $utilService->httpBuildQuery($_GET, '', '&')).'\'", 1)</script>';
@@ -101,7 +101,7 @@ if($op == 'init') {
 
 		$conuin = $response['oauth_token'];
 		$conuinsecret = $response['oauth_token_secret'];
-		// debug openidÍ³Ò»×ª³É´óĞ´
+		// debug openidç»Ÿä¸€è½¬æˆå¤§å†™
 		$conopenid = strtoupper($response['openid']);
 		if(!$conuin || !$conuinsecret || !$conopenid) {
 			showmessage('qqconnect:connect_get_access_token_failed_code', $referer);
@@ -121,55 +121,55 @@ if($op == 'init') {
 		dsetcookie('con_request_token_secret');
 
 		$conuintoken = $response['access_token'];
-		// debug openidÍ³Ò»×ª³É´óĞ´
+		// debug openidç»Ÿä¸€è½¬æˆå¤§å†™
 		$conopenid = strtoupper($response['openid']);
 		if(!$conuintoken || !$conopenid) {
 			showmessage('qqconnect:connect_get_access_token_failed', $referer);
 		}
 	}
 
-	// debug ºÚÃûµ¥
+	// debug é»‘åå•
 	loadcache('connect_blacklist');
 	if(in_array($conopenid, array_map('strtoupper', $_G['cache']['connect_blacklist']))) {
 		$change_qq_url = $_G['connect']['discuz_change_qq_url'];
 		showmessage('qqconnect:connect_uin_in_blacklist', $referer, array('changeqqurl' => $change_qq_url));
 	}
 
-	// debug ¾É°æConnectµÄÓÃ»§uin£¬Ö»ÓĞ¾É°æÓÃ»§¹ıÀ´²Å»áÓĞ´Ë²ÎÊı
+	// debug æ—§ç‰ˆConnectçš„ç”¨æˆ·uinï¼Œåªæœ‰æ—§ç‰ˆç”¨æˆ·è¿‡æ¥æ‰ä¼šæœ‰æ­¤å‚æ•°
 	if($params['uin']) {
 		$old_conuin = $params['uin'];
 	}
 
-	// debug ÓÃ»§×ÊÁÏÊÇ·ñ»Ø´«Connect
+	// debug ç”¨æˆ·èµ„æ–™æ˜¯å¦å›ä¼ Connect
 	$is_notify = true;
 
-	// debug QCÄ¬ÈÏÉèÖÃÏî
+	// debug QCé»˜è®¤è®¾ç½®é¡¹
 	$conispublishfeed = 0;
 	$conispublisht = 0;
 
-	// debug ÓÃ»§ÊÚÈ¨»ñÈ¡¸öÈË×ÊÁÏ
-	// debug ÓÃ»§ÊÚÈ¨·¢FeedºÍ·ÖÏí
+	// debug ç”¨æˆ·æˆæƒè·å–ä¸ªäººèµ„æ–™
+	// debug ç”¨æˆ·æˆæƒå‘Feedå’Œåˆ†äº«
 	$is_user_info = 1;
 	$is_feed = 1;
 
 	$user_auth_fields = 1;
 
-	// debug ÖÖCookies
+	// debug ç§Cookies
 	$cookie_expires = 2592000;
 	dsetcookie('client_created', TIMESTAMP, $cookie_expires);
 	dsetcookie('client_token', $conopenid, $cookie_expires);
 
 	$connect_member = array();
-	// debug ÔÚ¾É°æconnectÓëÂÛÌ³ÊÇ´«µİuinÀ´²é°ó¶¨¹ØÏµ£¬ËùÒÔcommon_member_connect±íÓĞÒ»¸öconuin×Ö¶Î£¬ĞÂ°æËäÈ»»¹ÓÃÕâ¸ö×Ö¶Î£¬µ«ÀïÃæ´æµÄÒÑ¾­ÊÇaccess tokenÁË
-	// debug ²»´æÔÚ¾É°æÓÃ»§°ó¶¨¹ØÏµµÄ»°£¬ÔÙÓÃaccess token²î°ó¶¨¹ØÏµ£¨ĞÂ°æ³ÌĞòÊÇÓÃaccess token²é°ó¶¨¹ØÏµµÄ£¬ÕâµãÓë¾É°æ²»Í¬£©
+	// debug åœ¨æ—§ç‰ˆconnectä¸è®ºå›æ˜¯ä¼ é€’uinæ¥æŸ¥ç»‘å®šå…³ç³»ï¼Œæ‰€ä»¥common_member_connectè¡¨æœ‰ä¸€ä¸ªconuinå­—æ®µï¼Œæ–°ç‰ˆè™½ç„¶è¿˜ç”¨è¿™ä¸ªå­—æ®µï¼Œä½†é‡Œé¢å­˜çš„å·²ç»æ˜¯access tokenäº†
+	// debug ä¸å­˜åœ¨æ—§ç‰ˆç”¨æˆ·ç»‘å®šå…³ç³»çš„è¯ï¼Œå†ç”¨access tokenå·®ç»‘å®šå…³ç³»ï¼ˆæ–°ç‰ˆç¨‹åºæ˜¯ç”¨access tokenæŸ¥ç»‘å®šå…³ç³»çš„ï¼Œè¿™ç‚¹ä¸æ—§ç‰ˆä¸åŒï¼‰
 	$fields = array('uid', 'conuin', 'conuinsecret', 'conopenid');
 	if($old_conuin) {
-		// debug »ñÈ¡¾ÉQC°ó¶¨ÓÃ»§°ó¶¨¹ØÏµ
+		// debug è·å–æ—§QCç»‘å®šç”¨æˆ·ç»‘å®šå…³ç³»
 		$connect_member = C::t('#qqconnect#common_member_connect')->fetch_fields_by_openid($old_conuin, $fields);
 		// $connect_member = DB::fetch_first("SELECT uid, conuin, conuinsecret, conopenid FROM ".DB::table('common_member_connect')." WHERE conuin='$old_conuin'");
 	}
 	if(empty($connect_member)) {
-		// debug »ñÈ¡ĞÂQC°ó¶¨ÓÃ»§°ó¶¨¹ØÏµ
+		// debug è·å–æ–°QCç»‘å®šç”¨æˆ·ç»‘å®šå…³ç³»
 		$connect_member = C::t('#qqconnect#common_member_connect')->fetch_fields_by_openid($conopenid, $fields);
 		// $connect_member = DB::fetch_first("SELECT uid, conuin, conuinsecret, conopenid FROM ".DB::table('common_member_connect')." WHERE conopenid='$conopenid'");
 	}
@@ -206,7 +206,7 @@ if($op == 'init') {
 			$referer .= '&loginUrl='.urlencode($loginUrl);
 		}
 
-		// debug µÇÂ¼¸üĞÂuin
+		// debug ç™»å½•æ›´æ–°uin
 		C::t('#qqconnect#common_member_connect')->update($connect_member['uid'],
 			!$_G['setting']['connect']['oauth2'] ? array(
 				'conuin' => $conuin,
