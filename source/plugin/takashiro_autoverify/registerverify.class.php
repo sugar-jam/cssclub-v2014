@@ -52,7 +52,7 @@ class plugin_takashiro_autoverify_member extends plugin_takashiro_autoverify {
 					AND `uid` IS NULL");
 
 			if($info){
-				$uid = &$param[2]['uid'];
+				$uid = &$_G['uid'];
 				if(!empty($uid)){
 					DB::query("UPDATE `$tablename` SET `uid`='$uid' WHERE `id`='$info[id]'");
 
