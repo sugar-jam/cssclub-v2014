@@ -1339,7 +1339,25 @@ function viewthread_baseinfo($post, $extra) {
 	} elseif(substr($key, 0, 6) == 'field_') {
 		$field = substr($key, 6);
 		if(!empty($post['privacy']['profile'][$field])) {
-			return '';
+			switch($post['privacy']['profile'][$field]){
+				case 1:
+					require_once libfile('function/friend');
+					if(!friend_check($_G['uid'])){
+						return '';
+					}
+				break;
+				case 2:
+					if(empty($_G['uid']) || ($_G['groupid'] >= 4 && $_G['groupid'] <= 8)){
+						return '';
+					}
+				break;
+				case 3:
+					if($_G['uid'] != $post['uid']){
+						return '';
+					}
+				default:
+					return '';
+			}
 		}
 		require_once libfile('function/profile');
 		if($field != 'qq') {
