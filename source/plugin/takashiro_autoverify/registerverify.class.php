@@ -4,16 +4,16 @@ if(!defined('IN_DISCUZ')) exit('Access Denied');
 
 class plugin_takashiro_autoverify {
 	protected static $SchoolPrefix = array(
-		'浙江大学' => 'ZJU',
-		'北京大学' => 'PKU',
-		'清华大学' => 'THU',
-		'上海交通大学' => 'SJT',
-		'复旦大学' => 'FDU',
-		'重庆大学' => 'CQU',
-		'四川大学' => 'SCU',
-		'电子科技大学' => 'UES',
-		'西南财经大学' => 'SWF',
-		'西南交通大学' => 'SWJ',
+		'浙江大学' => 'Z',
+		'北京大学' => 'B',
+		'清华大学' => 'Q',
+		'上海交通大学' => 'J',
+		'复旦大学' => 'F',
+		'重庆大学' => 'C',
+		'四川大学' => 'S',
+		'电子科技大学' => 'D',
+		'西南财经大学' => 'X',
+		'西南交通大学' => 'N',
 	);
 
 }
@@ -21,10 +21,39 @@ class plugin_takashiro_autoverify {
 class plugin_takashiro_autoverify_home extends plugin_takashiro_autoverify {
 
 	function space_profile_baseinfo_top(){
+		global $_G;
+
 		$uid = intval($_GET['uid']);
-		$tablename = DB::TABLE('plugin_member_verify');
-		$info = DB::fetch_first("SELECT * FROM `{$tablename}` WHERE `uid`=$uid");
-		$hid = self::$SchoolPrefix[$info['awardschool']].$info['awardyear'].$info['subserial'];
+
+		if($uid != $_G['uid']){
+			$member = array('uid' => $uid);
+			space_merge($member, 'field_home');
+
+			$realname_privacy = &$member['privacy']['profile']['realname'];
+			$field4_privacy = &$member['privacy']['profile']['field4'];
+			//仅注册用户可见
+			if(($realname_privacy == 2 || $field4_privacy == 2) && empty($_G['uid'])){
+				return '';
+			}
+			//仅好友可见
+			if($realname_privacy == 1 || $field4_privacy == 1){
+				$friends = C::t('home_friend')->fetch_all_by_uid_fuid($uId1, $uId2);
+				if(empty($friends[0])){
+					return '';
+				}
+			}
+			//保密
+			if(($realname_privacy == 3 || $field4_privacy == 3)){
+				return '';
+			}
+		}
+
+		$verify_table = DB::TABLE('plugin_member_verify');
+		$profile_table = DB::TABLE('common_member_profile');
+		$info = DB::fetch_first("SELECT v.*,p.`realname`,p.`field4` FROM `{$verify_table}` v
+			LEFT JOIN `{$profile_table}` p ON p.uid=v.uid
+			WHERE p.`uid`=$uid");
+		$hid = self::$SchoolPrefix[$info['awardschool']].substr($info['awardyear'], -2, 2).$info['subserial'].'-'.$info['realname'].'-'.$info['field4'];
 		return '<ul class="pf_l cl"><li><em>团内编号</em>'.$hid.'</li></ul>';
 	}
 
