@@ -31,13 +31,14 @@ class plugin_takashiro_autoverify_home extends plugin_takashiro_autoverify {
 
 			$realname_privacy = &$member['privacy']['profile']['realname'];
 			$field4_privacy = &$member['privacy']['profile']['field4'];
+
 			//仅注册用户可见
 			if(($realname_privacy == 2 || $field4_privacy == 2) && empty($_G['uid'])){
 				return '';
 			}
 			//仅好友可见
 			if($realname_privacy == 1 || $field4_privacy == 1){
-				$friends = C::t('home_friend')->fetch_all_by_uid_fuid($uId1, $uId2);
+				$friends = C::t('home_friend')->fetch_all_by_uid_fuid($uid, $_G['uid']);
 				if(empty($friends[0])){
 					return '';
 				}
