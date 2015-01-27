@@ -23,7 +23,7 @@ class plugin_takashiro_autoverify_home extends plugin_takashiro_autoverify {
 	function space_profile_baseinfo_top(){
 		global $_G;
 
-		$uid = intval($_GET['uid']);
+		$uid = !empty($_GET['uid']) ? intval($_GET['uid']) : $_G['uid'];
 
 		if($uid != $_G['uid']){
 			$member = array('uid' => $uid);
