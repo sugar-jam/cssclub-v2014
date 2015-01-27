@@ -1,0 +1,14 @@
+DELETE FROM pre_common_member WHERE uid>=[UID];
+ALTER TABLE `pre_common_member` AUTO_INCREMENT =[UID];
+DELETE FROM pre_common_member_verify WHERE uid>=[UID];
+DELETE FROM pre_common_member_validate WHERE uid>=[UID];
+DELETE FROM `pre_common_member_field_home` WHERE uid>=[UID];
+DELETE FROM `pre_common_member_field_forum` WHERE uid>=[UID];
+DELETE FROM `pre_common_member_count` WHERE uid>=[UID];
+DELETE FROM `pre_common_member_profile` WHERE uid>=[UID];
+DELETE FROM `pre_common_member_status` WHERE uid>=[UID];
+DELETE FROM `pre_common_member_verify_info` WHERE uid>=[UID];
+
+DELETE FROM pre_ucenter_members WHERE uid>=[UID];
+ALTER TABLE `pre_ucenter_members` AUTO_INCREMENT =[UID];
+DELETE FROM `pre_ucenter_memberfields` WHERE uid>=[UID];
