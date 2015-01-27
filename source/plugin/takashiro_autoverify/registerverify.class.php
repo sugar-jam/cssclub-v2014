@@ -30,31 +30,31 @@ class plugin_takashiro_autoverify_home extends plugin_takashiro_autoverify {
 			space_merge($member, 'field_home');
 
 			$realname_privacy = &$member['privacy']['profile']['realname'];
-			$field4_privacy = &$member['privacy']['profile']['field4'];
+			$issbranch_privacy = &$member['privacy']['profile']['issbranch'];
 
 			//仅注册用户可见
-			if(($realname_privacy == 2 || $field4_privacy == 2) && empty($_G['uid'])){
+			if(($realname_privacy == 2 || $issbranch_privacy == 2) && empty($_G['uid'])){
 				return '';
 			}
 			//仅好友可见
-			if($realname_privacy == 1 || $field4_privacy == 1){
+			if($realname_privacy == 1 || $issbranch_privacy == 1){
 				$friends = C::t('home_friend')->fetch_all_by_uid_fuid($uid, $_G['uid']);
 				if(empty($friends[0])){
 					return '';
 				}
 			}
 			//保密
-			if(($realname_privacy == 3 || $field4_privacy == 3)){
+			if(($realname_privacy == 3 || $issbranch_privacy == 3)){
 				return '';
 			}
 		}
 
 		$verify_table = DB::TABLE('plugin_member_verify');
 		$profile_table = DB::TABLE('common_member_profile');
-		$info = DB::fetch_first("SELECT v.*,p.`realname`,p.`field4` FROM `{$verify_table}` v
+		$info = DB::fetch_first("SELECT v.*,p.`realname`,p.`issbranch` FROM `{$verify_table}` v
 			LEFT JOIN `{$profile_table}` p ON p.uid=v.uid
 			WHERE p.`uid`=$uid");
-		$hid = self::$SchoolPrefix[$info['awardschool']].substr($info['awardyear'], -2, 2).$info['subserial'].'-'.$info['realname'].'-'.$info['field4'];
+		$hid = self::$SchoolPrefix[$info['awardschool']].substr($info['awardyear'], -2, 2).$info['subserial'].'-'.$info['realname'].'-'.$info['issbranch'];
 		return '<ul class="pf_l cl"><li><em>团内编号</em>'.$hid.'</li></ul>';
 	}
 
@@ -79,8 +79,8 @@ class plugin_takashiro_autoverify_member extends plugin_takashiro_autoverify {
 
 		$user = array(
 			'realname' => $_POST['realname'],
-			'awardyear' => $_POST['field1'],
-			'awardschool' => $_POST['field3'],
+			'awardyear' => $_POST['awardyear'],
+			'awardschool' => $_POST['awardschool'],
 		);
 
 		$tablename = DB::table('plugin_member_verify');
@@ -115,9 +115,8 @@ class plugin_takashiro_autoverify_member extends plugin_takashiro_autoverify {
 					$verify["verify"]['1'][] = $value['uid'];
 				}
 				$note_values = array('verify' => '');
-				$note_lang = 'profile_verify_pass';
 
-				notification_add($value['uid'], 'verify', $note_lang, $note_values, 1);
+				notification_add($value['uid'], 'verify', 'profile_verify_pass', $note_values, 1);
 
 				if(!empty($verify['delete'])) {
 					C::t('common_member_verify_info')->delete($verify['delete']);

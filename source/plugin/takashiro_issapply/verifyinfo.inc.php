@@ -92,12 +92,12 @@ foreach ($verifyusers as $user) {
 $profiles = C::t('common_member_profile')->fetch_all($verifyuids, false, 0);
 
 foreach ($verifyusers as $vid => &$user) {
-	if (!array_key_exists($user['uid'], $profiles) || ($_G['member']['field4'] && $_G['member']['field4'] != $profiles[$user['uid']]['field4'])) {
+	if (!array_key_exists($user['uid'], $profiles) || ($_G['member']['issbranch'] && $_G['member']['issbranch'] != $profiles[$user['uid']]['issbranch'])) {
 		unset($verifyusers[$vid]);
 	} else {
 		$user = array_merge($user, $profiles[$user['uid']]);
 		$user['field'] = dunserialize($user['field']);
-		$user['dateline'] = dgmdate($user['dateline'], 'u');		
+		$user['dateline'] = dgmdate($user['dateline'], 'u');
 	}
 }
 unset($user);

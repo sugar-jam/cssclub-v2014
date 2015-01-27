@@ -116,8 +116,8 @@ if($op == 'members') {
 			$member_status = C::t('common_member_status')->fetch_all($uids, false, 0);
 			$member_verify_info = C::t('common_member_verify_info')->fetch_all($uids, false, 0);
 		}
-		//field4即现所在分部
-		$admin_field4 = getuserprofile('field4');
+		//issbranch即现所在分部
+		$admin_issbranch = getuserprofile('issbranch');
 		foreach($member_validate as $uid => $member) {
 			$member = array_merge($member, $common_member[$uid], $member_status[$uid]);
 			if($member['groupid'] != 8) {
@@ -133,7 +133,7 @@ if($op == 'members') {
 				$member = array_merge($member, unserialize($member_verify_info[$uid]['field']));
 			}
 
-			if ($admin_field4 == $member['field4']) {
+			if ($admin_issbranch == $member['issbranch']) {
 				$memberlist[] = $member;
 			}
 		}
