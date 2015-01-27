@@ -217,7 +217,9 @@ a:hover.userinfo, .userinfo.hover { background: none}
 .card_mn{ background:#FFF;}
 .card .o a {border: 1px solid #EEE;background:#FFF;color: #555;}
 .card a:hover {background-color: gainsboro !important;}
-
+.card_mn, .card_info {padding-left: 110px;}
+.card .avt {margin-left: -100px; width: 100px;}
+.card_mn .c{margin-left: -30px;}
 
 /* 回复框
 ------------------------------------------------*/
