@@ -4,9 +4,8 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: sub_threadlist.php 35068 2014-11-04 02:37:45Z nemohou $
+ *      $Id: sub_threadlist.php 35103 2014-11-18 10:10:29Z nemohou $
  */
-//note checkpost.sub @ Discuz! X2.5
 
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');

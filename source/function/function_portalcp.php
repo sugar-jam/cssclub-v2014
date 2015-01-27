@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_portalcp.php 34849 2014-08-14 05:48:13Z laoguozhang $
+ *      $Id: function_portalcp.php 35034 2014-10-27 03:42:17Z laoguozhang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -658,7 +658,7 @@ function checkprimaltpl($template) {
 		return 'diy_template_filename_invalid';
 	}
 	$tpldirectoryarr = explode('/', trim($tpldirectory, './'));
-	if(strpos($tpldirectory, '..') !== false || strpos($tpldirectory, "\0") !== false || $tpldirectoryarr[0] != 'template') {
+	if(strpos($tpldirectory, '..') !== false || strpos($tpldirectory, "\0") !== false || ($tpldirectoryarr[0] != 'template' && $tpldirectoryarr[0] != 'source')) {
 		return 'diy_tpldirectory_invalid';
 	}
 	$primaltplname = (!$tpldirectory ? DISCUZ_ROOT.$_G['cache']['style_default']['tpldir'] : $tpldirectory).'/'.$template.'.htm';

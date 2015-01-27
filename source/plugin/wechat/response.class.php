@@ -33,7 +33,6 @@ class WSQResponse {
 				wsq::report('loginclick');
 				self::_show('access', $data['from']);
 			}
-//			echo WeChatServer::getXml4Txt(lang('plugin/wechat', 'wechat_response_text_codeerror'));
 		} else {
 			wsq::report('sendnum');
 			self::_show('sendnum', $data['from']."\t".$authcode['sid'], 60);
@@ -87,7 +86,6 @@ class WSQResponse {
 		}
 		$authcode = C::t('#wechat#mobile_wechat_authcode')->fetch_by_code($data['key']);
 		if(!$authcode || $authcode['status']) {
-//			echo WeChatServer::getXml4Txt(lang('plugin/wechat', 'wechat_response_text_codeerror'));
 		} else {
 			if($authcode['uid']) {
 				$member = getuserbyuid($authcode['uid'], 1);

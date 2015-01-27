@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: showactivity_setting.inc.php 34754 2014-07-29 03:16:20Z nemohou $
+ *      $Id: showactivity_setting.inc.php 35159 2014-12-23 02:22:03Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -39,14 +39,15 @@ if(!$ac) {
 		lang('plugin/wechat', 'show_starttime').' - '.lang('plugin/wechat', 'show_endtime').'</th><th>'.
 		lang('plugin/wechat', 'show_expiration').'</th><th>'.
 		lang('plugin/wechat', 'show_applynumber').'</th><th>'.
-		lang('plugin/wechat', 'show_forum').'</th></tr>';
+		lang('plugin/wechat', 'show_forum').'</th><th></th></tr>';
 	foreach($showthreads as $tid => $thread) {
 		$settingsnew[$tid] = $tid;
 		echo '<tr class="hover"><th class="td25"><input class="checkbox" type="checkbox" name="delete['.$thread['tid'].']" value="'.$thread['tid'].'"></th><th><a href="forum.php?mod=viewthread&tid='.$thread['tid'].'" target="_blank">'.$thread['subject'].'</a></th><th>'.
 			dgmdate($activities[$thread['tid']]['starttimefrom']).($activities[$thread['tid']]['starttimeto'] ? ' - '.dgmdate($activities[$thread['tid']]['starttimeto']) : '').'</th><th>'.
 			dgmdate($activities[$thread['tid']]['expiration']).'</th><th>'.
 			$activities[$thread['tid']]['applynumber'].'</th><th>'.
-			$_G['cache']['forums'][$thread['fid']]['name'].'</th><th></th></tr>';
+			$_G['cache']['forums'][$thread['fid']]['name'].'</th><th>'.
+			'<a href="'.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=showactivity_setting&ac=export&tid='.$thread['tid'].'">'.lang('plugin/wechat', 'show_export').'</a></th></tr>';
 	}
 	$add = '<input type="button" class="btn" onclick="location.href=\''.ADMINSCRIPT.'?action=plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=showactivity_setting&ac=add\'" value="'.lang('plugin/wechat', 'show_addthread').'" />';
 	if($showthreads) {
@@ -179,6 +180,33 @@ if(!$ac) {
 		cpmsg(lang('plugin/wechat', 'show_addthread_succeed'), 'action=plugins&operation=config&do='.$pluginid.'&identifier=wechat&pmod=showactivity_setting', 'succeed');
 
 	}
+} elseif($ac == 'export') {
+	if(!isset($setting['showactivity']['tids'][$_GET['tid']])) {
+		cpmsg(lang('plugin/wechat', 'show_thread_not_found'));
+	}
+	$thread = get_thread_by_tid($_GET['tid']);
+	if(!$thread) {
+		cpmsg(lang('plugin/wechat', 'show_thread_not_found'));
+	}
+	$posttableid = $thread['posttableid'];
+	$posts = DB::fetch_all("SELECT * FROM %t WHERE tid=%d", array('forum_debatepost', $_GET['tid']), 'pid');
+	foreach(C::t('forum_post')->fetch_all($posttableid, array_keys($posts), false) as $post) {
+		$array[$posts[$post['pid']]['voters'].'.'.$post['position']] = $post['author'].','.$posts[$post['pid']]['voters'].','.$post['position'];
+	}
+	ob_end_clean();
+	header('Content-Encoding: none');
+	header('Content-Type: application/octet-stream');
+	header('Content-Disposition: attachment; filename=showactivity_'.$_GET['tid'].'.csv');
+	header('Pragma: no-cache');
+	header('Expires: 0');
+	krsort($array);
+	$detail = lang('plugin/wechat', 'show_export_title')."\r\n".implode("\r\n", $array);
+	if($_G['charset'] != 'gbk') {
+		$detail = diconv($detail, $_G['charset'], 'GBK');
+	}
+	define('FOOTERDISABLED', true);
+	echo $detail;
+	exit();
 }
 
 ?>

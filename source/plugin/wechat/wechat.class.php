@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat.class.php 35032 2014-10-23 08:50:37Z nemohou $
+ *      $Id: wechat.class.php 35166 2014-12-23 07:12:44Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -201,7 +201,7 @@ class plugin_wechat_forum extends plugin_wechat {
 	function viewthread_share_method_output() {
 		global $_G;
 		if($_G['wechat']['setting']['wsq_allow']) {
-			return wechat_tpl_share();
+			return wechat_tpl_share(showActivity::init());
 		}
 	}
 
@@ -435,16 +435,12 @@ class WeChat {
 			'groupid' => $groupid,
 		), 0);
 
-		//统计
 		include_once libfile('function/stat');
 		updatestat('register');
 
 		return $uid;
 	}
 
-	/**
-	 * 同步微信头像处理
-	 */
 	static public function syncAvatar($uid, $avatar) {
 
 		if(!$uid || !$avatar) {
@@ -496,9 +492,6 @@ class WeChat {
 
 class uploadUcAvatar {
 
-	/**
-	 * 上传至uc头像
-	 */
 	public static function upload($uid, $localFile) {
 
 		global $_G;
@@ -624,7 +617,6 @@ class showActivity {
 				$_G['forum']['allowpostspecial'] = 255;
 			}
 			$_GET['ordertype'] = empty($_GET['ordertype']) ? 1 : $_GET['ordertype'];
-			$_G['mobileimage_parse_in_post'] = empty($_GET['viewpid']) ? 1 : 0;
 			self::$init = true;
 		}
 		return true;

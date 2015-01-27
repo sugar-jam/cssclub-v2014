@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: viewthread.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: viewthread.php 35159 2014-12-23 02:22:03Z nemohou $
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');
@@ -118,7 +118,7 @@ class mobile_api {
 						$url .= '.thumb.jpg';
 					}
 					$extra .= 'attach="' . $post['pid'] . '" ';
-					if (empty($_G['mobileimage_parse_in_post']) && strexists($variable['postlist'][$k]['message'], '[attach]' . $aid . '[/attach]')) {
+					if (strexists($variable['postlist'][$k]['message'], '[attach]' . $aid . '[/attach]')) {
 						$variable['postlist'][$k]['message'] = str_replace('[attach]' . $aid . '[/attach]', mobile_image($url, $extra), $variable['postlist'][$k]['message']);
 						unset($variable['postlist'][$k]['attachments'][$aid]);
 					} elseif (!in_array($aid, $_G['forum_attachtags'][$post['pid']])) {

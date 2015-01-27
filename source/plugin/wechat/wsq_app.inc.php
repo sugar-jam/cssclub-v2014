@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wsq_app.inc.php 35123 2014-12-01 03:30:53Z nemohou $
+ *      $Id: wsq_app.inc.php 35159 2014-12-23 02:22:03Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {

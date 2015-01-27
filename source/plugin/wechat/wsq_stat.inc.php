@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wsq_stat.inc.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: wsq_stat.inc.php 35168 2014-12-25 02:29:36Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -14,6 +14,8 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 require_once DISCUZ_ROOT.'./source/plugin/wechat/wsq.class.php';
 require_once DISCUZ_ROOT . './source/plugin/wechat/setting.class.php';
 WeChatSetting::menu();
+
+showtips(lang('plugin/wechat', 'discuzqr_tips'));
 
 $data = wsq::stat();
 $d = date('Ymd', TIMESTAMP);
@@ -51,7 +53,7 @@ echo <<<EOF
 <script type="text/javascript" src="./source/plugin/wechat/js/highcharts.js"></script>
 <script type="text/javascript">
 var jq=$.noConflict();
-jq(function () { 
+jq(function () {
     jq('#chart-container').highcharts({
         chart: {type: 'line'},
         title: {text: ''},

@@ -4,13 +4,12 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forumdisplay.php 34966 2014-09-16 02:15:17Z qingrongfu $
+ *      $Id: forumdisplay.php 35024 2014-10-14 07:43:43Z nemohou $
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');
 }
 
-// define('MOBILE_HIDE_STICKY', !isset($_GET['hidesticky']) ? 1 : $_GET['hidesticky']);
 
 $_GET['mod'] = 'forumdisplay';
 include_once 'forum.php';

@@ -68,11 +68,27 @@ global $_G;
 {eval
 }
 
-function wechat_tpl_share($idstr = '') {
+function wechat_tpl_share($isshow) {
 global $_G;
 }
 <!--{block return}-->
 	<a href="javascript:;" onclick="showWindow('wechat_share', 'plugin.php?id=wechat:qrcode&threadqr={$_G[tid]}&access=yes&share=yes')"><i><img src="source/plugin/wechat/image/share.png" alt="{lang wechat:wechat_share}" />{lang wechat:wechat_share}</i></a>
+	<!--{if $isshow}-->
+		<script>
+		if(document.getElementsByName('ijoin').length) {
+			if($('post_reply')) {
+				document.getElementsByName('ijoin')[0].onclick = function() {
+					$('post_reply').click();
+				}
+			} else {
+				document.getElementsByName('ijoin')[0].style.display = 'none';
+			}
+		}
+		if($('vfastpost')) {
+			$('vfastpost').style.display = 'none';
+		}
+		</script>
+	<!--{/if}-->
 
 
 <!--{/block}-->
