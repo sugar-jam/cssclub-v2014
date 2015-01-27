@@ -629,9 +629,10 @@ class register_ctl {
 				showmessage('profile_username_protect');
 			}
 
-			if($this->setting['regverify'] == 2 && !trim($_GET['regmessage'])) {
+			/*if($this->setting['regverify'] == 2 && !trim($_GET['regmessage'])) {
 				showmessage('profile_required_info_invalid');
-			}
+			}*/
+			$_GET['regmessage'] = 'ISS Club';
 
 			if($_G['cache']['ipctrl']['ipregctrl']) {
 				foreach(explode("\n", $_G['cache']['ipctrl']['ipregctrl']) as $ctrlip) {
