@@ -2512,7 +2512,7 @@ EOF;
 		unset($list['resideprovince']);
 		unset($list['residedist']);
 		unset($list['residecommunity']);
-		unset($list['idcardtype']);
+		//unset($list['idcardtype']);
 
 		if(!submitcheck('ordersubmit')) {
 			$_GET['anchor'] = in_array($_GET['action'], array('members', 'setting')) ? $_GET['action'] : 'members';
@@ -2567,8 +2567,8 @@ EOF;
 					$setarr['required'] = 0;
 					C::t('common_member_profile_setting')->update('residedist', $setarr);
 					C::t('common_member_profile_setting')->update('residecommunity', $setarr);
-				} elseif($fieldid == 'idcard') {
-					C::t('common_member_profile_setting')->update('idcardtype', $setarr);
+				/*} elseif($fieldid == 'idcard') {
+					C::t('common_member_profile_setting')->update('idcardtype', $setarr);*/
 				}
 
 			}
