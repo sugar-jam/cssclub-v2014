@@ -43,27 +43,27 @@ function utf82unicode($utf8){
 	return -1;
 }
 
-function hanziorder(){
-	static $hanzi_order = array();
+function hanziStrokeOrder(){
+	static $stroke_order = array();
 
-	if(empty($hanzi_order)){
+	if(empty($stroke_order)){
 		$fp = fopen(dirname(__FILE__).'/hanziorder', 'r');
 
 		$i = 0;
 		while(!feof($fp)){
 			$ch = fread($fp, 3);
-			$hanzi_order[$ch] = $i;
+			$stroke_order[$ch] = $i;
 			$i++;
 		}
 
 		fclose($fp);
 	}
 
-	return $hanzi_order;
+	return $stroke_order;
 }
 
-function compareHanzi($str1, $str2){
-	$hanzi_order = hanziorder();
+function compareHanziByStroke($str1, $str2){
+	$stroke_order = hanziStrokeOrder();
 
 	$l1 = mb_strlen($str1, 'utf-8');
 	$l2 = mb_strlen($str2, 'utf-8');
@@ -76,10 +76,10 @@ function compareHanzi($str1, $str2){
 		$offset++;
 	}
 
-	return $offset >= $l2 || $hanzi_order[$ch2] < $hanzi_order[$ch1];
+	return $offset >= $l2 || $stroke_order[$ch2] < $stroke_order[$ch1];
 }
 
-function comparePinyin($str1, $str2){
+function compareHanziByPinyin($str1, $str2){
 	return iconv('utf-8', 'gbk', $str1) > iconv('utf-8', 'gbk', $str2);
 }
 

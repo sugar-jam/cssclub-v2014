@@ -21,7 +21,7 @@ include_once './tools/hanzi.func.php';
 
 foreach($data as $school => &$years){
 	foreach($years as $year => &$namelist){
-		usort($namelist, 'compareHanzi');
+		usort($namelist, 'compareHanziByStroke');
 
 		$i = 1;
 		$verifytable = DB::table('plugin_member_verify');
