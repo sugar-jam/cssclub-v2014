@@ -277,6 +277,7 @@ a:hover.userinfo, .userinfo.hover { background: none}
 #footer ul.followus li { display: inline-block;margin: 0 1.2em 0 .5em;padding-left: 45px;color: #FFFFFF;line-height: 40px;background: url({STYLEIMGDIR}/follow-icon.png) no-repeat 0 0}
 #footer ul.followus li.weixin { background-position: 0 -400px; }
 #footer ul.followus li.email { background-position: 0 -250px; }
+#footer .extralink { float:right; margin-right:10px; }
 
 .tip{width: auto;}
 
