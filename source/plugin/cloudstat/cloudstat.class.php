@@ -33,7 +33,7 @@ class plugin_cloudstat {
 		$dzjs = $this->_makedzjs();
 		$return = '';
 		if(!$_G['inajax']) {
-			$return = '&nbsp;&nbsp;<span id="tcss"></span><script type="text/javascript" src="http://tcss.qq.com/ping.js?v=1'.VERHASH.'" charset="utf-8"></script>';
+			$return = '&nbsp;&nbsp;<span id="tcss"></span><script type="text/javascript" src="http://tcss.qq.com/ping.js?v=1'.$_G['style']['verhash'].'" charset="utf-8"></script>';
 		}
 		$return .= '<script type="text/javascript" reload="1">pgvMain('.$dzjs.');</script>';
 		return $return;
