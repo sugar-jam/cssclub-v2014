@@ -78,9 +78,9 @@ class plugin_takashiro_autoverify_member extends plugin_takashiro_autoverify {
 		global $_G;
 
 		$user = array(
-			'realname' => $_POST['realname'],
-			'awardyear' => $_POST['awardyear'],
-			'awardschool' => $_POST['awardschool'],
+			'realname' => trim($_POST['realname']),
+			'awardyear' => intval($_POST['awardyear']),
+			'awardschool' => trim($_POST['awardschool']),
 		);
 
 		$tablename = DB::table('plugin_member_verify');
