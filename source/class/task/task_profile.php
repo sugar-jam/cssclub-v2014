@@ -44,7 +44,8 @@ class task_profile {
 			'birthprovince', 'birthcity', 'birthdist', 'birthcommunity',
 			'resideprovince', 'residecity', 'residedist', 'residecommunity',
 			'company', 'occupation', 'position',
-			'birthyear', 'birthmonth', 'zodiac', 'constellation'
+			'birthyear', 'birthmonth', 'zodiac', 'constellation',
+			'passport',
 		);
 
 		loadcache('profilesetting');
