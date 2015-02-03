@@ -71,11 +71,8 @@ if (submitcheck('passsubmit')) {
 			C::t('common_member_verify_info')->update($verify['flag'], array('flag' => '-1'));
 		}
 	}
-	if($single && $_GET['frame'] == 'no') {
-		echo "<script type=\"text/javascript\">var trObj = parent.$('mod_{$single}_row');trObj.parentNode.removeChild(trObj);</script>";
-	} else {
-		showmessage('members_verify_succeed', 'action=verify&operation=verify&do='.$vid.'&anchor='.$_GET['anchor'], 'succeed');
-	}
+
+	showmessage('审核结果成功提交啦~', "{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&id=takashiro_issapply:verifyinfo");
 }
 
 $anchor = &$_GET['anchor'];

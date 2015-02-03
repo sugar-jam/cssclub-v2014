@@ -1,5 +1,6 @@
 <!--{if $verifyusers}-->
 	<form method="post" autocomplete="off" name="moderate" id="moderate" action="{$cpscript}?mod=modcp&action=$_GET[action]&op=$op&id=takashiro_issapply:verifyinfo">
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
 		<input type="hidden" name="infloat" value="" />
 		<input type="hidden" name="modact" value="" />
 		<input type="hidden" name="dosubmit" value="yes" />
@@ -38,7 +39,7 @@
 			<!--{/loop}-->
 		</table>
 		<div class="um bw0 cl">
-			<button type="submit" name="passsubmit" class="pn"><strong>提交</strong></button>
+			<button type="submit" name="passsubmit" class="pn" value="true"><strong>提交</strong></button>
 		</div>
 	</form>
 <!--{else}-->
