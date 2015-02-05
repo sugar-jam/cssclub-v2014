@@ -528,8 +528,8 @@ if($maxposition) {
 		if($post['invisible'] != 0) {
 			$have_badpost = 1;
 		}
-		$cachepids[$post[position]] = $post['pid'];
-		$postarr[$post[position]] = $post;
+		$cachepids[$post['position']] = $post['pid'];
+		$postarr[$post['position']] = $post;
 		$lastposition = $post['position'];
 	}
 	$realpost = count($postarr);
