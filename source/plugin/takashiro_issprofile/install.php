@@ -16,6 +16,11 @@ runquery('CREATE TABLE IF NOT EXISTS `pre_plugin_member_verify` (
 	UNIQUE KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;');
 
+runquery('ALTER TABLE `pre_common_member_profile`
+	ADD `issbranch` VARCHAR( 255 ) NOT NULL,
+	ADD `awardschool` VARCHAR( 255 ) NOT NULL ,
+	ADD `awardyear` VARCHAR( 255 ) NOT NULL');
+
 $finish = TRUE;
 
 ?>

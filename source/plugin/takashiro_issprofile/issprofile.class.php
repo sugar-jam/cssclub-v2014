@@ -2,7 +2,7 @@
 
 if(!defined('IN_DISCUZ')) exit('Access Denied');
 
-class plugin_takashiro_autoverify {
+class plugin_takashiro_issprofile {
 	protected static $SchoolPrefix = array(
 		'浙江大学' => 'Z',
 		'北京大学' => 'B',
@@ -18,7 +18,7 @@ class plugin_takashiro_autoverify {
 
 }
 
-class plugin_takashiro_autoverify_home extends plugin_takashiro_autoverify {
+class plugin_takashiro_issprofile_home extends plugin_takashiro_issprofile {
 
 	function space_profile_baseinfo_top(){
 		global $_G;
@@ -58,9 +58,27 @@ class plugin_takashiro_autoverify_home extends plugin_takashiro_autoverify {
 		return '<ul class="pf_l cl"><li><em>团内编号</em>'.$hid.'</li></ul>';
 	}
 
+	static protected $HiddenProfile = array(
+		1 => array('awardschool', 'awardyear', 'issbranch'),
+		18 => array('awardschool', 'awardyear', 'issbranch'),
+		21 => array('awardschool', 'awardyear', 'issbranch'),
+	);
+
+	function spacecp_profile_groupspecified_output($output){
+		global $_G, $profilegroup;
+
+		if(!isset(self::$HiddenProfile[$_G['groupid']]))
+			return;
+
+		$hidden_profile = &self::$HiddenProfile[$_G['groupid']];
+		foreach($hidden_profile as $field){
+			unset($GLOBALS['settings'][$field]);
+		}
+	}
+
 }
 
-class plugin_takashiro_autoverify_member extends plugin_takashiro_autoverify {
+class plugin_takashiro_issprofile_member extends plugin_takashiro_issprofile {
 
 	function connect_verify_message($args){
 		if($args['param'][0] == 'register_manual_verify'){
