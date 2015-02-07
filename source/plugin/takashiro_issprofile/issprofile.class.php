@@ -24,6 +24,19 @@ class plugin_takashiro_issprofile {
 		$data['newsetuserprofile'] = C::t('common_member_profile')->fetch($member['uid']);
 	}
 
+	function _forcelogin(){
+		global $_G;
+
+		$forbidden_usergroups = array(6, 7, 8, 9, 20);
+		if(in_array($_G['groupid'], $forbidden_usergroups)){
+			if(in_array($_G['groupid'], array(6, 7, 8, 9))){
+				showmessage('先登录一下呀~', null, array(), array('showmsg' => true, 'login' => 1));
+			}else{
+				showmessage('抱歉，您没有权限访问该内容哦……');
+			}
+		}
+	}
+
 }
 
 class plugin_takashiro_issprofile_home extends plugin_takashiro_issprofile {
@@ -158,7 +171,7 @@ class plugin_takashiro_issprofile_member extends plugin_takashiro_issprofile {
 
 class plugin_takashiro_issprofile_forum extends plugin_takashiro_issprofile{
 
-	function forumdisplay_output($output){
+	function forumdisplay_realname_output($output){
 		global $_G;
 		$uids = array();
 		$usernames = array();
@@ -186,7 +199,11 @@ class plugin_takashiro_issprofile_forum extends plugin_takashiro_issprofile{
 		unset($thread);
 	}
 
-	function index_output($output){
+	function index_forcelogin(){
+		$this->_forcelogin();
+	}
+
+	function index_realname_output($output){
 		global $whosonline;
 		if(empty($whosonline))
 			return;
