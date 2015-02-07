@@ -186,6 +186,24 @@ class plugin_takashiro_issprofile_forum extends plugin_takashiro_issprofile{
 		unset($thread);
 	}
 
+	function index_output($output){
+		global $whosonline;
+		if(empty($whosonline))
+			return;
+
+		$uids = array();
+		foreach($whosonline as $member){
+			empty($member['uid']) || $uids[] = $member['uid'];
+		}
+
+		$profiles = C::t('common_member_profile')->fetch_all($uids);
+		foreach($whosonline as &$member){
+			if(!empty($profiles[$member['uid']]['realname'])){
+				$member['username'] = $profiles[$member['uid']]['realname'];
+			}
+		}
+	}
+
 }
 
 ?>
