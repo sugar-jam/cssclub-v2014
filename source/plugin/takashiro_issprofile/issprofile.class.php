@@ -156,4 +156,36 @@ class plugin_takashiro_issprofile_member extends plugin_takashiro_issprofile {
 
 }
 
+class plugin_takashiro_issprofile_forum extends plugin_takashiro_issprofile{
+
+	function forumdisplay_output($output){
+		global $_G;
+		$uids = array();
+		$usernames = array();
+		foreach($_G['forum_threadlist'] as $thread){
+			$uids[] = $thread['authorid'];
+			empty($thread['lastposter']) || $usernames[] = $thread['lastposter'];
+		}
+		$usernames = implode('\',\'', $usernames);
+
+		$username2realname = array();
+		$common_member = DB::table('common_member');
+		$common_member_profile = DB::table('common_member_profile');
+		$query = DB::query("SELECT m.username,p.realname FROM `$common_member` m LEFT JOIN `$common_member_profile` p ON p.uid=m.uid WHERE m.username IN ('$usernames')");
+		while($node = DB::fetch($query)){
+			empty($node['realname']) || $username2realname[$node['username']] = $node['realname'];
+		}
+
+		$profiles = C::t('common_member_profile')->fetch_all($uids);
+		foreach ($_G['forum_threadlist'] as &$thread) {
+			$thread['authorprofile'] = $profiles[$thread['authorid']];
+			if(!empty($thread['lastposter']) && array_key_exists($thread['lastposter'], $username2realname)){
+				$thread['lastposter'] = $username2realname[$thread['lastposter']];
+			}
+		}
+		unset($thread);
+	}
+
+}
+
 ?>
