@@ -16,6 +16,14 @@ class plugin_takashiro_issprofile {
 		'西南交通大学' => 'N',
 	);
 
+	function cacheuserstats(){
+		global $_G;
+		$data = &$_G['userstatdata'];
+		$member = C::t('common_member')->range(0, 1, 'DESC');
+		$member = current($member);
+		$data['newsetuserprofile'] = C::t('common_member_profile')->fetch($member['uid']);
+	}
+
 }
 
 class plugin_takashiro_issprofile_home extends plugin_takashiro_issprofile {
@@ -59,7 +67,6 @@ class plugin_takashiro_issprofile_home extends plugin_takashiro_issprofile {
 	}
 
 	static protected $HiddenProfile = array(
-		1 => array('awardschool', 'awardyear', 'issbranch'),
 		18 => array('awardschool', 'awardyear', 'issbranch'),
 		21 => array('awardschool', 'awardyear', 'issbranch'),
 	);
