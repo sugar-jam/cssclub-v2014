@@ -18,10 +18,15 @@ class plugin_takashiro_issprofile {
 
 	function cacheuserstats(){
 		global $_G;
-		$data = &$_G['userstatdata'];
 		$member = C::t('common_member')->range(0, 1, 'DESC');
 		$member = current($member);
-		$data['newsetuserprofile'] = C::t('common_member_profile')->fetch($member['uid']);
+		$value = C::t('common_member_verify_info')->fetch_by_uid_verifytype($member['uid'], 0);
+		if($value){
+			$_G['userstatdata']['newsetuserprofile'] = dunserialize($value['field']);
+			$_G['userstatdata']['newsetuserprofile']['uid'] = $member['uid'];
+		}else{
+			$_G['userstatdata']['newsetuserprofile'] = C::t('common_member_profile')->fetch($member['uid']);
+		}
 	}
 
 	function _forcelogin(){

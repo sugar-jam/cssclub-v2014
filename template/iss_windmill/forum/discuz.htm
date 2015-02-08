@@ -45,9 +45,9 @@
 				{lang index_posts}: <em>$posts</em>
 				<span class="pipe">|</span>
 				{lang index_members}: <em>$_G['cache']['userstats']['totalmembers']</em>
-				<!--{if !empty($_G['cache']['userstats']['newsetuserprofile'])}-->
+				<!--{if !empty($_G['cache']['userstats']['newsetuserprofile']['realname'])}-->
 					<span class="pipe">|</span>
-					欢迎来自$_G[cache][userstats][newsetuserprofile][awardschool]的<em><a href="home.php?mod=space&uid=$_G[cache][userstats][newsetuserprofile][uid]">$_G[cache][userstats][newsetuserprofile][realname]</a></em>来到$_G[setting][bbname]网站！
+					欢迎<!--{if !empty($_G[cache][userstats][newsetuserprofile][issbranch])}-->$_G[cache][userstats][newsetuserprofile][issbranch]<!--{else}-->$_G[cache][userstats][newsetuserprofile][awardschool]<!--{/if}-->的<em><a href="home.php?mod=space&uid=$_G[cache][userstats][newsetuserprofile][uid]">$_G[cache][userstats][newsetuserprofile][realname]</a></em>来到$_G[setting][bbname]网站！
 				<!--{elseif $_G['cache']['userstats']['newsetuser']}-->
 					<span class="pipe">|</span>
 					{lang welcome_new_members}: <em><a href="home.php?mod=space&username={echo rawurlencode($_G['cache']['userstats']['newsetuser'])}" target="_blank" class="xi2">$_G['cache']['userstats']['newsetuser']</a></em>
