@@ -1,89 +1,271 @@
 <!--{template common/header}-->
 
+<style type="text/css">
+@import url(./source/plugin/takashiro_issapply/template/common.css);
+@import url(./source/plugin/takashiro_issapply/datetimepicker/jquery.datetimepicker.css);
+</style>
+<script type="text/javascript" src="./source/plugin/takashiro_issapply/js/common.js"></script>
+<script type="text/javascript" src="./source/plugin/takashiro_issapply/js/jquery.editlist.js"></script>
+<script type="text/javascript" src="./source/plugin/takashiro_issapply/datetimepicker/jquery.datetimepicker.min.js"></script>
+<script type="text/javascript">
+var appliance = {'state' : $appliance['state']};
+(function($){
+	if(appliance['state'] != 0){
+		$(function(){
+			$('#ct input, #ct textarea, #ct select').attr('disabled', true);
+		});
+	}
+})(jQuery);
+</script>
+
+{eval $typenames = array('scholarship' => '奖学金', 'grant' => '助学金');}
+
 <div id="wp" class="wp win8mi_wp">
 	<div id="pt" class="bm cl">
 		<div class="z">
 			<a href="./" class="nvhm" title="首页">$_G[setting][bbname]</a> <em>›</em>
-			<a href="home.php?mod=spacecp">申请</a>
+			<a href="plugin.php?id=takashiro_issapply:main">申请</a> <em>›</em>
+			<a href="javascript:;">{$typenames[$type]}申请</a>
 		</div>
 	</div>
 
 	<div id="ct" class="ct2_a wp cl">
 		<div class="mn">
 			<div class="bm bw0">
-				<h1 class="mt">个人资料</h1>
-				<table class="tfm" id="profilelist" cellpadding="0" cellspacing="0">
-					<tbody>
-						<tr>
-							<th>姓名</th>
-							<td>{echo profile_show('realname', $space)}</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>性别</th>
-							<td>{echo profile_show('gender', $space)}</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>目前所在分部</th>
-							<td>{echo profile_show('issbranch', $space)}</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>团队内编号</th>
-							<td>{$_G['uid']}</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>获奖时间</th>
-							<td>{echo profile_show('awardyear', $space)}</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>获奖所在学校</th>
-							<td>{echo profile_show('awardschool', $space)}</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>目前所在学校（单位）</th>
-							<td>{echo profile_show('company', $space)}</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>本学年内个人情况</th>
-							<td></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>社区服务及公益情况</th>
-							<td></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>获奖、科研情况</th>
-							<td></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>担任职务</th>
-							<td></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>社团参与情况</th>
-							<td></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<th>&nbsp;</th>
-							<td colspan="2">
-								<input name="profilesubmit" value="true" type="hidden">
-								<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true" class="pn pnc"><strong>申请</strong></button>
-								<span id="submit_result" class="rq"></span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<form class="issapply" action="plugin.php?id=takashiro_issapply:main" method="post">
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<!--{if isset($applyid)}--><input type="hidden" name="applyid" value="$applyid" /><!--{/if}-->
+					<!--{if isset($qcode)}--><input type="hidden" name="qcode" value="$qcode" /><!--{/if}-->
+					<ul class="tb cl">
+						<li class="a"><a href="javascript:;">基本信息</a></li>
+						<li><a href="javascript:;">学业信息</a></li>
+						<li><a href="javascript:;">校园社会工作</a></li>
+						<li><a href="javascript:;">荣誉</a></li>
+						<li><a href="javascript:;">家庭情况</a></li>
+						<li><a href="javascript:;">申请理由</a></li>
+					</ul>
+					<div class="tabs">
+						<div>
+							<table class="tfm">
+								<tbody>
+									<tr>
+										<th>学校</th>
+										<td><input type="text" name="university" value="$a[university]" /></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>院系</th>
+										<td><input type="text" name="college" value="$a[college]" /></td>
+										<td>&nbsp;</td>
+										<th>专业</th>
+										<td><input type="text" name="major" value="$a[major]" /></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>姓名</th>
+										<td><input type="text" name="fullname" value="$a[fullname]" /></td>
+										<td>&nbsp;</td>
+										<th>学号</th>
+										<td><input type="text" name="studentid" value="$a[studentid]" /></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>入学时间</th>
+										<td><input type="text" name="uregtime" value="$a[uregtime]" class="datetime" /></td>
+										<td>（如200509）</td>
+										<th>民族</th>
+										<td><input type="text" name="nationality" value="$a[nationality]" /></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>性别</th>
+										<td>
+											<label><input type="radio" name="gender" value="男" {if $a['gender'] == '男'}checked="checked"{/if} />男</label>
+											<label><input type="radio" name="gender" value="女" {if $a['gender'] == '女'}checked="checked"{/if} />女</label>
+										</td>
+										<td>&nbsp;</td>
+										<th>出生年月</th>
+										<td><input type="text" name="birthday" value="$a[birthday]" class="datetime" /></td>
+										<td>（如1989-08）</td>
+									</tr>
+									<tr>
+										<th>籍贯</th>
+										<td><input type="text" name="birthorigin" value="$a[birthorigin]" /></td>
+										<td>&nbsp;</td>
+										<th>政治面貌</th>
+										<td>
+											<select name="politicstatus">
+												<option value="群众" {if $a['politicstatus'] == '群众'}selected="selected"{/if}>群众</option>
+												<option value="团员" {if $a['politicstatus'] == '团员'}selected="selected"{/if}>团员</option>
+												<option value="党员" {if $a['politicstatus'] == '党员'}selected="selected"{/if}>党员</option>
+											</select>
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>微信</th>
+										<td><input type="text" name="wechatid" value="$a[wechatid]" /></td>
+										<td>&nbsp;</td>
+										<th>手机号码</th>
+										<td><input type="text" name="mobile" value="$a[mobile]" /></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>QQ</th>
+										<td><input type="text" name="qq" value="$a[qq]" /></td>
+										<td>&nbsp;</td>
+										<th>邮箱</th>
+										<td><input type="text" name="email" value="$a[email]" /></td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div>
+							<table class="tfm">
+								<tbody>
+									<tr>
+										<th>学年均绩</th>
+										<td><input type="text" name="annualavg" value="$a[annualavg]" />（百分制）</td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>专业排名</th>
+										<td><input type="text" name="rank" value="$a[rank]" /> / <input type="text" name="rankbase" value="$a[rankbase]" />（名次/总人数）</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>学习经历</th>
+										<td>
+											<div class="editlist">
+												<table>
+													<thead>
+														<tr><td>开始时间（如200509）</td><td>结束时间（如200509）</td><td>学校</td><td>院系</td><td>专业</td><td>学位</td><td></td></tr>
+													</thead>
+													<tbody>
+														<!--{loop $a['education'] $e}-->
+														<tr>
+															<td><input type="text" name="education_starttime[]" value="$e[starttime]" class="datetime" /></td>
+															<td><input type="text" name="education_endtime[]" value="$e[endtime]"  class="datetime" /></td>
+															<td><input type="text" name="education_university[]" value="$e[university]" /></td>
+															<td><input type="text" name="education_college[]" value="$e[college]" /></td>
+															<td><input type="text" name="education_major[]" value="$e[major]" /></td>
+															<td><input type="text" name="education_degree[]" value="$e[degree]" /></td>
+															<td></td>
+														</tr>
+														<!--{/loop}-->
+														<tr>
+															<td><input type="text" name="education_starttime[]" class="datetime" /></td>
+															<td><input type="text" name="education_endtime[]" class="datetime" /></td>
+															<td><input type="text" name="education_university[]" /></td>
+															<td><input type="text" name="education_college[]" /></td>
+															<td><input type="text" name="education_major[]" /></td>
+															<td><input type="text" name="education_degree[]" /></td>
+															<td><button type="button" class="add">添加</button></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>项目经历、项目成果</th>
+										<td><textarea name="projectdetails">$a[projectdetails]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div>
+							<table class="tfm">
+								<tbody>
+									<tr>
+										<th>校园社会工作</th>
+										<td><textarea name="studentworkdetails">$a[studentworkdetails]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div>
+							<table class="tfm">
+								<tbody>
+									<tr>
+										<th>学业奖学金</th>
+										<td><textarea name="scholarship">$a[scholarship]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>竞赛</th>
+										<td><textarea name="competition">$a[competition]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>荣誉称号</th>
+										<td><textarea name="honor">$a[honor]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>其他</th>
+										<td><textarea name="otherhonor">$a[otherhonor]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div>
+							<table class="tfm">
+								<tbody>
+									<tr>
+										<th>家庭情况</th>
+										<td><textarea name="homedetails">$a[homedetails]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div>
+							<table class="tfm">
+								<tbody>
+									<tr>
+										<th>个人特长</th>
+										<td><textarea name="strongpoint">$a[strongpoint]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>人生规划</th>
+										<td><textarea name="careerplan">$a[careerplan]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>申请理由</th>
+										<td><textarea name="honor">$a[honor]</textarea></td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<!--{if $appliance['state'] == 0}-->
+					<button type="submit" name="applysubmit" value="true" class="pn pnc"><strong>申请</strong></button>
+					<!--{if !empty($applyid)}-->
+					您的申请未审核，可以继续修改。
+					<!--{/if}-->
+					<!--{elseif $appliance['state'] == 1}-->
+					审核中，您无法修改申请表。
+					<!--{elseif $appliance['state'] == 2}-->
+					恭喜！申请已通过！
+					<!--{else}-->
+					很遗憾，申请被拒绝了
+					<!--{/if}-->
+				</form>
 			</div>
 		</div>
 
@@ -91,11 +273,11 @@
 			<div class="tbn">
 				<h2 class="mt bbda">申请分类</h2>
 				<ul>
-					<li><a href="###">游学申请</a></li>
-					<li><a href="###">留学申请</a></li>
-					<li><a href="###">创业申请</a></li>
-					<li><a href="###">奖学金申请</a></li>
-					<li><a href="###">助学金申请</a></li>
+					<li><a href="javascript:alert('施工中，别着急……');">游学申请</a></li>
+					<li><a href="javascript:alert('施工中，别着急……');">留学申请</a></li>
+					<li><a href="javascript:alert('施工中，别着急……');">创业申请</a></li>
+					<li{if $type == 'scholarship'} class="a"{/if}><a href="plugin.php?id=takashiro_issapply:main&type=scholarship">奖学金申请</a></li>
+					<li{if $type == 'grant'} class="a"{/if}><a href="plugin.php?id=takashiro_issapply:main&type=grant">助学金申请</a></li>
 				</ul>
 			</div>
 		</div>

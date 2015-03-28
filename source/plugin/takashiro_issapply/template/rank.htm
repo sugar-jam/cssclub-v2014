@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>$_G['setting']['bbname'] - 网站活跃度得分</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+table{
+	border-collapse: collapse;
+	border:black 1px solid;
+	width: 100%;
+	text-align: center;
+}
+
+table thead{
+	font-weight: bold;
+}
+
+table td{
+	border:black 1px solid;
+}
+
+</style>
+<head>
+<body>
+<div class="formula">
+	<p>为拓展俱乐部各位成员的全球视野，ISS创享俱乐部在暑假期间进行全球游学活动。由于名额有限，为保证公平公正，ISS创享俱乐部网站服务团队根据团员在网站上的表现进行评分。请各分部负责人参考。</p>
+	评分规则：
+	<ol>
+		<li>活动天数为有发帖等访问网站行为的天数，减少可能的临时刷帖行为带来的影响。</li>
+		<li class="profile">
+			信息完善度包含：头像、邮箱验证
+			<!--{loop $_G['cache']['profilesetting'] $fieldid $fieldsetting}-->
+			<!--{if $fieldsetting['available'] && !in_array($fieldid, $unrequired_fields)}-->
+				、{$fieldsetting[title]}
+			<!--{/if}-->
+			<!--{/loop}-->
+			。
+		</li>
+		<li>每项系数极差标准化后，该值乘以权重作为单项得分。信息完善度占{$ratio[profilecpratio]}，发帖量占{echo $ratio['threadnum'] + $ratio['replynum']}（其中主题数占{$ratio[threadnum]}，回复数占{$ratio[replynum]}），活动天数占{$ratio[activedays]}。</li>
+		<li>基础得分为以上各项单项得分之和/基础得分最大值*4。即：<p>基础得分 = [ (信息完善度 - $min[profilecpratio]) / $range[profilecpratio] * $ratio[profilecpratio] + (主题数 - $min[threadnum]) / $range[threadnum] * $ratio[threadnum] + (回复数 - $min[replynum]) / $range[replynum] * $ratio[replynum] + (活动天数 - $min[activedays]) / $range[activedays] * $ratio[activedays] ] / $max[total] * 4</p></li>
+		<li>加分项主要是对网站运营贡献的奖励，包括新媒体运营情况（每篇文章*0.35，最高1分）、版主版块运营情况、各分部网站负责人相关版块建设、采纳建议等，根据运营实际情况给予0 - 1分奖励。</li>
+		<li>最后得分为基础得分和加分项之和（不超过4）。</li>
+		<li>不在本表中的成员，网站活跃得分为0分。</li>
+		<li>数据统计时间是：{echo dgmdate($calculatetimestamp, 'Y-m-d H:i:s')}。</li>
+		<li>如有异议，请联系网站服务团队运营 徐涛 (ID：TAO，手机：18858176282，邮箱op@issclub.org)。</li>
+	</ol>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<td>分部</td>
+			<td>获奖年份</td>
+			<td>姓名</td>
+			<td>信息完善度</td>
+			<td>主题数</td>
+			<td>回复数</td>
+			<td>活动天数</td>
+			<td>其他</td>
+			<td>得分</td>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{loop $members $m}-->
+		<tr>
+			<td>$m[issbranch]</td>
+			<td>$m[awardyear]</td>
+			<td>$m[realname]</td>
+			<td {if $m['profilecpratio'] == $max['profilecpratio']}style="color:blue;"{/if}>$m[profilecpratio]</td>
+			<td>$m[threadnum]</td>
+			<td>$m[replynum]</td>
+			<td>$m[activedays]</td>
+			<td>
+				<!--{if !empty($m['score']['article'])}-->
+				<div>通知动态发布+{$m[score][article]}</div>
+				<!--{/if}-->
+				<!--{if !empty($m['score']['moderator'])}-->
+				<div>版主+{echo sprintf('%.2f', $m['score']['moderator'])}</div>
+				<!--{/if}-->
+				<!--{if !empty($m['score']['advice'])}-->
+				<div>采纳建议+{echo sprintf('%.2f', $m['score']['advice'])}</div>
+				<!--{/if}-->
+			</td>
+			<td>{echo sprintf('%.2f', $m['score']['total'])}</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+</table>
+</body>
+</html>
