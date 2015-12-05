@@ -1,0 +1,170 @@
+a:hover{
+	color: #00BBF1;
+}
+
+ul.candidate{
+	font-size: 12pt;
+}
+
+ul.candidate li{
+	width: 232px;
+	padding: 5px 1%;
+	display: inline-block;
+}
+
+ul.candidate .realname{
+	font-size: 20pt;
+}
+
+ul.candidate .tile{
+	margin-top: 0.5em;
+}
+
+ul.candidate .tile .votefield{
+	height: 4.5em;;
+}
+
+.candidate .votefield{
+	position: relative;
+}
+
+.candidate .votefield .value{
+	position: absolute;
+	display: inline;
+	top: 0;
+	right: 0.5em;
+	background: url(heart_gray.png) no-repeat;
+	background-position: top right;
+	padding-right: 28px;
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+.redheart_icon{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: url(heart_red.png) no-repeat;
+	background-size: 100% 100%;
+	background-position: top center;
+	width: 24px;
+	height: 24px;
+}
+
+.candidate .votefield:hover .value{
+	opacity: 1;
+	background-image: url(heart_red.png);
+	color: #E04343;
+}
+
+ul.candidate .votefield .thumb{
+	font-size: 10pt;
+	height: 3em;
+	overflow: hidden;
+	position: relative;
+}
+
+ul.candidate li .avatar{
+	overflow: hidden;
+	width: 230px;
+	height: 150px;
+	text-align: center;
+	background: #ccc;
+}
+
+ul.candidate li .avatar img{
+	width: 100%;
+	position: relative;
+}
+
+ul.candidate li .button{
+	text-align: right;
+	margin: 0 5px 15px 0;
+}
+
+ul.candidate li .more{
+	color: #00BBF1;
+	padding: 4px 2px;
+	font-style: italic;
+	font-size: 10pt;
+}
+
+ul.candidate li .more:hover{
+	text-decoration: underline;
+}
+
+ul.candidate .tile{
+	height: 4.5em;
+	overflow: hidden;
+}
+
+div.candidate .realname{
+	font-size: 26pt;
+	font-family: 黑体;
+	text-align: center;
+}
+
+div.candidate p{
+	text-indent: 2em;
+}
+
+div.candidate .votefield{
+	margin-top: 2em;
+	font-size: 12pt;
+}
+
+div.candidate .votefield h4{
+	font-weight: bold;
+	color: #333;
+	margin-left: 50px;
+}
+
+div.candidate .votefield .value{
+	right: auto;
+	left: 0;
+}
+
+div.candidate .votefield .pic{
+	text-align: center;
+}
+
+div.candidate .votefield img{
+	width: 400px;
+	margin: 15px;
+}
+
+form.link_autosubmit a{
+	cursor: pointer;
+}
+
+.tbn{
+	margin-bottom: 15px;
+}
+
+div.candidate .button{
+	text-align: center;
+	margin-top: 10px;
+}
+
+div.candidate button.vote{
+	background: #00BBF1;
+	width: 7em;
+	height: 2.5em;
+	font-size: 12pt;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	border: 0 solid;
+}
+
+div.candidate p a{
+	text-decoration: underline;
+}
+
+.voterlist{
+	margin-top: 5px;
+}
+
+.voterlist ul li p{
+	text-indent: 0;
+}

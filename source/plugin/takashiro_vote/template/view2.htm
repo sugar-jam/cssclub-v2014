@@ -1,0 +1,96 @@
+<!--{template common/header}-->
+
+<style type="text/css">
+@import url(./source/plugin/takashiro_vote/template/common.css);
+</style>
+<script type="text/javascript" src="./source/plugin/takashiro_vote/template/common.js"></script>
+
+<div id="wp" class="wp win8mi_wp">
+	<div id="pt" class="bm cl">
+		<div class="z">
+			<a href="./" class="nvhm" title="首页">$_G[setting][bbname]</a> <em>›</em>
+			<a href="$root_url">欧洲游学总结活动</a> <em>›</em>
+			<a href="$root_url&branchid=$branchid&orderby=$contenttype">网络投票</a> <em>›</em>
+			<a>$candidate[realname]</a>
+		</div>
+	</div>
+
+	<div class="candidate" data-cid="$candidate[id]">
+		<div class="realname">欧洲游学活动总结 - $candidate[realname]</div>
+
+		<!--{if empty($_GET['content']) || $_GET['content'] === 'selfintro'}-->
+		<div class="votefield">
+			<h4>自我介绍：</h4>
+			<span class="value" data-field="selfintro">$candidate[selfintrovotenum]</span>
+			<div class="pic">
+				<a href="source/plugin/takashiro_vote/data/$candidate[id]/selfintro.jpg" title="查看原图">
+					<img src="source/plugin/takashiro_vote/data/$candidate[id]/selfintro.jpg" onerror="this.style='display:none';" />
+				</a>
+			</div>
+			<div class="thumb">$candidate[selfintro]</div>
+			<div class="button">
+				<button type="button" class="vote">投TA一票！</button>
+			</div>
+		</div>
+		<div class="voterlist module cl ml mls">
+			<ul>
+				<!--{loop $votelog['selfintro'] $l}-->
+				<li title="{$l[realname]}在{echo dgmdate($l['dateline'])}投了一票">
+					<a href="home.php?mod=space&uid={$l[voterid]}&do=profile" target="_blank">{echo avatar($l['voterid'])}</a>
+					<p>{$l[realname]}</p>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+		<!--{/if}-->
+
+		<!--{if empty($contenttype) || $contenttype === 'souvenir'}-->
+		<div class="votefield">
+			<h4>纪念品<!--{if $candidate['souvenirtitle']}-->——$candidate[souvenirtitle]<!--{/if}-->：</h4>
+			<span class="value" data-field="souvenir">$candidate[souvenirvotenum]</span>
+			<div class="pic">
+				<a href="source/plugin/takashiro_vote/data/$candidate[id]/souvenir.jpg" title="查看原图">
+					<img src="source/plugin/takashiro_vote/data/$candidate[id]/souvenir.jpg" onerror="this.style='display:none';" />
+				</a>
+			</div>
+			<div class="votefieldthumb">$candidate[souvenir]</div>
+			<div class="button">
+				<button type="button" class="vote">投TA一票！</button>
+			</div>
+		</div>
+		<div class="voterlist module cl ml mls">
+			<ul>
+				<!--{loop $votelog['souvenir'] $l}-->
+				<li title="{$l[realname]}在{echo dgmdate($l['dateline'])}投了一票">
+					<a href="home.php?mod=space&uid={$l[voterid]}&do=profile" target="_blank">{echo avatar($l['voterid'])}</a>
+					<p>{$l[realname]}</p>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+		<!--{/if}-->
+
+		<!--{if empty($_GET['content']) || $_GET['content'] === 'story'}-->
+		<div class="votefield">
+			<h4>励志故事<!--{if $candidate['storytitle']}-->——$candidate[storytitle]<!--{/if}-->：</h4>
+			<span class="value" data-field="story">$candidate[storyvotenum]</span>
+			<div class="votefieldthumb">$candidate[story]</div>
+			<div class="button">
+				<button type="button" class="vote">投TA一票！</button>
+			</div>
+		</div>
+		<div class="voterlist module cl ml mls">
+			<ul>
+				<!--{loop $votelog['story'] $l}-->
+				<li title="{$l[realname]}在{echo dgmdate($l['dateline'])}投了一票">
+					<a href="home.php?mod=space&uid={$l[voterid]}&do=profile" target="_blank">{echo avatar($l['voterid'])}</a>
+					<p>{$l[realname]}</p>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+		<!--{/if}-->
+	</div>
+</div>
+
+<!--{template common/footer}-->
