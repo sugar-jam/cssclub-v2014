@@ -39,6 +39,15 @@ Powered by Takashiro Kazuichi
 .ct2 .mn{border-right: 1px dashed #E8E8E8;}
 /** end **/
 
+/** portal::view **/
+.qixin_article h1{font-size: 24pt; font-weight: bold;}
+.qixin_article h2{font-size: 20pt; font-weight: bold; text-align:right;}
+.qixin_article h3{font-size: 14pt; font-weight: bold;}
+.qixin_article p{text-indent: 2em;}
+.qixin_article .authors{text-align: right;}
+.qixin_article img{display: block; margin: 10px auto;}
+/** end **/
+
 /** forum::index **/
 .bmw .bm_h{background: #F3F3F3; border: 0 solid; font-size: 11pt; font-family:'宋体';}
 .bmw .bm_h a{color: black;}
