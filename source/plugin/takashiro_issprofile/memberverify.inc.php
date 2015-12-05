@@ -199,8 +199,10 @@ if($validatenum) {
 			"<li>".($member['groupid'] == 8 ? "<input id=\"mod_uid_{$member[uid]}_3\" class=\"radio\" type=\"radio\" name=\"modtype[$member[uid]]\" value=\"delete\" onclick=\"set_bg('delete', $member[uid]);\"><label for=\"mod_uid_{$member[uid]}_3\">$lang[delete]</label>" : "<input disabled class=\"radio\" type=\"radio\" />$lang[delete]")."</li><li><input id=\"mod_uid_{$member[uid]}_4\" class=\"radio\" type=\"radio\" name=\"modtype[$member[uid]]\" value=\"ignore\" onclick=\"set_bg('ignore', $member[uid]);\"><label for=\"mod_uid_{$member[uid]}_4\">$lang[ignore]</label></li></ul></td><td><b><a href=\"home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a></b>\n".$_G['cache']['usergroups'][$member['groupid']]['grouptitle'].
 			"<br />$lang[members_edit_regdate]: $member[regdate]<br />$lang[members_edit_regip]: $member[regip] ".convertip($member['regip'])."<br />$lang[members_edit_lastip]: $member[lastip] ".convertip($member['lastip'])."<br />Email: $member[email]$str</td>\n";
 
+		$members.= '<td>';
 		foreach($verifyinfolist as $verifyinfo)
-			$members.= "<td>姓名：{$verifyinfo['realname']}<br />学校：{$verifyinfo['awardschool']}<br />获奖年份：{$verifyinfo['awardyear']}<br />UID：{$verifyinfo['uid']}<input type=\"radio\" name=\"verifyoption[{$member['uid']}]\" value=\"{$verifyinfo['id']}\" /></td>";
+			$members.= "姓名：{$verifyinfo['realname']}<br />学校：{$verifyinfo['awardschool']}<br />获奖年份：{$verifyinfo['awardyear']}<br />UID：{$verifyinfo['uid']}<input type=\"radio\" name=\"verifyoption[{$member['uid']}]\" value=\"{$verifyinfo['id']}\" />";
+		$members.= '</td>';
 
 		$members.= "<td align=\"center\"><textarea rows=\"4\" name=\"userremark[$member[uid]]\" style=\"width: 95%; word-break: break-all\">$member[message]</textarea></td>\n".
 			"<td>$lang[moderate_members_submit_times]: $member[submittimes]<br />$lang[moderate_members_submit_time]: $member[submitdate]<br />$lang[moderate_members_admin]: $member[admin]<br />\n".

@@ -87,6 +87,7 @@ class plugin_takashiro_issprofile_home extends plugin_takashiro_issprofile {
 	static protected $HiddenProfile = array(
 		18 => array('awardschool', 'awardyear', 'issbranch'),
 		21 => array('awardschool', 'awardyear', 'issbranch'),
+		22 => array('awardschool', 'awardyear'),
 	);
 
 	function spacecp_profile_groupspecified_output($output){
