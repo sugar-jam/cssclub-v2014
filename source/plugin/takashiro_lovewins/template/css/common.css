@@ -1,0 +1,72 @@
+ul.nav li a span{
+	display: none;
+}
+
+.navbar-brand img{
+	height: 100%;
+	display: inline-block;
+}
+
+.userlist .col{
+	margin: 10px 0;
+	height: 212px;
+}
+
+.userlist .user{
+	position: relative;
+}
+
+.userlist .user .avatar{
+	width: 180px;
+	height: 180px;
+	line-height: 180px;
+	overflow: hidden;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.userlist .user .avatar img{
+	display: inline-block;
+	width: 180px;
+}
+
+.userlist .user .realname{
+	position: absolute;
+	left: -5px;
+	bottom: 10px;
+	background: rgba(0, 0, 0, 0.5);
+	width: 200px;
+	padding-left: 10px;
+	height: 30px;
+	font-size: 20px;
+	line-height: 30px;
+	color: white;
+	text-align: left;
+
+}
+
+.userlist .user .realname .issbranch{
+	font-size: 10pt;
+	line-height: 10pt;
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+}
+
+.userlist ul.operation{
+	padding: 0;
+	text-align: right;
+	position: absolute;
+	left: 7.5em;
+	bottom: 0;
+}
+
+.userlist ul.operation li{
+	list-style: none;
+	display: inline-block;
+	margin: 0 3px;
+}
+
+.userlist ul.operation .glyphicon{
+	margin-right: 0.2em;
+}
