@@ -43,14 +43,14 @@
 
 <div class="content container-fluid userlist">
 	<!--{loop $home_members $m}-->
-	<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 col">
-		<div class="user" data-uid="$m[uid]">
+	<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 col" data-uid="$m[uid]">
+		<div class="user">
 			<div class="avatar"><a href="home.php?mod=space&uid=$m[uid]" target="_blank">{echo avatar($m['uid'], 'big')}</a></div>
 			<div class="realname">$m[realname]<span class="issbranch">$m[issbranch]</span></div>
 		</div>
 		<div class="briefintro">$m[age]岁 $m[constellation]</div>
 		<ul class="operation">
-			<li><a href="###"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>表白</a></li>
+			<li><a class="love_button" href="###"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>表白</a></li>
 			<li><a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_{$m[uid]}&touid={$m[uid]}&pmid=0&daterange=2" target="_blank" title="发送消息"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>勾搭</a></li>
 		</ul>
 	</div>
@@ -83,6 +83,7 @@
 
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="source/plugin/takashiro_lovewins/template/js/common.js"></script>
 
 </body>
 </html>
