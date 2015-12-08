@@ -24,11 +24,11 @@ if($coupleid <= 0){
 $today_offset = dmktime(dgmdate(TIMESTAMP, 'Y-m-d'));
 
 $log_table = DB::table('takashiro_lovewins_couplelog');
-$log = DB::fetch_first("SELECT * FROM $log_table WHERE coupleid=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
+$log = DB::fetch_first("SELECT * FROM $log_table WHERE id=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
 
 if(empty($log)){
 	$couple_table = DB::table('takashiro_lovewins_couple');
-	DB::query("UPDATE $couple_table SET coinnum=coinnum+1 WHERE coupleid=$coupleid");
+	DB::query("UPDATE $couple_table SET coinnum=coinnum+1 WHERE id=$coupleid");
 	if(DB::affected_rows() > 0){
 		$log = array(
 			'coupleid' => $coupleid,

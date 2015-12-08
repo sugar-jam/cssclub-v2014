@@ -66,4 +66,75 @@
 			}
 		}, 'json');
 	});
+
+	var couple_item = $('#couple_candidate_box').children().eq(0).clone();
+	$('#search_couple_form').on('submit', function(e){
+		e.preventDefault();
+
+		var users = [];
+		function add_couple(){
+			if(users.length < 2)
+				return;
+
+			if(users[0].length == 1 && users[1].length == 1){
+				$.post(root_url + '&action=votecouple', {'uid1' : users[0][0].uid, 'uid2' : users[1][0].uid}, function(response){
+					var response = parseInt(response, 10);
+					if(response == 1){
+						alert('成功支持这对CP！');
+					}else{
+						alert('您已经支持过他们啦！');
+					}
+				}, 'text');
+			}
+
+			$('#couple_candidate_box').html('');
+			for(var i = 0; i < users[0].length; i++){
+				for(var j = 0; j < users[1].length; j++){
+					var item = couple_item.clone();
+					var user1 = users[0][i];
+					var user2 = users[1][j];
+
+					item.data('uid1', user1.uid1);
+					item.data('uid2', user2.uid2);
+
+					var avatars = item.find('.avatar');
+					var avatar1_link = avatars.eq(0).children();
+					avatar1_link.html(user1.avatar);
+					avatar1_link.attr('href', 'home.php?mod=space&uid=' + user1.uid);
+					var avatar2_link = avatars.eq(1).children();
+					avatar2_link.attr('href', 'home.php?mod=space&uid=' + user2.uid);
+					avatar2_link.html(user2.avatar);
+
+					var branch = item.find('.issbranch');
+					branch.eq(0).html(user1.issbranch);
+					branch.eq(1).html(user2.issbranch);
+
+					var realname = item.find('.realname');
+					realname.eq(0).html(user1.realname);
+					realname.eq(1).html(user2.realname);
+
+					$('#couple_candidate_box').append(item);
+				}
+			}
+		}
+
+		var inputs = [$('#couple1'), $('#couple2')];
+		for(var i = 0; i < 2; i++){
+			var keyword = inputs[i].val();
+			if(keyword == '')
+				return;
+			inputs[i].val('');
+
+			var index = i;
+			$.post(root_url + '&action=search', {'keyword' : keyword}, function(data){
+				if(data.length > 0){
+					users.push(data);
+					add_couple();
+				}else{
+					alert('单身汪星球查无此人，真的有这个单身汪嘛？');
+				}
+			}, 'json');
+		}
+	});
+
 })(jQuery);

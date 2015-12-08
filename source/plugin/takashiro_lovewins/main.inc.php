@@ -60,5 +60,24 @@ if($couples){
 	unset($couple);
 }
 
+for($i = count($couples); $i < 6; $i++){
+	$couple = array(
+		'uid1' => $home_male_members[$i]['uid'],
+		'uid2' => $home_female_members[$i]['uid'],
+	);
+
+	foreach($couples as $c){
+		if(($c['uid1'] == $couple['uid1'] && $c['uid2'] == $couple['uid2']) || ($c['uid1'] == $couple['uid2'] && $c['uid2'] == $couple['uid1']))
+			continue 2;
+	}
+
+	$couple['user1'] = $home_male_members[$i];
+	$couple['user2'] = $home_female_members[$i];
+	$couple['coinnum'] = 0;
+	$couple['success'] = 0;
+
+	$couples[] = $couple;
+}
+
 $navtitle.= '单身交友';
 include template('takashiro_lovewins:main');

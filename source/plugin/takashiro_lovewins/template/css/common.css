@@ -46,24 +46,7 @@ ul.nav li a span{
 	display: inline-block;
 }
 
-.userlist .col{
-	margin: 10px 0;
-	height: 212px;
-	min-width: 230px;
-}
-
-@media screen and (max-width: 500px){
-	.userlist{
-		width: 230px;
-		margin: auto;
-	}
-}
-
-.userlist .user{
-	position: relative;
-}
-
-.userlist .user .avatar{
+.avatar{
 	width: 180px;
 	height: 180px;
 	line-height: 180px;
@@ -72,9 +55,18 @@ ul.nav li a span{
 	text-align: center;
 }
 
-.userlist .user .avatar img{
+.avatar img{
 	display: inline-block;
 	width: 180px;
+}
+
+.userlist .col{
+	margin: 10px 0;
+	height: 212px;
+}
+
+.userlist .user{
+	position: relative;
 }
 
 .userlist .user .namecard{
@@ -111,9 +103,73 @@ ul.nav li a span{
 .userlist ul.operation li{
 	list-style: none;
 	display: inline-block;
-	margin: 0 3px;
+	margin: 0 2px;
 }
 
 .userlist ul.operation .glyphicon{
 	margin-right: 0.2em;
+}
+
+.couplelist .couple{
+	width: 400px;
+	position: relative;
+	margin: 15px auto;
+	text-align: center;
+}
+
+.couplelist .couple .avatar{
+	display: inline-block;
+}
+
+.couplelist .couple .namecard{
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	bottom: 0.5em;
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-size: 14pt;
+	height: 32px;
+	line-height: 32px;
+}
+
+.couplelist .couple .namecard .issbranch{
+	font-size: 10pt;
+	position: absolute;
+	bottom: 3px;
+	display: block;
+	line-height: 1em;
+}
+
+.couplelist .couple .namecard .issbranch.user1{
+	left: 3px;
+}
+
+.couplelist .couple .namecard .issbranch.user2{
+	right: 3px;
+}
+
+
+@media screen and (max-width: 500px){
+	.avatar{
+		width: 120px;
+	}
+
+	.avatar img{
+		width: 120px;
+	}
+
+	.userlist .user .namecard{
+		width: 135px;
+	}
+
+	.userlist ul.operation{
+		position: static;
+	}
+
+	.couplelist .couple{
+		width: 280px;
+		height: 165px;
+		margin: 5px auto;
+	}
 }
