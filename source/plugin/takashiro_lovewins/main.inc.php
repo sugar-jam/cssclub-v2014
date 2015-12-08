@@ -26,7 +26,7 @@ $home_member_num = 6;
 $member_table = DB::table('common_member');
 $member_profile_table = DB::table('common_member_profile');
 
-$condition = "AND m.avatarstatus=1 AND p.affectivestatus='单身' AND p.realname!='' AND p.awardyear!='' AND p.issbranch!='' ORDER BY RAND() LIMIT $home_member_num";
+$condition = "AND m.avatarstatus=1 AND (p.affectivestatus='' OR p.affectivestatus='单身') AND p.realname!='' AND p.awardyear!='' AND p.issbranch!='' ORDER BY RAND() LIMIT $home_member_num";
 $home_male_members = DB::fetch_all("SELECT m.*, p.*
 	FROM $member_table m
 		LEFT JOIN $member_profile_table p ON p.uid=m.uid

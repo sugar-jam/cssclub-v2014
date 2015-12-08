@@ -1,3 +1,42 @@
+form{
+	text-align: center;
+}
+
+input[type="text"]{
+	border: #337AB7 1px solid;
+}
+
+input[type="text"]:focus{
+	border-color: #6BA6D6;
+	box-shadow: #6BA6D6 0 0 5px;
+}
+
+button, a.button{
+	background: #4E94CD;
+	color: white;
+	border: 0 solid;
+	margin: 5px;
+}
+
+button:hover, a.button:hover{
+	background: #337ab7;
+}
+
+input.big, button.big{
+	font-size: 26pt;
+	line-height: 70px;
+	padding: 0 0.5em;
+}
+
+@media screen and (max-width: 768px){
+	input.big, button.big{
+		width: 100%;
+		margin: 5px 0;
+		font-size: 20pt;
+		line-height: 50px;
+	}
+}
+
 ul.nav li a span{
 	display: none;
 }
@@ -10,6 +49,14 @@ ul.nav li a span{
 .userlist .col{
 	margin: 10px 0;
 	height: 212px;
+	min-width: 230px;
+}
+
+@media screen and (max-width: 500px){
+	.userlist{
+		width: 230px;
+		margin: auto;
+	}
 }
 
 .userlist .user{
@@ -30,7 +77,7 @@ ul.nav li a span{
 	width: 180px;
 }
 
-.userlist .user .realname{
+.userlist .user .namecard{
 	position: absolute;
 	left: -5px;
 	bottom: 10px;
@@ -45,7 +92,7 @@ ul.nav li a span{
 
 }
 
-.userlist .user .realname .issbranch{
+.userlist .user .namecard .issbranch{
 	font-size: 10pt;
 	line-height: 10pt;
 	position: absolute;
