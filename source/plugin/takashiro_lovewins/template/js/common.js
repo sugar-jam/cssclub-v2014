@@ -2,7 +2,7 @@
 	var root_url = 'plugin.php?id=takashiro_lovewins:main';
 
 	$('.userlist').on('click', '.col > ul.operation > li > .love_button', function(e){
-		var button = $(e.target);
+		var button = $(this);
 		var li = button.parent();
 		var operation_ul = li.parent();
 		var col = operation_ul.parent();
@@ -13,7 +13,7 @@
 			return;
 		}
 
-		$.post(root_url + '&action=love', {toid : uid}, function(response){
+		$.post(root_url + '&action=love', {'toid' : uid}, function(response){
 			var response = parseInt(response, 10);
 			if(response === 2){
 				alert('TA也喜欢你！快勾搭一下吧！');
@@ -34,9 +34,12 @@
 
 		var input = $(this).find('input[name="search_user_keyword"]');
 		var keyword = input.val();
+		if(keyword == '')
+			return;
+
 		input.val('');
 
-		$.post(root_url + '&action=search', {keyword : keyword}, function(users){
+		$.post(root_url + '&action=search', {'keyword' : keyword}, function(users){
 			var listbox = $('#userlist');
 
 			if(users.length > 0){
