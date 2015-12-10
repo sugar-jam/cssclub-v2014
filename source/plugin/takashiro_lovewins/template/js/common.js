@@ -119,6 +119,12 @@
 		}
 
 		var inputs = [$('#couple1'), $('#couple2')];
+
+		if(inputs[0].val() == inputs[1].val()){
+			if(!confirm('你确定要' + inputs[0].val() + '自攻自受吗？'))
+				return;
+		}
+
 		for(var i = 0; i < 2; i++){
 			var keyword = inputs[i].val();
 			if(keyword == '')
