@@ -1,0 +1,51 @@
+<style type="text/css">
+table{
+	border-collapse: collapse;
+	margin: 1em;
+}
+table td{
+	border: 1px solid;
+	text-align: center;
+	padding: 0.25em;
+}
+</style>
+
+<table>
+	<thead>
+		<tr>
+			<td>学校</td>
+			<td>总人数</td>
+			<td>未注册人数</td>
+			<td>未注册比例</td>
+		</tr>
+	</thead>
+	<tbody>
+	<!--{loop $branches $b}-->
+		<tr>
+			<td>$b[awardschool]</td>
+			<td>$b[total]</td>
+			<td>$b[unregistered]</td>
+			<td>{echo sprintf('%.2f', $b['unregistered'] / $b['total'] * 100)}%</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<td>获奖所在学校</td>
+			<td>获奖年份</td>
+			<td>姓名</td>
+		</tr>
+	</thead>
+	<tbody>
+	<!--{loop $unregistered_members $m}-->
+		<tr>
+			<td>$m[awardschool]</td>
+			<td>$m[awardyear]</td>
+			<td>$m[realname]</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
