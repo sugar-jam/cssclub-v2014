@@ -19,25 +19,31 @@ if($action == 'vote' && $_G['uid'] > 0){
 	if($cid <= 0)
 		exit;
 
-	$votedfields = array('story', 'selfintro', 'souvenir');
-	$votedfield = in_array($_GET['votedfield'], $votedfields) ? $_GET['votedfield'] : '';
-	if(!$votedfield)
-		exit;
-
 	$voterid = $_G['uid'];
 	if(!$voterid)
 		exit;
 
 	$dateline = TIMESTAMP;
-	$deadline = dmktime('2015-9-6') + 22 * 3600 + 45 * 60;
+	$deadline = dmktime('2015-12-25');
 	if($dateline >= $deadline)
 		exit('-1');
 
+	$today_begin = dmktime(dgmdate(TIMESTAMP, 'Y-m-d'));
+	$today_end = $today_begin + 24 * 3600;
+
 	$table = DB::table('plugin_vote_log');
-	DB::query("INSERT IGNORE INTO $table (`cid`,`voterid`,`votedfield`,`dateline`) VALUES ($cid, $voterid, '$votedfield', $dateline)");
+	$logs = DB::fetch_all("SELECT * FROM $table WHERE voterid=$voterid AND dateline>=$today_begin AND dateline<$today_end");
+	foreach($logs as $log){
+		if($log['cid'] == $cid)
+			exit('-2');
+	}
+	if(count($logs) >= 10)
+		exit('-3');
+
+	DB::query("INSERT INTO $table (`cid`,`voterid`,`dateline`) VALUES ($cid, $voterid, $dateline)");
 	if(DB::affected_rows() > 0){
 		$table = DB::table('plugin_vote_candidate');
-		DB::query("UPDATE $table SET `{$votedfield}votenum`=`{$votedfield}votenum`+1 WHERE `id`=$cid");
+		DB::query("UPDATE $table SET `selfintrovotenum`=`selfintrovotenum`+1 WHERE `id`=$cid");
 		echo 1;
 	}else{
 		echo 0;
@@ -46,7 +52,7 @@ if($action == 'vote' && $_G['uid'] > 0){
 }
 
 $root_url = 'plugin.php?id=takashiro_vote:main';
-$navtitle.= '3000 EURO GO GO GO!';
+$navtitle.= '2015十佳青年风采展示';
 
 if(empty($_G['cache']['profilesetting'])){
 	loadcache('profilesetting');

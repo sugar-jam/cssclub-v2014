@@ -37,8 +37,12 @@
 				}else{
 					if(result == -1){
 						showError('已经过了投票时间/(ㄒoㄒ)/~~');
+					}else if(result == -2){
+						showError('您今天已经投过票了，明天再来吧！');
+					}else if(result == -3){
+						showError('每天只能投10票哦，明天再来吧！');
 					}else{
-						showError('您已经投过票啦~');
+						showError('好像是网络君感觉不太好，让他瘫痪一会儿……');
 					}
 				}
 			}, 'text');
@@ -53,9 +57,7 @@
 		$('ul.candidate .avatar').each(function(){
 			var img = $(this).find('img');
 			var top = img.data('css-top');
-			if(!top){
-				img.css('top', ($(this).height() - img.height()) / 2);
-			}else{
+			if(top){
 				img.css('top', top);
 			}
 		});

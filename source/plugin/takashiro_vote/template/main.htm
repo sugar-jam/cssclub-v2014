@@ -9,7 +9,7 @@
 	<div id="pt" class="bm cl">
 		<div class="z">
 			<a href="./" class="nvhm" title="首页">$_G[setting][bbname]</a> <em>›</em>
-			<a href="$root_url">欧洲游学总结活动</a> <em>›</em>
+			<a href="$root_url">2015年十佳青年风采展示</a> <em>›</em>
 			<a>网络投票</a>
 		</div>
 	</div>
@@ -20,9 +20,9 @@
 				<ul class="candidate">
 				<!--{loop $candidates $c}-->
 					<li>
-						<a href="$root_url&candidateid=$c[id]&content=$orderby"><div class="realname">$c[realname]</div></a>
+						<a href="thread-$c[tid]-1-1.html" target="_blank"><div class="realname">$c[realname]</div></a>
 						<div class="avatar">
-							<a href="$root_url&candidateid=$c[id]&content=$orderby"><img src="source/plugin/takashiro_vote/data/$c[id]/{if empty($orderby) || $orderby == 'story'}selfintro{else}$orderby{/if}.jpg" onerror="this.style='display:none';" {if $orderby != 'souvenir'}data-css-top="{$c[avatartop]}"{/if} /></a>
+							<a href="thread-$c[tid]-1-1.html" target="_blank"><img src="source/plugin/takashiro_vote/data/{echo rawurlencode($c['issbranch'])}/{echo rawurlencode($c['realname'])}.jpg" onerror="this.style='display:none';" {if $orderby != 'souvenir'}data-css-top="{$c[avatartop]}"{/if} /></a>
 						</div>
 						<div class="tile" data-cid="$c[id]">
 						<!--{if empty($orderby) || $orderby == 'selfintro'}-->
@@ -32,23 +32,9 @@
 								<div class="thumb">$c[selfintro] ......</div>
 							</div>
 						<!--{/if}-->
-						<!--{if empty($orderby) || $orderby == 'souvenir'}-->
-							<div class="votefield">
-								<h4>纪念品：</h4>
-								<span class="value" data-field="souvenir">$c[souvenirvotenum]</span>
-								<div class="thumb">$c[souvenir] ......</div>
-							</div>
-						<!--{/if}-->
-						<!--{if empty($orderby) || $orderby == 'story'}-->
-							<div class="votefield">
-								<h4>励志故事：</h4>
-								<span class="value" data-field="story">$c[storyvotenum]</span>
-								<div class="thumb">$c[story] ......</div>
-							</div>
-						<!--{/if}-->
 						</div>
 						<div class="button">
-							<a href="$root_url&candidateid=$c[id]&content=$orderby" class="more">继续阅读</a>
+							<a href="thread-$c[tid]-1-1.html" class="more" target="_blank">继续阅读</a>
 						</div>
 					</li>
 				<!--{/loop}-->
@@ -62,16 +48,6 @@
 				<input type="hidden" name="id" value="takashiro_vote:main" />
 				<input type="hidden" name="branchid" value="$branchid" />
 				<input type="hidden" name="orderby" value="$orderby" />
-
-				<div class="tbn">
-					<h2 class="mt bbda">3000 EUROS<br />GO GO GO!</h2>
-					<ul>
-						<li {if $orderby === ''}class="a"{/if}><a data-name="orderby" data-value="">全部</a></li>
-						<li {if $orderby === 'selfintro'}class="a"{/if}><a data-name="orderby" data-value="selfintro">自我介绍</a></li>
-						<li {if $orderby === 'souvenir'}class="a"{/if}><a data-name="orderby" data-value="souvenir">纪念品</a></li>
-						<li {if $orderby === 'story'}class="a"{/if}><a data-name="orderby" data-value="story">励志故事</a></li>
-					</ul>
-				</div>
 
 				<div class="tbn">
 					<h2 class="mt bbda">选择分部</h2>
