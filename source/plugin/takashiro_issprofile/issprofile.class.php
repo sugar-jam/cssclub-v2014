@@ -118,6 +118,49 @@ class plugin_takashiro_issprofile_member extends plugin_takashiro_issprofile {
 		}
 	}
 
+	function connect_verify(){
+		$this->_check_duplicated_account();
+	}
+
+	function register_verify(){
+		$this->_check_duplicated_account();
+	}
+
+	function _check_duplicated_account(){
+		if($_POST){
+			if(empty($_POST['realname']))
+				showmessage('请填写真实姓名。');
+
+			if(empty($_POST['awardyear']))
+				showmessage('请选择获奖年份。');
+
+			if(empty($_POST['awardschool']))
+				showmessage('请选择获奖所在学校。');
+
+			$user = array(
+				'realname' => trim($_POST['realname']),
+				'awardyear' => intval($_POST['awardyear']),
+				'awardschool' => trim($_POST['awardschool']),
+			);
+
+			$tablename = DB::table('plugin_member_verify');
+			$info = DB::fetch_first("SELECT `id`,`uid`
+				FROM `$tablename`
+				WHERE `realname`='{$user['realname']}'
+					AND `awardyear`='{$user['awardyear']}'
+					AND `awardschool`='{$user['awardschool']}'");
+
+			if($info['uid'] > 0){
+				$profile = C::t('common_member')->fetch($info['uid']);
+				if($profile){
+					showmessage('您已注册账号 '.$profile['username'].' ，请通过该账号登录。');
+				}else{
+					showmessage('系统异常。');
+				}
+			}
+		}
+	}
+
 	function _verify_member(){
 		global $_G;
 
@@ -130,9 +173,9 @@ class plugin_takashiro_issprofile_member extends plugin_takashiro_issprofile {
 		$tablename = DB::table('plugin_member_verify');
 		$info = DB::fetch_first("SELECT `id`
 			FROM `$tablename`
-			WHERE `realname`='$user[realname]'
-				AND `awardyear`='$user[awardyear]'
-				AND `awardschool`='$user[awardschool]'
+			WHERE `realname`='{$user['realname']}'
+				AND `awardyear`='{$user['awardyear']}'
+				AND `awardschool`='{$user['awardschool']}'
 				AND `uid` IS NULL");
 
 		if($info){
