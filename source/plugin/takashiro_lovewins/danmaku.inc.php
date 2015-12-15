@@ -2,10 +2,30 @@
 
 if(!defined('IN_DISCUZ')) exit('Access Denied');
 
-if(empty($_REQUEST['targetid']))
-	exit('parameter `targetid` missing.');
-$targetid = max(1, intval($_REQUEST['targetid']));
 $type = empty($_REQUEST['type']) ? 0 : intval($_REQUEST['type']);
+if($type == 1){
+	if(empty($_REQUEST['targetid']))
+		exit('parameter `targetid` missing.');
+	$targetid = max(1, intval($_REQUEST['targetid']));
+}else{
+	$type = 2;
+	if(empty($_REQUEST['uid1']) || empty($_REQUEST['uid2']))
+		exit('parameter `uid1` or `uid2` missing.');
+
+	$uid1 = intval($_REQUEST['uid1']);
+	$uid2 = intval($_REQUEST['uid2']);
+
+	$couple_table = DB::table('takashiro_lovewins_couple');
+	$targetid = DB::result_first("SELECT id FROM $couple_table WHERE (uid1=$uid1 AND uid2=$uid2) OR (uid1=$uid2 AND uid2=$uid1)");
+	if($targetid <= 0){
+		$couple = array(
+			'uid1' => $uid1,
+			'uid2' => $uid2,
+		);
+		DB::insert('takashiro_lovewins_couple', $couple);
+		$targetid = DB::insert_id();
+	}
+}
 
 if($_POST){
 	if(empty($_POST['content']))

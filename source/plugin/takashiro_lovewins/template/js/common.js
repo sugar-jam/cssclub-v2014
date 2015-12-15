@@ -1,7 +1,7 @@
 (function($){
 	var root_url = 'plugin.php?id=takashiro_lovewins:main';
 
-	function fill_user_dammaku(){
+	function fill_user_danmaku(){
 		$('.userlist .avatar').each(function(){
 			var avatar_area = $(this);
 			var col = avatar_area.parent().parent();
@@ -13,6 +13,26 @@
 				}
 
 				avatar_area.danmaku('config', {
+					'texts' : contents
+				});
+			}, 'json');
+		});
+	}
+
+	function fill_couple_danmaku(){
+		$('.couplelist .couple').each(function(){
+			var area = $(this);
+			var col = area.parent();
+			var uid1 = col.data('uid1');
+			var uid2 = col.data('uid2');
+
+			$.post(root_url + '&action=danmaku&type=2&uid1=' + uid1 + '&uid2=' + uid2, {}, function(danmaku){
+				var contents = [];
+				for(var i = 0; i < danmaku.length; i++){
+					contents.push(danmaku[i].content);
+				}
+
+				area.danmaku('config', {
 					'texts' : contents
 				});
 			}, 'json');
@@ -71,7 +91,7 @@
 				listbox.append(item);
 			}
 
-			fill_user_dammaku();
+			fill_user_danmaku();
 		}else{
 			alert('您要找的人不属于我们伟大的单身汪星球。');
 		}
@@ -200,7 +220,7 @@
 		}
 	});
 
-	fill_user_dammaku();
+	fill_user_danmaku();
 
 	$('.userlist').on('keypress', 'input.danmaku', function(e){
 		if(e.keyCode != 13)
@@ -217,18 +237,15 @@
 		});
 	});
 
-	$('.couplelist .couple').each(function(){
-		$(this).danmaku('config', {
-			'texts' : ['haha', 'test', 'lulala']
-		});
-	});
+	fill_couple_danmaku();
 
 	$('.couplelist').on('keypress', 'input.danmaku', function(e){
 		if(e.keyCode != 13)
 			return;
 
 		var input = $(e.target);
-		var col = input.parent().parent();
+		var couple_area = input.parent();
+		var col = couple_area.parent();
 
 		var content = input.val();
 		input.val('');
@@ -236,7 +253,7 @@
 		var uid2 = col.data('uid2');
 
 		$.post(root_url + '&action=danmaku&targetid=0', {'uid1': uid1, 'uid2': uid2, 'content': content}, function(){
-			//add into the window
+			couple_area.danmaku('add', content);
 		});
 	});
 
