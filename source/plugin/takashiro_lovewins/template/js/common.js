@@ -120,8 +120,8 @@
 	function add_couple(user1, user2){
 		var item = couple_item.clone();
 
-		item.data('uid1', user1.uid1);
-		item.data('uid2', user2.uid2);
+		item.data('uid1', user1.uid);
+		item.data('uid2', user2.uid);
 
 		var avatars = item.find('.avatar');
 		var avatar1_link = avatars.eq(0).children();
@@ -139,6 +139,12 @@
 		realname.eq(0).html(user1.realname);
 		realname.eq(1).html(user2.realname);
 
+		var coinnum = item.find('.coinnum .value');
+		coinnum.html('');
+		$.post(root_url + '&action=votecouple&queryonly=1', {'uid1' : user1.uid, 'uid2' : user2.uid}, function(couple){
+			coinnum.html(couple.coinnum);
+		}, 'json');
+
 		$('#couple_candidate_box').append(item);
 	}
 
@@ -154,6 +160,7 @@
 				}else{
 					alert('您已经支持过他们啦！');
 				}
+				fill_couple_danmaku();
 			}, 'text');
 		}
 
@@ -206,6 +213,8 @@
 			for(var i = 0; i < randnum; i++){
 				add_couple(users[0][i], users[1][i]);
 			}
+
+			fill_couple_danmaku();
 		}
 
 		for(var i = 1; i <= 2; i++){
@@ -255,6 +264,22 @@
 		$.post(root_url + '&action=danmaku&targetid=0', {'uid1': uid1, 'uid2': uid2, 'content': content}, function(){
 			couple_area.danmaku('add', content);
 		});
+	});
+
+	$('.couplelist').on('click', '.coinnum .value, .namecard .glyphicon-heart', function(){
+		var col = $(this).parent().parent().parent();
+		var coinnum = col.find('.coinnum .value');
+		var uid1 = col.data('uid1');
+		var uid2 = col.data('uid2');
+		$.post(root_url + '&action=votecouple', {'uid1' : uid1, 'uid2' : uid2}, function(result){
+			var result = parseInt(result, 10);
+			if(result == 1){
+				coinnum.html(parseInt(coinnum.html(), 10) + 1);
+				alert('成功祝福这对CP！');
+			}else{
+				alert('他们已经收到您的祝福啦！');
+			}
+		}, 'text');
 	});
 
 })(jQuery);

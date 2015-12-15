@@ -92,6 +92,8 @@
 					<div class="avatar"><a href="home.php?mod=space&uid={$c[user1][uid]}" target="_blank">{echo avatar($c['user1']['uid'], 'big')}</a></div>
 					<div class="avatar"><a href="home.php?mod=space&uid={$c[user2][uid]}" target="_blank">{echo avatar($c['user2']['uid'], 'big')}</a></div>
 
+					<div class="coinnum"><div class="value">$c['coinnum']</div></div>
+
 					<div class="namecard">
 						<div class="issbranch user1">$c['user1']['issbranch']</div>
 						<span class="realname user1">$c['user1']['realname']</span> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="realname user2">$c['user2']['realname']</span>
@@ -113,6 +115,10 @@
 		</div>
 	</div>
 </div>
+
+<footer>
+	<div class="copyright">Powered By Kazuichi Takashiro, Qixin League</div>
+</footer>
 
 
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>

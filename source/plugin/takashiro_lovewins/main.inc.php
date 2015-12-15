@@ -12,13 +12,20 @@ if(in_array($_G['groupid'], $forbidden_usergroups)){
 	}
 }
 
+if($_SERVER['HTTP_HOST'] != 'localhost' && $_G['groupid'] != 23){
+	$extgroups = explode("\t", $_G['member']['extgroupids']);
+	if(!in_array(23, $extgroups)){
+		showmessage('内测阶段，您没有权限访问。');
+	}
+}
+
 if(!empty($_GET['action'])){
 	$action = trim($_GET['action']);
 	$module_file = __DIR__.'/'.$action.'.inc.php';
 	if(file_exists($module_file)){
 		include $module_file;
-		exit;
 	}
+	exit;
 }
 
 $home_member_num = 6;
@@ -50,7 +57,7 @@ foreach($home_members as &$m){
 unset($m);
 
 $couple_table = DB::table('takashiro_lovewins_couple');
-$couples = DB::fetch_all("SELECT * FROM $couple_table WHERE 1 ORDER BY coinnum DESC LIMIT 6");
+$couples = DB::fetch_all("SELECT * FROM $couple_table WHERE coinnum>0 ORDER BY coinnum DESC LIMIT 6");
 if($couples){
 	$member_profile_table = C::t('common_member_profile');
 	foreach($couples as &$couple){

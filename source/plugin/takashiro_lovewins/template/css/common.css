@@ -1,5 +1,6 @@
 form{
 	text-align: center;
+	margin-top: 12px;
 }
 
 input[type="text"]{
@@ -23,8 +24,8 @@ button:hover, a.button:hover{
 }
 
 input.big, button.big{
-	font-size: 26pt;
-	line-height: 70px;
+	font-size: 18pt;
+	line-height: 50px;
 	padding: 0 0.5em;
 }
 
@@ -62,7 +63,7 @@ ul.nav li a span{
 
 .userlist .col{
 	margin: 10px 0;
-	height: 212px;
+	height: 216px;
 }
 
 .userlist .user{
@@ -132,7 +133,7 @@ ul.nav li a span{
 	font-size: 14pt;
 	height: 32px;
 	line-height: 32px;
-	z-index: 10;
+	z-index: 60;
 }
 
 .couplelist .couple .namecard .issbranch{
@@ -162,6 +163,30 @@ ul.nav li a span{
 
 .couplelist .couple .namecard .realname.user2{
 	text-align: left;
+}
+
+.couplelist .couple .namecard .glyphicon-heart{
+	cursor: pointer;
+}
+
+.couplelist .coinnum{
+	position: absolute;
+	top: 115px;
+	left: 0;
+	width: 100%;
+	z-index: 70;
+}
+
+.couplelist .coinnum .value{
+	display: inline-block;
+	min-width: 2em;
+	height: 1.5em;
+	line-height: 1.5em;
+	margin: 0 auto;
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+	font-size: 12pt;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 500px){
@@ -214,6 +239,7 @@ ul.headactions li button{
 	opacity: 0;
 	line-height: 1.5em;
 	padding: 0.2em 0.5em;
+	margin-top: 5px;
 }
 
 .couplelist .couple input.danmaku{
@@ -235,4 +261,15 @@ ul.headactions li button{
 	.danmaku{
 		display: none;
 	}
+}
+
+footer{
+	background: #222222;
+	color: gray;
+	margin-top: 15px;
+}
+
+footer .copyright{
+	line-height: 3em;
+	text-align: center;
 }
