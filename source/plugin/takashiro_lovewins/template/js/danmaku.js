@@ -44,7 +44,8 @@
 
 		if(action == 'config'){
 			function danmaku(){
-				var content = config.texts[Math.floor(Math.random() * config.texts.length)];
+				var id = Math.floor(Math.random() * config.texts.length);
+				var content = config.texts.splice(id, 1);
 				add_text(content);
 			}
 			danmaku();
