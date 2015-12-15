@@ -63,6 +63,7 @@
 					<li><a class="love_button" href="###"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>表白</a></li>
 					<li><a class="sendpm_button" href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_{$m[uid]}&touid={$m[uid]}&pmid=0&daterange=2" target="_blank" title="发送消息"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>勾搭</a></li>
 				</ul>
+				<input type="text" class="danmaku" placeholder="发射弹幕">
 			</div>
 			<!--{/loop}-->
 		</div>
@@ -71,7 +72,7 @@
 
 <div class="container-fluid">
 	<form id="search_user_form" action="#" method="post">
-		<input class="big" type="text" name="search_user_keyword" placeholder="输入TA的名字" />
+		<input class="big" type="text" name="search_user_keyword" placeholder="输入TA的名字">
 		<button class="big" type="submit">寻找TA的踪影</button>
 	</form>
 </div>
@@ -95,6 +96,8 @@
 						<span class="realname user1">$c['user1']['realname']</span> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="realname user2">$c['user2']['realname']</span>
 						<div class="issbranch user2">$c['user2']['issbranch']</div>
 					</div>
+
+					<input type="text" class="danmaku" placeholder="发射弹幕">
 				</div>
 			</div>
 			<!--{/loop}-->
@@ -102,8 +105,8 @@
 
 		<div class="content">
 			<form id="search_couple_form" action="#" method="post">
-				<input class="big" type="text" id="couple1" placeholder="请输入名字" />
-				<input class="big" type="text" id="couple2" placeholder="请输入名字" />
+				<input class="big" type="text" id="couple1" placeholder="请输入名字">
+				<input class="big" type="text" id="couple2" placeholder="请输入名字">
 				<button class="big" type="submit">顶上去</button>
 			</form>
 		</div>

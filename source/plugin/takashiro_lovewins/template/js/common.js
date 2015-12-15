@@ -13,6 +13,9 @@
 			return;
 		}
 
+		if(!confirm('真的要表白吗？看准了哦，到时候赖账说什么“不小心点错了”我可不负责！'))
+			return;
+
 		$.post(root_url + '&action=love', {'toid' : uid}, function(response){
 			var response = parseInt(response, 10);
 			if(response === 2){

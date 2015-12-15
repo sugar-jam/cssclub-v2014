@@ -112,6 +112,7 @@ ul.nav li a span{
 
 .couplelist .couple{
 	width: 400px;
+	height: 200px;
 	position: relative;
 	margin: 15px auto;
 	text-align: center;
@@ -124,13 +125,14 @@ ul.nav li a span{
 .couplelist .couple .namecard{
 	background: rgba(0, 0, 0, 0.5);
 	position: absolute;
-	bottom: 0.5em;
+	top: 140px;
 	width: 100%;
 	color: white;
 	text-align: center;
 	font-size: 14pt;
 	height: 32px;
 	line-height: 32px;
+	z-index: 10;
 }
 
 .couplelist .couple .namecard .issbranch{
@@ -204,4 +206,33 @@ ul.headactions li{
 
 ul.headactions li button{
 	padding: 0.2em 0.5em;
+}
+
+.userlist .col input.danmaku{
+	width: 180px;
+	border: 0 solid;
+	opacity: 0;
+	line-height: 1.5em;
+	padding: 0.2em 0.5em;
+}
+
+.couplelist .couple input.danmaku{
+	width: 400px;
+	margin-top: 15px;
+	opacity: 0;
+	line-height: 1.5em;
+	padding: 0.2em 0.5em;
+}
+
+.userlist .col:hover input.danmaku, .couplelist .couple:hover input.danmaku{
+	opacity: 1;
+	border-color: #6BA6D6;
+	box-shadow: #6BA6D6 0 0 5px;
+}
+
+
+@media screen and (max-width: 500px){
+	.danmaku{
+		display: none;
+	}
 }
