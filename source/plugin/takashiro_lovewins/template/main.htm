@@ -41,23 +41,32 @@
 </nav>
 
 
-<div id="userlist" class="content container-fluid userlist">
-	<!--{loop $home_members $m}-->
-	<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 col" data-uid="$m[uid]">
-		<div class="user">
-			<div class="avatar"><a href="home.php?mod=space&uid=$m[uid]" target="_blank">{echo avatar($m['uid'], 'big')}</a></div>
-			<div class="namecard">
-				<span class="realname">$m[realname]</span>
-				<span class="issbranch">$m[issbranch]</span>
-			</div>
-		</div>
-		<div class="briefintro">$m[age]岁 $m[constellation]</div>
-		<ul class="operation">
-			<li><a class="love_button" href="###"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>表白</a></li>
-			<li><a class="sendpm_button" href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_{$m[uid]}&touid={$m[uid]}&pmid=0&daterange=2" target="_blank" title="发送消息"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>勾搭</a></li>
+<div class="content container-fluid userlist">
+	<div class="box">
+		<h3>我的TA</h3>
+		<ul class="headactions">
+			<li><button id="refresh_userlist_button">偶遇TA</button></li>
 		</ul>
+
+		<div id="userlist" class="content">
+			<!--{loop $home_members $m}-->
+			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 col" data-uid="$m[uid]">
+				<div class="user">
+					<div class="avatar"><a href="home.php?mod=space&uid=$m[uid]" target="_blank">{echo avatar($m['uid'], 'big')}</a></div>
+					<div class="namecard">
+						<span class="realname">$m[realname]</span>
+						<span class="issbranch">$m[issbranch]</span>
+					</div>
+				</div>
+				<div class="briefintro">$m[age]岁 $m[constellation]</div>
+				<ul class="operation">
+					<li><a class="love_button" href="###"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>表白</a></li>
+					<li><a class="sendpm_button" href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_{$m[uid]}&touid={$m[uid]}&pmid=0&daterange=2" target="_blank" title="发送消息"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>勾搭</a></li>
+				</ul>
+			</div>
+			<!--{/loop}-->
+		</div>
 	</div>
-	<!--{/loop}-->
 </div>
 
 <div class="container-fluid">
@@ -69,7 +78,10 @@
 
 <div class="container-fluid">
 	<div class="box">
-		<h3>人气CP！</h3>
+		<h3>人气CP</h3>
+		<ul class="headactions">
+			<li><button id="refresh_couplelist_button">随机CP</button></li>
+		</ul>
 
 		<div id="couple_candidate_box" class="content container-fluid couplelist">
 			<!--{loop $couples $c}-->
@@ -80,7 +92,7 @@
 
 					<div class="namecard">
 						<div class="issbranch user1">$c['user1']['issbranch']</div>
-						<span class="realname">$c['user1']['realname']</span> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="realname">$c['user2']['realname']</span>
+						<span class="realname user1">$c['user1']['realname']</span> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="realname user2">$c['user2']['realname']</span>
 						<div class="issbranch user2">$c['user2']['issbranch']</div>
 					</div>
 				</div>
@@ -90,8 +102,8 @@
 
 		<div class="content">
 			<form id="search_couple_form" action="#" method="post">
-				<input class="big" type="text" id="couple1" placeholder="请输入CP的名字" />
-				<input class="big" type="text" id="couple2" placeholder="请输入CP的名字" />
+				<input class="big" type="text" id="couple1" placeholder="请输入名字" />
+				<input class="big" type="text" id="couple2" placeholder="请输入名字" />
 				<button class="big" type="submit">顶上去</button>
 			</form>
 		</div>

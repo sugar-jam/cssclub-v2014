@@ -149,6 +149,18 @@ ul.nav li a span{
 	right: 3px;
 }
 
+.couplelist .couple .namecard .realname{
+	width: 6em;
+	display: inline-block;
+}
+
+.couplelist .couple .namecard .realname.user1{
+	text-align: right;
+}
+
+.couplelist .couple .namecard .realname.user2{
+	text-align: left;
+}
 
 @media screen and (max-width: 500px){
 	.avatar{
@@ -172,4 +184,24 @@ ul.nav li a span{
 		height: 165px;
 		margin: 5px auto;
 	}
+}
+
+.box{
+	position: relative;
+}
+
+ul.headactions{
+	padding: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 13pt;
+}
+
+ul.headactions li{
+	list-style: none;
+}
+
+ul.headactions li button{
+	padding: 0.2em 0.5em;
 }
