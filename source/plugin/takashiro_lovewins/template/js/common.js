@@ -1,6 +1,24 @@
 (function($){
 	var root_url = 'plugin.php?id=takashiro_lovewins:main';
 
+	function fill_user_dammaku(){
+		$('.userlist .avatar').each(function(){
+			var avatar_area = $(this);
+			var col = avatar_area.parent().parent();
+			var uid = col.data('uid');
+			$.post(root_url + '&action=danmaku&type=1&targetid=' + uid, {}, function(danmaku){
+				var contents = [];
+				for(var i = 0; i < danmaku.length; i++){
+					contents.push(danmaku[i].content);
+				}
+
+				avatar_area.danmaku('config', {
+					'texts' : contents
+				});
+			}, 'json');
+		});
+	}
+
 	$('.userlist').on('click', '.col > ul.operation > li > .love_button', function(e){
 		var button = $(this);
 		var li = button.parent();
@@ -52,6 +70,8 @@
 
 				listbox.append(item);
 			}
+
+			fill_user_dammaku();
 		}else{
 			alert('您要找的人不属于我们伟大的单身汪星球。');
 		}
@@ -180,15 +200,43 @@
 		}
 	});
 
-	$('.userlist .avatar').each(function(){
-		$(this).danmaku({
-			'texts' : ['haha', 'test', 'lulala']
+	fill_user_dammaku();
+
+	$('.userlist').on('keypress', 'input.danmaku', function(e){
+		if(e.keyCode != 13)
+			return;
+
+		var input = $(e.target);
+		var col = input.parent();
+		var uid = col.data('uid');
+
+		$.post(root_url + '&action=danmaku&type=1&targetid=' + uid, {'content' : input.val()}, function(){
+			var area = col.find('.avatar');
+			area.danmaku('add', input.val());
+			input.val('');
 		});
 	});
 
 	$('.couplelist .couple').each(function(){
-		$(this).danmaku({
+		$(this).danmaku('config', {
 			'texts' : ['haha', 'test', 'lulala']
+		});
+	});
+
+	$('.couplelist').on('keypress', 'input.danmaku', function(e){
+		if(e.keyCode != 13)
+			return;
+
+		var input = $(e.target);
+		var col = input.parent().parent();
+
+		var content = input.val();
+		input.val('');
+		var uid1 = col.data('uid1');
+		var uid2 = col.data('uid2');
+
+		$.post(root_url + '&action=danmaku&targetid=0', {'uid1': uid1, 'uid2': uid2, 'content': content}, function(){
+			//add into the window
 		});
 	});
 
