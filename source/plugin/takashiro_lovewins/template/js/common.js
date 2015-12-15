@@ -180,4 +180,16 @@
 		}
 	});
 
+	$('.userlist .avatar').each(function(){
+		$(this).danmaku({
+			'texts' : ['haha', 'test', 'lulala']
+		});
+	});
+
+	$('.couplelist .couple').each(function(){
+		$(this).danmaku({
+			'texts' : ['haha', 'test', 'lulala']
+		});
+	});
+
 })(jQuery);
