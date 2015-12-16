@@ -46,6 +46,7 @@
 	<div class="box">
 		<h3>我的TA</h3>
 		<ul class="headactions">
+			<li><a class="button" href="home.php?mod=spacecp&ac=search" target="_blank">深度搜搜</a></li>
 			<li><button id="refresh_userlist_button">偶遇TA</button></li>
 		</ul>
 
@@ -53,9 +54,9 @@
 			<!--{loop $home_members $m}-->
 			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 col" data-uid="$m[uid]">
 				<div class="user">
-					<div class="avatar"><a href="home.php?mod=space&uid=$m[uid]" target="_blank">{echo avatar($m['uid'], 'big')}</a></div>
+					<div class="avatar">{echo avatar($m['uid'], 'big')}</div>
 					<div class="namecard">
-						<span class="realname">$m[realname]</span>
+						<a class="realname" href="home.php?mod=space&do=profile&uid=$m[uid]" target="_blank">$m[realname]</a>
 						<span class="issbranch">$m[issbranch]</span>
 					</div>
 				</div>
@@ -89,14 +90,14 @@
 			<!--{loop $couples $c}-->
 			<div class="col-lg-4 col-md-6" data-uid1="{$c[user1][uid]}" data-uid2="{$c[user2][uid]}">
 				<div class="couple">
-					<div class="avatar"><a href="home.php?mod=space&uid={$c[user1][uid]}" target="_blank">{echo avatar($c['user1']['uid'], 'big')}</a></div>
-					<div class="avatar"><a href="home.php?mod=space&uid={$c[user2][uid]}" target="_blank">{echo avatar($c['user2']['uid'], 'big')}</a></div>
+					<div class="avatar">{echo avatar($c['user1']['uid'], 'big')}</div>
+					<div class="avatar">{echo avatar($c['user2']['uid'], 'big')}</div>
 
 					<div class="coinnum"><div class="value">$c['coinnum']</div></div>
 
 					<div class="namecard">
 						<div class="issbranch user1">$c['user1']['issbranch']</div>
-						<span class="realname user1">$c['user1']['realname']</span> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="realname user2">$c['user2']['realname']</span>
+						<a class="realname user1" href="home.php?mod=space&do=profile&uid={$c[user1][uid]}" target="_blank">$c['user1']['realname']</a> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <a class="realname user2" href="home.php?mod=space&do=profile&uid={$c[user2][uid]}" target="_blank">$c['user2']['realname']</a>
 						<div class="issbranch user2">$c['user2']['issbranch']</div>
 					</div>
 

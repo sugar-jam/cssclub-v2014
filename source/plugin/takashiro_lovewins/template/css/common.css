@@ -17,10 +17,12 @@ button, a.button{
 	color: white;
 	border: 0 solid;
 	margin: 5px;
+	display: inline-block;
 }
 
 button:hover, a.button:hover{
 	background: #337ab7;
+	text-decoration: none;
 }
 
 input.big, button.big{
@@ -61,6 +63,18 @@ ul.nav li a span{
 	width: 180px;
 }
 
+.namecard{
+	position: absolute;
+	z-index: 60;
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+.namecard .realname{
+	text-decoration: none;
+	color: white;
+}
+
 .userlist .col{
 	margin: 10px 0;
 	height: 216px;
@@ -71,18 +85,14 @@ ul.nav li a span{
 }
 
 .userlist .user .namecard{
-	position: absolute;
 	left: -5px;
 	bottom: 10px;
-	background: rgba(0, 0, 0, 0.5);
 	width: 200px;
 	padding-left: 10px;
 	height: 30px;
 	font-size: 20px;
 	line-height: 30px;
-	color: white;
 	text-align: left;
-
 }
 
 .userlist .user .namecard .issbranch{
@@ -124,16 +134,12 @@ ul.nav li a span{
 }
 
 .couplelist .couple .namecard{
-	background: rgba(0, 0, 0, 0.5);
-	position: absolute;
 	top: 140px;
 	width: 100%;
-	color: white;
 	text-align: center;
 	font-size: 14pt;
 	height: 32px;
 	line-height: 32px;
-	z-index: 60;
 }
 
 .couplelist .couple .namecard .issbranch{
@@ -155,6 +161,8 @@ ul.nav li a span{
 .couplelist .couple .namecard .realname{
 	width: 6em;
 	display: inline-block;
+	text-decoration: none;
+	color: white;
 }
 
 .couplelist .couple .namecard .realname.user1{
@@ -227,9 +235,10 @@ ul.headactions{
 
 ul.headactions li{
 	list-style: none;
+	display: inline-block;
 }
 
-ul.headactions li button{
+ul.headactions li button, ul.headactions li a.button{
 	padding: 0.2em 0.5em;
 }
 

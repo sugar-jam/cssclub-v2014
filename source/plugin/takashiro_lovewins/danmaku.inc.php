@@ -17,7 +17,10 @@ if($type == 1){
 
 	$couple_table = DB::table('takashiro_lovewins_couple');
 	$targetid = DB::result_first("SELECT id FROM $couple_table WHERE (uid1=$uid1 AND uid2=$uid2) OR (uid1=$uid2 AND uid2=$uid1)");
-	if($targetid <= 0){
+}
+
+if($_POST){
+	if($targetid <= 0 && $type == 2){
 		$couple = array(
 			'uid1' => $uid1,
 			'uid2' => $uid2,
@@ -25,9 +28,7 @@ if($type == 1){
 		DB::insert('takashiro_lovewins_couple', $couple);
 		$targetid = DB::insert_id();
 	}
-}
 
-if($_POST){
 	if(empty($_POST['content']))
 		exit('parameter `content` missing.');
 

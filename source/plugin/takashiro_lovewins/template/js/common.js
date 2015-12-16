@@ -78,11 +78,13 @@
 				var user = users[i];
 
 				var item = user_item.clone();
-				var avatar_link = item.find('.user .avatar a');
-				avatar_link.html(user.avatar);
-				avatar_link.attr('href', 'home.php?mod=space&uid=' + user.uid);
+				var avatar = item.find('.user .avatar');
+				avatar.html(user.avatar);
 
-				item.find('.realname').html(user.realname);
+				var realname = item.find('.realname');
+				realname.html(user.realname);
+				realname.attr('href', 'home.php?mod=space&do=profile&uid=' + user.uid);
+
 				item.find('.issbranch').html(user.issbranch);
 				item.find('.briefintro').html(user.age + '岁 ' + user.constellation);
 				item.find('a.sendpm_button').attr('href', 'home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_' + user.uid + '&touid=' + user.uid + '&pmid=0&daterange=2');
@@ -124,12 +126,8 @@
 		item.data('uid2', user2.uid);
 
 		var avatars = item.find('.avatar');
-		var avatar1_link = avatars.eq(0).children();
-		avatar1_link.html(user1.avatar);
-		avatar1_link.attr('href', 'home.php?mod=space&uid=' + user1.uid);
-		var avatar2_link = avatars.eq(1).children();
-		avatar2_link.attr('href', 'home.php?mod=space&uid=' + user2.uid);
-		avatar2_link.html(user2.avatar);
+		avatars.eq(0).html(user1.avatar);
+		avatars.eq(1).html(user2.avatar);
 
 		var branch = item.find('.issbranch');
 		branch.eq(0).html(user1.issbranch);
@@ -137,7 +135,9 @@
 
 		var realname = item.find('.realname');
 		realname.eq(0).html(user1.realname);
+		realname.eq(0).attr('href', 'home.php?mod=space&do=profile&uid=' + user1.uid);
 		realname.eq(1).html(user2.realname);
+		realname.eq(1).attr('href', 'home.php?mod=space&do=profile&uid=' + user2.uid);
 
 		var coinnum = item.find('.coinnum .value');
 		coinnum.html('');
@@ -158,7 +158,7 @@
 				if(response == 1){
 					alert('成功支持这对CP！');
 				}else{
-					alert('您已经支持过他们啦！');
+					alert('您今天已经支持过他们啦！每天只能顶1次~');
 				}
 				fill_couple_danmaku();
 			}, 'text');
