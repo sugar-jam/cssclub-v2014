@@ -8,7 +8,28 @@ if($coupleid <= 0){
 	$uid2 = isset($_REQUEST['uid2']) ? intval($_REQUEST['uid2']) : 0;
 	if($uid1 <= 0 || $uid2 <= 0)
 		exit('invalid couple id or user id');
+}
 
+if(!empty($_GET['queryonly'])){
+	$couple_table = DB::table('takashiro_lovewins_couple');
+	$couple = DB::fetch_first("SELECT * FROM $couple_table WHERE (uid1=$uid1 AND uid2=$uid2) OR (uid1=$uid2 AND uid2=$uid1)");
+	if(!$couple){
+		$couple = array(
+			'uid1' => $uid1,
+			'uid2' => $uid2,
+			'coinnum' => 0,
+		);
+	}
+	echo json_encode($couple);
+	exit;
+}
+
+$today_offset = dmktime(dgmdate(TIMESTAMP, 'Y-m-d'));
+
+if($coupleid > 0){
+	$log_table = DB::table('takashiro_lovewins_couplelog');
+	$log = DB::fetch_first("SELECT * FROM $log_table WHERE coupleid=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
+}else{
 	$couple_table = DB::table('takashiro_lovewins_couple');
 	$couple = DB::fetch_first("SELECT * FROM $couple_table WHERE (uid1=$uid1 AND uid2=$uid2) OR (uid1=$uid2 AND uid2=$uid1)");
 	if(!$couple){
@@ -21,17 +42,9 @@ if($coupleid <= 0){
 		$couple['id'] = DB::insert_id();
 	}
 	$coupleid = $couple['id'];
+
+	$log = array();
 }
-
-if(!empty($_GET['queryonly'])){
-	echo json_encode($couple);
-	exit;
-}
-
-$today_offset = dmktime(dgmdate(TIMESTAMP, 'Y-m-d'));
-
-$log_table = DB::table('takashiro_lovewins_couplelog');
-$log = DB::fetch_first("SELECT * FROM $log_table WHERE coupleid=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
 
 if(empty($log)){
 	$couple_table = DB::table('takashiro_lovewins_couple');

@@ -2,7 +2,7 @@
 
 if(!defined('IN_DISCUZ')) exit('Access Denied');
 
-$condition = array("m.avatarstatus=1 AND (p.affectivestatus='' OR p.affectivestatus='单身') AND p.awardyear!='' AND p.issbranch!=''");
+$condition = array("m.avatarstatus=1 AND p.affectivestatus IN ('','单身','失恋','暗恋') AND p.awardyear!='' AND p.issbranch!=''");
 
 if(!empty($_REQUEST['keyword'])){
 	$keyword = trim($_REQUEST['keyword']);

@@ -20,6 +20,11 @@ if($type == 1){
 }
 
 if($_POST){
+	if(empty($_POST['content']))
+		exit('parameter `content` missing.');
+
+	$content = dhtmlspecialchars(trim($_POST['content']));
+
 	if($targetid <= 0 && $type == 2){
 		$couple = array(
 			'uid1' => $uid1,
@@ -28,11 +33,6 @@ if($_POST){
 		DB::insert('takashiro_lovewins_couple', $couple);
 		$targetid = DB::insert_id();
 	}
-
-	if(empty($_POST['content']))
-		exit('parameter `content` missing.');
-
-	$content = dhtmlspecialchars(trim($_POST['content']));
 
 	$danmaku = array(
 		'authorid' => $_G['uid'],
