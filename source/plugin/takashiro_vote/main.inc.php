@@ -28,6 +28,10 @@ if($action == 'vote' && $_G['uid'] > 0){
 	if($dateline >= $deadline)
 		exit('-1');
 
+	$startline = dmktime('2015-12-12') + 20 * 3600;
+	if($dateline < $startline)
+		exit('-4');
+
 	$today_begin = dmktime(dgmdate(TIMESTAMP, 'Y-m-d'));
 	$today_end = $today_begin + 24 * 3600;
 
@@ -80,6 +84,7 @@ if(empty($_GET['candidateid'])){
 		$branchid = 0;
 	}
 
+	$_GET['orderby'] = 'selfintro';
 	if(!empty($_GET['orderby'])){
 		$orderby = array('story', 'selfintro', 'souvenir');
 		$orderby = in_array($_GET['orderby'], $orderby) ? $_GET['orderby'] : '';
@@ -105,12 +110,6 @@ if(empty($_GET['candidateid'])){
 	$multipage = multi($candidatenum, $limit, $page, $page_url);
 
 	$candidates = DB::fetch_all("SELECT * FROM `$table` WHERE $condition $extra_sql LIMIT $offset,$limit");
-	foreach($candidates as &$c){
-		foreach(array('selfintro', 'story', 'souvenir') as $f){
-			$c[$f] = mb_substr($c[$f], 0, 30, 'utf-8');
-		}
-	}
-	unset($c);
 
 	include template('takashiro_vote:main');
 }else{

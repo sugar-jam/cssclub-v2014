@@ -41,6 +41,8 @@
 						showError('您今天已经投过票了，明天再来吧！');
 					}else if(result == -3){
 						showError('每天只能投10票哦，明天再来吧！');
+					}else if(result == -4){
+						showError('还未到投票开放时间哦！');
 					}else{
 						showError('好像是网络君感觉不太好，让他瘫痪一会儿……');
 					}
