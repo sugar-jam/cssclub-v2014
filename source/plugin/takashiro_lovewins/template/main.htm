@@ -7,6 +7,7 @@
 <title>$navtitle</title>
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="source/plugin/takashiro_lovewins/template/css/common.css">
+<link rel="stylesheet" href="source/plugin/takashiro_lovewins/template/css/danmaku.css">
 <script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]', JSPATH = '$_G[setting][jspath]', DYNAMICURL = '$_G[dynamicurl]';</script>
 <script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
 </head>
@@ -41,48 +42,66 @@
 </nav>
 
 
-<div id="userlist" class="content container-fluid userlist">
-	<!--{loop $home_members $m}-->
-	<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 col" data-uid="$m[uid]">
-		<div class="user">
-			<div class="avatar"><a href="home.php?mod=space&uid=$m[uid]" target="_blank">{echo avatar($m['uid'], 'big')}</a></div>
-			<div class="namecard">
-				<span class="realname">$m[realname]</span>
-				<span class="issbranch">$m[issbranch]</span>
-			</div>
-		</div>
-		<div class="briefintro">$m[age]岁 $m[constellation]</div>
-		<ul class="operation">
-			<li><a class="love_button" href="###"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>表白</a></li>
-			<li><a class="sendpm_button" href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_{$m[uid]}&touid={$m[uid]}&pmid=0&daterange=2" target="_blank" title="发送消息"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>勾搭</a></li>
+<div class="content container-fluid userlist">
+	<div class="box">
+		<h3>我的TA</h3>
+		<ul class="headactions">
+			<li><a class="button" href="home.php?mod=spacecp&ac=search" target="_blank">深度搜搜</a></li>
+			<li><button id="refresh_userlist_button">偶遇TA</button></li>
 		</ul>
+
+		<div id="userlist" class="content">
+			<!--{loop $home_members $m}-->
+			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 col" data-uid="$m[uid]">
+				<div class="user">
+					<div class="avatar">{echo avatar($m['uid'], 'big')}</div>
+					<div class="namecard">
+						<a class="realname" href="home.php?mod=space&do=profile&uid=$m[uid]" target="_blank">$m[realname]</a>
+						<span class="issbranch">$m[issbranch]</span>
+					</div>
+				</div>
+				<div class="briefintro">$m[age]岁 $m[constellation]</div>
+				<ul class="operation">
+					<li><a class="love_button" href="###"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>表白</a></li>
+					<li><a class="sendpm_button" href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_{$m[uid]}&touid={$m[uid]}&pmid=0&daterange=2" target="_blank" title="发送消息"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>勾搭</a></li>
+				</ul>
+				<input type="text" class="danmaku" placeholder="发射弹幕">
+			</div>
+			<!--{/loop}-->
+		</div>
 	</div>
-	<!--{/loop}-->
 </div>
 
 <div class="container-fluid">
 	<form id="search_user_form" action="#" method="post">
-		<input class="big" type="text" name="search_user_keyword" placeholder="输入TA的名字" />
+		<input class="big" type="text" name="search_user_keyword" placeholder="输入TA的名字">
 		<button class="big" type="submit">寻找TA的踪影</button>
 	</form>
 </div>
 
 <div class="container-fluid">
 	<div class="box">
-		<h3>人气CP！</h3>
+		<h3>人气CP</h3>
+		<ul class="headactions">
+			<li><button id="refresh_couplelist_button">随机CP</button></li>
+		</ul>
 
 		<div id="couple_candidate_box" class="content container-fluid couplelist">
 			<!--{loop $couples $c}-->
 			<div class="col-lg-4 col-md-6" data-uid1="{$c[user1][uid]}" data-uid2="{$c[user2][uid]}">
 				<div class="couple">
-					<div class="avatar"><a href="home.php?mod=space&uid={$c[user1][uid]}" target="_blank">{echo avatar($c['user1']['uid'], 'big')}</a></div>
-					<div class="avatar"><a href="home.php?mod=space&uid={$c[user2][uid]}" target="_blank">{echo avatar($c['user2']['uid'], 'big')}</a></div>
+					<div class="avatar">{echo avatar($c['user1']['uid'], 'big')}</div>
+					<div class="avatar">{echo avatar($c['user2']['uid'], 'big')}</div>
+
+					<div class="coinnum"><div class="value">$c['coinnum']</div></div>
 
 					<div class="namecard">
 						<div class="issbranch user1">$c['user1']['issbranch']</div>
-						<span class="realname">$c['user1']['realname']</span> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="realname">$c['user2']['realname']</span>
+						<a class="realname user1" href="home.php?mod=space&do=profile&uid={$c[user1][uid]}" target="_blank">$c['user1']['realname']</a> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <a class="realname user2" href="home.php?mod=space&do=profile&uid={$c[user2][uid]}" target="_blank">$c['user2']['realname']</a>
 						<div class="issbranch user2">$c['user2']['issbranch']</div>
 					</div>
+
+					<input type="text" class="danmaku" placeholder="发射弹幕">
 				</div>
 			</div>
 			<!--{/loop}-->
@@ -90,17 +109,22 @@
 
 		<div class="content">
 			<form id="search_couple_form" action="#" method="post">
-				<input class="big" type="text" id="couple1" placeholder="请输入CP的名字" />
-				<input class="big" type="text" id="couple2" placeholder="请输入CP的名字" />
+				<input class="big" type="text" id="couple1" placeholder="请输入名字">
+				<input class="big" type="text" id="couple2" placeholder="请输入名字">
 				<button class="big" type="submit">顶上去</button>
 			</form>
 		</div>
 	</div>
 </div>
 
+<footer>
+	<div class="copyright">Powered By Kazuichi Takashiro, Qixin League</div>
+</footer>
+
 
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="source/plugin/takashiro_lovewins/template/js/danmaku.js"></script>
 <script src="source/plugin/takashiro_lovewins/template/js/common.js"></script>
 
 </body>

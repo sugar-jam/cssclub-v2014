@@ -10,21 +10,28 @@ if($coupleid <= 0){
 		exit('invalid couple id or user id');
 
 	$couple_table = DB::table('takashiro_lovewins_couple');
-	$coupleid = DB::result_first("SELECT id FROM $couple_table WHERE (uid1=$uid1 AND uid2=$uid2) OR (uid1=$uid2 AND uid2=$uid1)");
-	if(!$coupleid){
+	$couple = DB::fetch_first("SELECT * FROM $couple_table WHERE (uid1=$uid1 AND uid2=$uid2) OR (uid1=$uid2 AND uid2=$uid1)");
+	if(!$couple){
 		$couple = array(
 			'uid1' => $uid1,
 			'uid2' => $uid2,
+			'coinnum' => 0,
 		);
 		DB::insert('takashiro_lovewins_couple', $couple);
-		$coupleid = DB::insert_id();
+		$couple['id'] = DB::insert_id();
 	}
+	$coupleid = $couple['id'];
+}
+
+if(!empty($_GET['queryonly'])){
+	echo json_encode($couple);
+	exit;
 }
 
 $today_offset = dmktime(dgmdate(TIMESTAMP, 'Y-m-d'));
 
 $log_table = DB::table('takashiro_lovewins_couplelog');
-$log = DB::fetch_first("SELECT * FROM $log_table WHERE id=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
+$log = DB::fetch_first("SELECT * FROM $log_table WHERE coupleid=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
 
 if(empty($log)){
 	$couple_table = DB::table('takashiro_lovewins_couple');
@@ -37,9 +44,8 @@ if(empty($log)){
 		);
 		DB::insert('takashiro_lovewins_couplelog', $log);
 		echo 1;
-	}else{
-		echo 0;
+		exit;
 	}
-}else{
-	echo 0;
 }
+
+echo 0;

@@ -1,5 +1,6 @@
 form{
 	text-align: center;
+	margin-top: 12px;
 }
 
 input[type="text"]{
@@ -16,15 +17,17 @@ button, a.button{
 	color: white;
 	border: 0 solid;
 	margin: 5px;
+	display: inline-block;
 }
 
 button:hover, a.button:hover{
 	background: #337ab7;
+	text-decoration: none;
 }
 
 input.big, button.big{
-	font-size: 26pt;
-	line-height: 70px;
+	font-size: 18pt;
+	line-height: 50px;
 	padding: 0 0.5em;
 }
 
@@ -60,9 +63,21 @@ ul.nav li a span{
 	width: 180px;
 }
 
+.namecard{
+	position: absolute;
+	z-index: 60;
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+.namecard .realname{
+	text-decoration: none;
+	color: white;
+}
+
 .userlist .col{
 	margin: 10px 0;
-	height: 212px;
+	height: 216px;
 }
 
 .userlist .user{
@@ -70,18 +85,14 @@ ul.nav li a span{
 }
 
 .userlist .user .namecard{
-	position: absolute;
 	left: -5px;
 	bottom: 10px;
-	background: rgba(0, 0, 0, 0.5);
 	width: 200px;
 	padding-left: 10px;
 	height: 30px;
 	font-size: 20px;
 	line-height: 30px;
-	color: white;
 	text-align: left;
-
 }
 
 .userlist .user .namecard .issbranch{
@@ -112,6 +123,7 @@ ul.nav li a span{
 
 .couplelist .couple{
 	width: 400px;
+	height: 200px;
 	position: relative;
 	margin: 15px auto;
 	text-align: center;
@@ -122,11 +134,8 @@ ul.nav li a span{
 }
 
 .couplelist .couple .namecard{
-	background: rgba(0, 0, 0, 0.5);
-	position: absolute;
-	bottom: 0.5em;
+	top: 140px;
 	width: 100%;
-	color: white;
 	text-align: center;
 	font-size: 14pt;
 	height: 32px;
@@ -149,6 +158,44 @@ ul.nav li a span{
 	right: 3px;
 }
 
+.couplelist .couple .namecard .realname{
+	width: 6em;
+	display: inline-block;
+	text-decoration: none;
+	color: white;
+}
+
+.couplelist .couple .namecard .realname.user1{
+	text-align: right;
+}
+
+.couplelist .couple .namecard .realname.user2{
+	text-align: left;
+}
+
+.couplelist .couple .namecard .glyphicon-heart{
+	cursor: pointer;
+}
+
+.couplelist .coinnum{
+	position: absolute;
+	top: 115px;
+	left: 0;
+	width: 100%;
+	z-index: 70;
+}
+
+.couplelist .coinnum .value{
+	display: inline-block;
+	min-width: 2em;
+	height: 1.5em;
+	line-height: 1.5em;
+	margin: 0 auto;
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+	font-size: 12pt;
+	cursor: pointer;
+}
 
 @media screen and (max-width: 500px){
 	.avatar{
@@ -172,4 +219,66 @@ ul.nav li a span{
 		height: 165px;
 		margin: 5px auto;
 	}
+}
+
+.box{
+	position: relative;
+}
+
+ul.headactions{
+	padding: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 13pt;
+}
+
+ul.headactions li{
+	list-style: none;
+	display: inline-block;
+}
+
+ul.headactions li button, ul.headactions li a.button{
+	padding: 0.2em 0.5em;
+}
+
+.userlist .col input.danmaku{
+	width: 180px;
+	border: 0 solid;
+	opacity: 0;
+	line-height: 1.5em;
+	padding: 0.2em 0.5em;
+	margin-top: 5px;
+}
+
+.couplelist .couple input.danmaku{
+	width: 400px;
+	margin-top: 15px;
+	opacity: 0;
+	line-height: 1.5em;
+	padding: 0.2em 0.5em;
+}
+
+.userlist .col:hover input.danmaku, .couplelist .couple:hover input.danmaku{
+	opacity: 1;
+	border-color: #6BA6D6;
+	box-shadow: #6BA6D6 0 0 5px;
+}
+
+
+@media screen and (max-width: 500px){
+	.danmaku{
+		display: none;
+	}
+}
+
+footer{
+	background: #222222;
+	color: gray;
+	margin-top: 15px;
+}
+
+footer .copyright{
+	line-height: 3em;
+	text-align: center;
 }
