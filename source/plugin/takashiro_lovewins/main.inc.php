@@ -12,10 +12,16 @@ if(in_array($_G['groupid'], $forbidden_usergroups)){
 	}
 }
 
-if($_SERVER['HTTP_HOST'] != 'localhost' && $_G['groupid'] != 23){
-	$extgroups = explode("\t", $_G['member']['extgroupids']);
-	if(!in_array(23, $extgroups)){
-		showmessage('内测阶段，您没有权限访问。');
+$affectivestatus = getuserprofile('affectivestatus');
+if(!in_array($affectivestatus, array('单身', '失恋', '暗恋'))){
+	if($affectivestatus == '热恋'){
+		showmessage('双身汪就不要来单身汪星球凑热闹了！答应我，不要去个人资料那里欺骗自己好吗？');
+	}elseif($affectivestatus == '已婚'){
+		showmessage('已婚人士还来这样的地方，我已经报警了！');
+	}elseif(empty($affectivestatus)){
+		showmessage('真的是单身汪就要去个人资料那里填写好呀。反正不填我是不会放你上岸的，口亨！');
+	}else{
+		showmessage('抱歉，您不属于我们伟大的单身汪星球！');
 	}
 }
 
