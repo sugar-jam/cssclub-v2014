@@ -26,10 +26,7 @@ if(!empty($_GET['queryonly'])){
 
 $today_offset = dmktime(dgmdate(TIMESTAMP, 'Y-m-d'));
 
-if($coupleid > 0){
-	$log_table = DB::table('takashiro_lovewins_couplelog');
-	$log = DB::fetch_first("SELECT * FROM $log_table WHERE coupleid=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
-}else{
+if($coupleid <= 0){
 	$couple_table = DB::table('takashiro_lovewins_couple');
 	$couple = DB::fetch_first("SELECT * FROM $couple_table WHERE (uid1=$uid1 AND uid2=$uid2) OR (uid1=$uid2 AND uid2=$uid1)");
 	if(!$couple){
@@ -42,9 +39,10 @@ if($coupleid > 0){
 		$couple['id'] = DB::insert_id();
 	}
 	$coupleid = $couple['id'];
-
-	$log = array();
 }
+
+$log_table = DB::table('takashiro_lovewins_couplelog');
+$log = DB::fetch_first("SELECT * FROM $log_table WHERE coupleid=$coupleid AND voterid={$_G['uid']} AND dateline>=$today_offset");
 
 if(empty($log)){
 	$couple_table = DB::table('takashiro_lovewins_couple');

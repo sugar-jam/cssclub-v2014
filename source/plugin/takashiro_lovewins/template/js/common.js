@@ -239,10 +239,11 @@
 		var col = input.parent();
 		var uid = col.data('uid');
 
-		$.post(root_url + '&action=danmaku&type=1&targetid=' + uid, {'content' : input.val()}, function(){
+		var content = input.val();
+		input.val('');
+		$.post(root_url + '&action=danmaku&type=1&targetid=' + uid, {'content' : content}, function(){
 			var area = col.find('.avatar');
-			area.danmaku('add', input.val());
-			input.val('');
+			area.danmaku('add', content);
 		});
 	});
 
@@ -277,7 +278,7 @@
 				coinnum.html(parseInt(coinnum.html(), 10) + 1);
 				alert('成功祝福这对CP！');
 			}else{
-				alert('他们已经收到您的祝福啦！');
+				alert('今天他们已经收到您的祝福啦！不如明天也来？');
 			}
 		}, 'text');
 	});

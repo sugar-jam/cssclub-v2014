@@ -1,3 +1,7 @@
+body, input, button, select, textarea{
+	font-family: '微软雅黑', 'Microsoft YaHei', '黑体', 'Arial';
+}
+
 form{
 	text-align: center;
 	margin-top: 12px;

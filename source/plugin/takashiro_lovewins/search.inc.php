@@ -2,7 +2,7 @@
 
 if(!defined('IN_DISCUZ')) exit('Access Denied');
 
-$condition = array("m.avatarstatus=1 AND p.affectivestatus IN ('','单身','失恋','暗恋') AND p.awardyear!='' AND p.issbranch!=''");
+$condition = array("p.affectivestatus IN ('','单身','失恋','暗恋') AND p.awardyear!='' AND p.issbranch!=''");
 
 if(!empty($_REQUEST['keyword'])){
 	$keyword = trim($_REQUEST['keyword']);
@@ -20,7 +20,7 @@ $condition = implode(' AND ', $condition);
 if(!empty($_REQUEST['randnum'])){
 	$randnum = intval($_REQUEST['randnum']);
 	if($randnum > 0){
-		$condition.= ' ORDER BY rand() LIMIT '.$randnum;
+		$condition.= ' AND m.avatarstatus=1 ORDER BY rand() LIMIT '.$randnum;
 	}
 }
 

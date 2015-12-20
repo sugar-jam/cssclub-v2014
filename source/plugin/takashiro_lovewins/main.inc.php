@@ -92,5 +92,9 @@ for($i = count($couples); $i < 6; $i++){
 	$couples[] = $couple;
 }
 
+$succeeded_couple_num = DB::result_first("SELECT COUNT(*) FROM $couple_table WHERE success=1");
+$love_table = DB::table('takashiro_lovewins_love');
+$say_love_num = DB::result_first("SELECT COUNT(*) FROM $love_table");
+
 $navtitle.= '单身交友';
 include template('takashiro_lovewins:main');
