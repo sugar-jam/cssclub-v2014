@@ -43,10 +43,17 @@
 		}
 
 		if(action == 'config'){
+			var texts = [];
 			function danmaku(){
-				var id = Math.floor(Math.random() * config.texts.length);
-				var content = config.texts.splice(id, 1);
-				add_text(content);
+				if(texts.length == 0){
+					for(var i = 0; i < config.texts.length; i++)
+						texts.push(config.texts[i]);
+				}
+				if(texts.length > 0){
+					var id = Math.floor(Math.random() * texts.length);
+					var content = texts.splice(id, 1);
+					add_text(content);
+				}
 			}
 			danmaku();
 			setInterval(danmaku, 3000);
