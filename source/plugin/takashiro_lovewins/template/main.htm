@@ -84,10 +84,9 @@
 	<div class="box">
 		<h3>人气CP</h3>
 		<ul class="headactions">
-			<li><button id="refresh_couplelist_button">随机CP</button></li>
 		</ul>
 
-		<div id="couple_candidate_box" class="content container-fluid couplelist">
+		<div class="content container-fluid couplelist">
 			<!--{loop $couples $c}-->
 			<div class="col-lg-4 col-md-6" data-uid1="{$c[user1][uid]}" data-uid2="{$c[user2][uid]}">
 				<div class="couple">
@@ -114,6 +113,36 @@
 				<input class="big" type="text" id="couple2" placeholder="请输入名字">
 				<button class="big" type="submit">顶上去</button>
 			</form>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="box">
+		<h3>随机CP</h3>
+		<ul class="headactions">
+			<li><button id="refresh_couplelist_button">换一换</button></li>
+		</ul>
+
+		<div id="couple_candidate_box" class="content container-fluid couplelist">
+			<!--{loop $rand_couples $c}-->
+			<div class="col-lg-4 col-md-6" data-uid1="{$c[user1][uid]}" data-uid2="{$c[user2][uid]}">
+				<div class="couple">
+					<div class="avatar">{echo avatar($c['user1']['uid'], 'big')}</div>
+					<div class="avatar">{echo avatar($c['user2']['uid'], 'big')}</div>
+
+					<div class="coinnum"><div class="value">$c['coinnum']</div></div>
+
+					<div class="namecard">
+						<div class="issbranch user1">$c['user1']['issbranch']</div>
+						<a class="realname user1" href="home.php?mod=space&do=profile&uid={$c[user1][uid]}" target="_blank">$c['user1']['realname']</a> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <a class="realname user2" href="home.php?mod=space&do=profile&uid={$c[user2][uid]}" target="_blank">$c['user2']['realname']</a>
+						<div class="issbranch user2">$c['user2']['issbranch']</div>
+					</div>
+
+					<input type="text" class="danmaku" placeholder="发射弹幕">
+				</div>
+			</div>
+			<!--{/loop}-->
 		</div>
 	</div>
 </div>

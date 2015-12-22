@@ -59,7 +59,7 @@
 	<div id="footer">
 		<ul class="followus">关注我们：
 			<li class="weixin" onmouseover="showTip(this)" tip="<img src='./template/iss_windmill/src/weixin_qrcode.jpg' />">微信公众平台</li>
-			<li class="email"><a href="mailto:tech@issclub.org">tech@issclub.org</a></li>
+			<li class="email"><a href="mailto:tech@cssclub.cn">tech@cssclub.cn</a></li>
 		</ul>
 		<div class="copyright">
 			<p>Powered by Discuz! <em>$_G['setting']['version']</em>, <!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.comsenz.com/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}--> &copy; 2001-2013 <a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a> All rights reserved. Modified by Kazuichi Takashiro.</p>

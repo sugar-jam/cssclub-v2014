@@ -16,6 +16,23 @@
 			danmaku_area = $('<div></div>');
 			danmaku_area.addClass('danmaku_area');
 			danmaku_area.appendTo(area);
+
+			if(action == 'config'){
+				var texts = [];
+				function danmaku(){
+					if(texts.length == 0){
+						for(var i = 0; i < config.texts.length; i++)
+							texts.push(config.texts[i]);
+					}
+					if(texts.length > 0){
+						var id = Math.floor(Math.random() * texts.length);
+						var content = texts.splice(id, 1);
+						add_text(content);
+					}
+				}
+				danmaku();
+				setInterval(danmaku, 3000);
+			}
 		}
 
 		function move_text(span, lineNum){
@@ -42,22 +59,7 @@
 			move_text(text, config.lineNum);
 		}
 
-		if(action == 'config'){
-			var texts = [];
-			function danmaku(){
-				if(texts.length == 0){
-					for(var i = 0; i < config.texts.length; i++)
-						texts.push(config.texts[i]);
-				}
-				if(texts.length > 0){
-					var id = Math.floor(Math.random() * texts.length);
-					var content = texts.splice(id, 1);
-					add_text(content);
-				}
-			}
-			danmaku();
-			setInterval(danmaku, 3000);
-		}else if(action == 'add'){
+		if(action == 'add'){
 			add_text(options);
 		}
 	}

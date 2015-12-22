@@ -12,19 +12,6 @@ if(in_array($_G['groupid'], $forbidden_usergroups)){
 	}
 }
 
-$affectivestatus = getuserprofile('affectivestatus');
-if(!in_array($affectivestatus, array('单身', '失恋', '暗恋'))){
-	if($affectivestatus == '热恋'){
-		showmessage('双身汪就不要来单身汪星球凑热闹了！答应我，不要去个人资料那里欺骗自己好吗？');
-	}elseif($affectivestatus == '已婚'){
-		showmessage('已婚人士还来这样的地方，我已经报警了！');
-	}elseif(empty($affectivestatus)){
-		showmessage('真的是单身汪就要去个人资料那里填写好呀。反正不填我是不会放你上岸的，口亨！');
-	}else{
-		showmessage('抱歉，您不属于我们伟大的单身汪星球！');
-	}
-}
-
 if(!empty($_GET['action'])){
 	$action = trim($_GET['action']);
 	$module_file = __DIR__.'/'.$action.'.inc.php';
@@ -63,7 +50,7 @@ foreach($home_members as &$m){
 unset($m);
 
 $couple_table = DB::table('takashiro_lovewins_couple');
-$couples = DB::fetch_all("SELECT * FROM $couple_table WHERE coinnum>0 ORDER BY coinnum DESC LIMIT 6");
+$couples = DB::fetch_all("SELECT * FROM $couple_table WHERE coinnum>0 ORDER BY coinnum DESC LIMIT 3");
 if($couples){
 	$member_profile_table = C::t('common_member_profile');
 	foreach($couples as &$couple){
@@ -73,7 +60,8 @@ if($couples){
 	unset($couple);
 }
 
-for($i = count($couples); $i < 6; $i++){
+$rand_couples = array();
+for($i = 0; $i < 6; $i++){
 	$couple = array(
 		'uid1' => $home_male_members[$i]['uid'],
 		'uid2' => $home_female_members[$i]['uid'],
@@ -89,7 +77,7 @@ for($i = count($couples); $i < 6; $i++){
 	$couple['coinnum'] = 0;
 	$couple['success'] = 0;
 
-	$couples[] = $couple;
+	$rand_couples[] = $couple;
 }
 
 $succeeded_couple_num = DB::result_first("SELECT COUNT(*) FROM $couple_table WHERE success=1");
