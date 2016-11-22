@@ -284,5 +284,3 @@ echo $members;
 showsubmit('modsubmit', 'submit', '', '<input class="checkbox" type="checkbox" name="sendemail" id="sendemail" value="1" '.$checksendemail.' /><label for="sendemail"> '.cplang('moderate_members_email').'</label>', $multipage);
 showtablefooter();
 showformfooter();
-
-?>

@@ -1,0 +1,106 @@
+{subtemplate common/header}
+
+<style type="text/css">
+.stat{
+	font-size: 11pt;
+	color: black;
+}
+
+.stat h1{
+	font-size: 15pt;
+	font-weight: bold;
+}
+
+.stat h2{
+	font-size: 13pt;
+	margin-top: 1em;
+	font-weight: bold;
+}
+
+.stat table{
+	border-collapse: collapse;
+	width: 80%;
+	line-height: 2em;
+}
+
+.stat table thead{
+	font-weight: bold;
+}
+
+.stat table td{
+	border: black 1px solid;
+	padding: 0 0.5em;
+}
+</style>
+
+<div class="stat">
+
+<h1>{$_G['setting']['sitename']}数据大揭秘</h1>
+<p>目前有{$club_member_num}人，男女比例为{echo sprintf('%.2f', $gender_ratio)} (样本比例: {echo sprintf('%.2f%%', (($male_num + $female_num) / $club_member_num * 100))})</p>
+
+<h2>学历 (样本比例: {echo sprintf('%.2f%%', $education_sample_num / $club_member_num * 100)})</h2>
+<table>
+	<thead>
+		<tr>
+			<td>学历</td>
+			<td>人数</td>
+			<td>比例</td>
+		</tr>
+	</thead>
+	<tbody>
+	<!--{loop $education_stat $r}-->
+		<tr>
+			<td>$r['education']</td>
+			<td>$r['num']</td>
+			<td>{echo sprintf('%.2f%%', $r['num'] / $education_sample_num * 100)}</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<p>在校生共{$student_count}名，占{echo sprintf('%.2f%%', $student_count / $education_sample_num * 100)}</p>
+<p>共{$overseas_education_count}人有留学经历，占{echo sprintf('%.2f%%', $overseas_education_count / $club_member_num * 100)}</p>
+<p>共{$employed_count}人已参加工作，占{echo sprintf('%.2f%%', $employed_count / $club_member_num * 100)}</p>
+
+<h2>分部 (样本比例: {echo sprintf('%.2f%%', $branch_sample_num / $club_member_num * 100)})</h2>
+<table>
+	<thead>
+		<tr>
+			<td>分部</td>
+			<td>人数</td>
+			<td>比例</td>
+		</tr>
+	</thead>
+	<tbody>
+	<!--{loop $branch_stat $r}-->
+		<tr>
+			<td>$r['issbranch']</td>
+			<td>$r['num']</td>
+			<td>{echo sprintf('%.2f%%', $r['num'] / $branch_sample_num * 100)}</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<h2>地域 (样本比例: {echo sprintf('%.2f%%', $city_sample_num / $club_member_num * 100)})</h2>
+<table>
+	<thead>
+		<tr>
+			<td>所在城市</td>
+			<td>人数</td>
+			<td>比例</td>
+		</tr>
+	</thead>
+	<tbody>
+	<!--{loop $city_stat $r}-->
+		<tr>
+			<td>$r['resideprovince'] $r['residecity']</td>
+			<td>$r['num']</td>
+			<td>{echo sprintf('%.2f%%', $r['num'] / $city_sample_num * 100)}</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+</div>
+
+{subtemplate common/footer}
