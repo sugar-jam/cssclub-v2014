@@ -77,11 +77,13 @@ class plugin_takashiro_issprofile_home extends plugin_takashiro_issprofile {
 
 		$verify_table = DB::TABLE('plugin_member_verify');
 		$profile_table = DB::TABLE('common_member_profile');
-		$info = DB::fetch_first("SELECT v.*,p.`realname`,p.`issbranch` FROM `{$verify_table}` v
-			LEFT JOIN `{$profile_table}` p ON p.uid=v.uid
-			WHERE p.`uid`=$uid");
-		$hid = self::$SchoolPrefix[$info['awardschool']].substr($info['awardyear'], -2, 2).$info['subserial'].'-'.$info['realname'].'-'.$info['issbranch'];
-		return '<ul class="pf_l cl"><li><em>团内编号</em>'.$hid.'</li></ul>';
+		$info = DB::fetch_first("SELECT * FROM `{$verify_table}` WHERE `uid`=$uid");
+		if($info){
+			$hid = self::$SchoolPrefix[$info['awardschool']].substr($info['awardyear'], -2, 2).$info['subserial'];
+			return '<ul class="pf_l cl"><li><em>团内编号</em>'.$hid.'</li></ul>';
+		}else{
+			return '';
+		}
 	}
 
 	static protected $HiddenProfile = array(
