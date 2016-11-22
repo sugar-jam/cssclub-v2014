@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: admincp_members.php 34668 2014-06-23 08:11:09Z hypowang $
+ *      $Id: admincp_members.php 35200 2015-02-04 03:50:59Z hypowang $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -2370,7 +2370,6 @@ EOF;
 			$privacyselect = array(
 				array('0', cplang('members_profile_edit_privacy_public')),
 				array('1', cplang('members_profile_edit_privacy_friend')),
-				array('2', cplang('members_profile_edit_privacy_register')),
 				array('3', cplang('members_profile_edit_privacy_secret'))
 			);
 			showsetting('members_profile_edit_default_privacy', array('privacy', $privacyselect), $_G['setting']['privacy']['profile'][$fieldid], 'select');
@@ -2512,7 +2511,7 @@ EOF;
 		unset($list['resideprovince']);
 		unset($list['residedist']);
 		unset($list['residecommunity']);
-		//unset($list['idcardtype']);
+		unset($list['idcardtype']);
 
 		if(!submitcheck('ordersubmit')) {
 			$_GET['anchor'] = in_array($_GET['action'], array('members', 'setting')) ? $_GET['action'] : 'members';
@@ -2567,8 +2566,8 @@ EOF;
 					$setarr['required'] = 0;
 					C::t('common_member_profile_setting')->update('residedist', $setarr);
 					C::t('common_member_profile_setting')->update('residecommunity', $setarr);
-				/*} elseif($fieldid == 'idcard') {
-					C::t('common_member_profile_setting')->update('idcardtype', $setarr);*/
+				} elseif($fieldid == 'idcard') {
+					C::t('common_member_profile_setting')->update('idcardtype', $setarr);
 				}
 
 			}
@@ -3015,7 +3014,7 @@ function notifymembers($operation, $variable) {
 		$current = 0;
 		$subject = $_GET['subject'];
 		$message = $_GET['message'];
-		$subject = trim($subject);
+		$subject = dhtmlspecialchars(trim($subject));
 		$message = trim(str_replace("\t", ' ', $message));
 		$addmsg = '';
 		if(($_GET['notifymembers'] && $_GET['notifymember']) && !($subject && $message)) {

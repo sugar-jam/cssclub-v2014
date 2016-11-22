@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 34125 2013-10-15 09:24:41Z jeffjzhang $
+ *      $Id: forum_viewthread.php 35494 2015-08-06 09:31:59Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -18,6 +18,9 @@ require_once libfile('function/post');
 $thread = & $_G['forum_thread'];
 $forum = & $_G['forum'];
 
+if(!empty($_GET['checkrush']) && preg_match('/[^0-9_]/', $_GET['checkrush'])) {
+	$_GET['checkrush'] = '';
+}
 if(!$_G['forum_thread'] || !$_G['forum']) {
 	showmessage('thread_nonexistence');
 }
@@ -528,8 +531,8 @@ if($maxposition) {
 		if($post['invisible'] != 0) {
 			$have_badpost = 1;
 		}
-		$cachepids[$post['position']] = $post['pid'];
-		$postarr[$post['position']] = $post;
+		$cachepids[$post[position]] = $post['pid'];
+		$postarr[$post[position]] = $post;
 		$lastposition = $post['position'];
 	}
 	$realpost = count($postarr);
@@ -580,6 +583,9 @@ if(!$maxposition && empty($postarr)) {
 			unset($debatpost);
 		} else {
 			$post = C::t('forum_post')->fetch('tid:'.$_G['tid'], $_GET['viewpid']);
+		}
+		if($post['tid'] != $_G['tid']) {
+			$post = array();
 		}
 
 		if($post) {
@@ -657,7 +663,7 @@ foreach($postarr as $post) {
 				continue;
 			}
 			$_G['forum_firstpid'] = $post['pid'];
-			if(IS_ROBOT || $_G['adminid'] == 1) $summary = str_replace(array("\r", "\n"), '', messagecutstr(strip_tags($post['message']), 160));
+			if(!$_G['forum_thread']['price'] && (IS_ROBOT || $_G['adminid'] == 1)) $summary = str_replace(array("\r", "\n"), '', messagecutstr(strip_tags($post['message']), 160));
 			$tagarray_all = $posttag_array = array();
 			$tagarray_all = explode("\t", $post['tags']);
 			if($tagarray_all) {
@@ -1339,25 +1345,7 @@ function viewthread_baseinfo($post, $extra) {
 	} elseif(substr($key, 0, 6) == 'field_') {
 		$field = substr($key, 6);
 		if(!empty($post['privacy']['profile'][$field])) {
-			switch($post['privacy']['profile'][$field]){
-				case 1:
-					require_once libfile('function/friend');
-					if(!friend_check($_G['uid'])){
-						return '';
-					}
-				break;
-				case 2:
-					if(empty($_G['uid']) || ($_G['groupid'] >= 4 && $_G['groupid'] <= 8)){
-						return '';
-					}
-				break;
-				case 3:
-					if($_G['uid'] != $post['uid']){
-						return '';
-					}
-				default:
-					return '';
-			}
+			return '';
 		}
 		require_once libfile('function/profile');
 		if($field != 'qq') {
@@ -1606,6 +1594,8 @@ function parsebegin($linkaddr, $imgflashurl, $w = 0, $h = 0, $type = 0, $s = 0) 
 	preg_match("/((https?){1}:\/\/|www\.)[^\[\"']+/i", $imgflashurl, $matches);
 	$imgflashurl = $matches[0];
 	$fileext = fileext($imgflashurl);
+	preg_match("/((https?){1}:\/\/|www\.)[^\[\"']+/i", $linkaddr, $matches);
+	$linkaddr = $matches[0];
 	$randomid = 'swf_'.random(3);
 	$w = ($w >=400 && $w <=1024) ? $w : 900;
 	$h = ($h >=300 && $h <=640) ? $h : 500;

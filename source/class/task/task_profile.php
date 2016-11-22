@@ -40,25 +40,14 @@ class task_profile {
 	function checkfield() {
 		global $_G;
 
-		$unrequired_fields = array(
-			'birthprovince', 'birthcity', 'birthdist', 'birthcommunity',
-			'resideprovince', 'residecity', 'residedist', 'residecommunity',
-			'company', 'occupation', 'position',
-			'birthyear', 'birthmonth', 'zodiac', 'constellation',
-			'passport',
-		);
-
+		$fields = array('realname', 'gender', 'birthyear', 'birthmonth', 'birthday', 'bloodtype', 'affectivestatus',
+				'birthprovince','birthcity', 'resideprovince', 'residecity');
 		loadcache('profilesetting');
-		$fields = array();
-		foreach($_G['cache']['profilesetting'] as $fieldid => $fieldsetting){
-			if($fieldsetting['available'] && !in_array($fieldid, $unrequired_fields)){
-				$fields[] = $fieldid;
-			}
-		}
-
 		$fieldsnew = array();
 		foreach($fields as $v) {
-			$fieldsnew[$v] = $_G['cache']['profilesetting'][$v]['title'];
+			if(isset($_G['cache']['profilesetting'][$v])) {
+				$fieldsnew[$v] = $_G['cache']['profilesetting'][$v]['title'];
+			}
 		}
 		if($fieldsnew) {
 			space_merge($_G['member'], 'profile');

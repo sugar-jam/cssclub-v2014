@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 34523 2014-05-15 04:22:29Z nemohou $
+ *      $Id: function_core.php 35335 2015-06-17 01:57:38Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -187,13 +187,10 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 function fsocketopen($hostname, $port = 80, &$errno, &$errstr, $timeout = 15) {
 	$fp = '';
 	if(function_exists('fsockopen')) {
-		//exit('fsockopen');
 		$fp = @fsockopen($hostname, $port, $errno, $errstr, $timeout);
 	} elseif(function_exists('pfsockopen')) {
-		//exit('pfsockopen');
 		$fp = @pfsockopen($hostname, $port, $errno, $errstr, $timeout);
 	} elseif(function_exists('stream_socket_client')) {
-		//exit('stream_socket_client');
 		$fp = @stream_socket_client($hostname.':'.$port, $errno, $errstr, $timeout);
 	}
 	return $fp;
@@ -1507,6 +1504,11 @@ function dreferer($default = '') {
 	}
 
 	$reurl = parse_url($_G['referer']);
+
+	if(!$reurl || (isset($reurl['scheme']) && !in_array(strtolower($reurl['scheme']), array('http', 'https')))) {
+		$_G['referer'] = '';
+	}
+
 	if(!empty($reurl['host']) && !in_array($reurl['host'], array($_SERVER['HTTP_HOST'], 'www.'.$_SERVER['HTTP_HOST'])) && !in_array($_SERVER['HTTP_HOST'], array($reurl['host'], 'www.'.$reurl['host']))) {
 		if(!in_array($reurl['host'], $_G['setting']['domain']['app']) && !isset($_G['setting']['domain']['list'][$reurl['host']])) {
 			$domainroot = substr($reurl['host'], strpos($reurl['host'], '.')+1);
@@ -1519,7 +1521,7 @@ function dreferer($default = '') {
 	}
 
 	$_G['referer'] = durlencode($_G['referer']);
-	return$_G['referer'];
+	return $_G['referer'];
 }
 
 function ftpcmd($cmd, $arg1 = '') {
