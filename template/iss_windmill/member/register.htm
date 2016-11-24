@@ -171,15 +171,7 @@
 						<!--{/if}-->
 
 						<!--{if $this->setting['regverify'] == 2}-->
-						<!--<div class="rfm">
-							<table>
-								<tr>
-									<th><span class="rq">*</span><label for="regmessage">{lang register_message}:</label></th>
-									<td><input id="regmessage" name="regmessage" class="px" autocomplete="off" size="25" tabindex="1" required /></td>
-									<td class="tipcol"><i id="tip_regmessage" class="p_tip">{lang register_message1}</i></td>
-								</tr>
-							</table>
-						</div>-->
+						<input type="hidden" id="regmessage" name="regmessage" autocomplete="off" value="CSSCLUB" required />
 						<!--{/if}-->
 
 						<!--{if empty($invite) && $this->setting['regstatus'] == 3}-->
