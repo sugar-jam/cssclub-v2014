@@ -58,7 +58,7 @@
 
 	<div id="footer">
 		<ul class="followus">关注我们：
-			<li class="weixin" onmouseover="showTip(this)" tip="<img src='./template/iss_windmill/src/weixin_qrcode.jpg' />">微信公众平台</li>
+			<li class="weixin" onmouseover="showTip(this)" tip="<img src='$_G['style']['styleimgdir']/weixin_qrcode.jpg' />">微信公众平台</li>
 			<li class="email"><a href="mailto:tech@cssclub.cn">tech@cssclub.cn</a></li>
 		</ul>
 		<div class="copyright">
