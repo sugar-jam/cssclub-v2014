@@ -129,16 +129,7 @@ class plugin_takashiro_issprofile_member extends plugin_takashiro_issprofile {
 	}
 
 	function _check_duplicated_account(){
-		if($_POST){
-			if(empty($_POST['realname']))
-				showmessage('请填写真实姓名。');
-
-			if(empty($_POST['awardyear']))
-				showmessage('请选择获奖年份。');
-
-			if(empty($_POST['awardschool']))
-				showmessage('请选择获奖所在学校。');
-
+		if($_POST && !empty($_POST['realname']) && !empty($_POST['awardyear']) && !empty($_POST['awardschool'])){
 			$user = array(
 				'realname' => trim($_POST['realname']),
 				'awardyear' => intval($_POST['awardyear']),
