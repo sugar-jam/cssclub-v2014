@@ -2,19 +2,9 @@
 
 if(!defined('IN_DISCUZ')) exit('Access Denied');
 
+require_once DISCUZ_ROOT.'source/plugin/takashiro_issprofile/cssclub.class.php';
+
 class plugin_takashiro_issprofile {
-	protected static $SchoolPrefix = array(
-		'浙江大学' => 'Z',
-		'北京大学' => 'B',
-		'清华大学' => 'Q',
-		'上海交通大学' => 'J',
-		'复旦大学' => 'F',
-		'重庆大学' => 'C',
-		'四川大学' => 'S',
-		'电子科技大学' => 'D',
-		'西南财经大学' => 'X',
-		'西南交通大学' => 'N',
-	);
 
 	function cacheuserstats(){
 		global $_G;
@@ -79,7 +69,9 @@ class plugin_takashiro_issprofile_home extends plugin_takashiro_issprofile {
 		$profile_table = DB::TABLE('common_member_profile');
 		$info = DB::fetch_first("SELECT * FROM `{$verify_table}` WHERE `uid`=$uid");
 		if($info){
-			$hid = self::$SchoolPrefix[$info['awardschool']].substr($info['awardyear'], -2, 2).$info['subserial'];
+			$branch = CSSClub::Branch($info['awardschool'], 'school');
+			$prefix = isset($branch['code']) ? $branch['code'] : '';
+			$hid = $prefix.substr($info['awardyear'], -2, 2).$info['subserial'];
 			return '<ul class="pf_l cl"><li><em>团内编号</em>'.$hid.'</li></ul>';
 		}else{
 			return '';
@@ -264,5 +256,3 @@ class plugin_takashiro_issprofile_forum extends plugin_takashiro_issprofile{
 	}
 
 }
-
-?>
