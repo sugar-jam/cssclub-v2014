@@ -150,17 +150,14 @@ $count = C::t('common_member_validate')->fetch_all_status_by_count();
 $sendemail = isset($_GET['sendemail']) ? $_GET['sendemail'] : 0;
 $checksendemail = $sendemail ? 'checked' : '';
 
-$start_limit = ($page - 1) * $_G['setting']['memberperpage'];
-
 $validatenum = C::t('common_member_validate')->count_by_status(0);
 $members = '';
 if($validatenum) {
-	$multipage = multi($validatenum, $_G['setting']['memberperpage'], $page, ADMINSCRIPT.'?'.$_SERVER['QUERY_STRING']);
 	$vuids = array();
 	loadcache('fields_register');
 	require_once libfile('function/profile');
 	loadcache('usergroups');
-	$allvalidate = C::t('common_member_validate')->fetch_all_invalidate($start_limit, $_G['setting']['memberperpage']);
+	$allvalidate = C::t('common_member_validate')->fetch_all_invalidate(0, 0);
 	$uids = array_keys($allvalidate);
 	$allmember = C::t('common_member')->fetch_all($uids, false, 0);
 	$allmemberstatus = C::t('common_member_status')->fetch_all($uids, false, 0);
