@@ -229,11 +229,19 @@ if($validatenum) {
 
 		$members.= '<td>';
 		foreach($verifyinfolist as $verifyinfo)
-			$members.= "姓名：{$verifyinfo['realname']}<br />学校：{$verifyinfo['awardschool']}<br />获奖年份：{$verifyinfo['awardyear']}<br />UID：{$verifyinfo['uid']}<input type=\"radio\" name=\"verifyoption[{$member['uid']}]\" value=\"{$verifyinfo['id']}\" />";
+			if(empty($verifyinfo['uid'])){
+				$members.= "<input type=\"radio\" name=\"verifyoption[{$member['uid']}]\" value=\"{$verifyinfo['id']}\">";
+			}else{
+				$members.= '<input type="radio" disabled="disabled">';
+			}
+			$members.= "姓名：{$verifyinfo['realname']} 学校：{$verifyinfo['awardschool']} 获奖年份：{$verifyinfo['awardyear']}";
+			if($verifyinfo['uid']){
+				"已注册用户：<a href=\"home.php?mod=space&uid={$verifyinfo['uid']}\">{$verifyinfo['uid']}</a>";
+			}
+			$members.= '<br>';
 		$members.= '</td>';
 
-		$members.= "<td align=\"center\"><textarea rows=\"4\" name=\"userremark[$member[uid]]\" style=\"width: 95%; word-break: break-all\">$member[message]</textarea></td>\n".
-			"<td>$lang[moderate_members_submit_times]: $member[submittimes]<br />$lang[moderate_members_submit_time]: $member[submitdate]<br />$lang[moderate_members_admin]: $member[admin]<br />\n".
+		$members.= "<td>$lang[moderate_members_submit_times]: $member[submittimes]<br />$lang[moderate_members_submit_time]: $member[submitdate]<br />$lang[moderate_members_admin]: $member[admin]<br />\n".
 			"$lang[moderate_members_mod_time]: $member[moddate]</td><td><textarea rows=\"4\" id=\"remark[$member[uid]]\" name=\"remark[$member[uid]]\" style=\"width: 95%; word-break: break-all\">$member[remark]</textarea></td></tr>\n";
 	}
 }
@@ -307,7 +315,7 @@ if(e.type == 'radio') {
 EOT;
 showformheader('plugins&operation=config&do=16&identifier=takashiro_issprofile&pmod=memberverify');
 showtableheader('moderate_members', 'fixpadding');
-showsubtitle(array('operation', 'members_edit_info', '相似信息', 'moderate_members_message', 'moderate_members_info', 'moderate_members_remark'));
+showsubtitle(array('operation', 'members_edit_info', '相似信息', 'moderate_members_info', 'moderate_members_remark'));
 echo $members;
 showsubmit('modsubmit', 'submit', '', '<input class="checkbox" type="checkbox" name="sendemail" id="sendemail" value="1" '.$checksendemail.' /><label for="sendemail"> '.cplang('moderate_members_email').'</label>', $multipage);
 showtablefooter();
