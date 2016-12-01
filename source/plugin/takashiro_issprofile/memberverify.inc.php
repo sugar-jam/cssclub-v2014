@@ -4,6 +4,8 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
+$plugin_url = 'plugins&operation=config&do='.$_GET['do'].'&identifier='.$_GET['identifier'].'&pmod='.$_GET['pmod'];
+
 if(submitcheck('modsubmit')){
 	$moderation = array('invalidate' => array(), 'validate' => array(), 'delete' => array(), 'ignore' => array());
 
@@ -142,7 +144,7 @@ if(submitcheck('modsubmit')){
 			}
 		}
 	}
-	cpmsg('moderate_members_op_succeed', "action=moderate&operation=members&page=$page", 'succeed', array('numvalidated' => $numvalidated, 'numinvalidated' => $numinvalidated, 'numdeleted' => $numdeleted));
+	cpmsg('moderate_members_op_succeed', 'action='.$plugin_url, 'succeed', array('numvalidated' => $numvalidated, 'numinvalidated' => $numinvalidated, 'numdeleted' => $numdeleted));
 }
 
 $count = C::t('common_member_validate')->fetch_all_status_by_count();
