@@ -42,7 +42,7 @@ if($_GET['anchor'] == 'base') {
 		$icons = '<table style="margin-bottom: 3px; margin-top:3px; width:350px;"><tr><td>';
 		for($i=1;$i<=11;$i++) {
 			if ($i < 5) {
-				$icons .= '<input class="radio" type="radio" id="stat_icon_'.$i.'" name="settingnew[cloud_staticon]" value="'.$i.'"'.$checkicon[$i].' /><label for="stat_icon_'.$i.'">&nbsp;<img src="http://tcss.qq.com/icon/toss_1'.$i.'.gif" /></label>&nbsp;&nbsp;';
+				$icons .= '<input class="radio" type="radio" id="stat_icon_'.$i.'" name="settingnew[cloud_staticon]" value="'.$i.'"'.$checkicon[$i].' /><label for="stat_icon_'.$i.'">&nbsp;<img src="//tcss.qq.com/icon/toss_1'.$i.'.gif" /></label>&nbsp;&nbsp;';
 				if ($i % 4 == 0) {
 					$icons .= '</td></tr><tr><td>';
 				}
