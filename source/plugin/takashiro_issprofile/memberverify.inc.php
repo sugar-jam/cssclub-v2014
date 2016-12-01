@@ -248,8 +248,8 @@ if($validatenum) {
 }
 
 showtips('moderate_members_tips');
-$moderate_members_bad_reason = cplang('moderate_members_bad_reason');
-$moderate_members_succeed = cplang('moderate_members_succeed');
+$moderate_members_bad_reason = '请填写完善个人资料，必须填写姓名、获奖年份、获奖所在学校。';
+$moderate_members_succeed = '您的注册信息已填写完成，欢迎！';
 echo <<<EOT
 <script type="text/javascript">
 function set_bg(operation, uid) {
