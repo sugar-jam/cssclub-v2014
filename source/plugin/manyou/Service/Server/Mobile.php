@@ -60,7 +60,7 @@ class Cloud_Service_Server_Mobile extends Cloud_Service_Server_Restful {
 						$row[] = array(
 							'name' => isset($_G['cache']['pluginlanguage_script'][$pluginid][$name]) ? $_G['cache']['pluginlanguage_script'][$pluginid][$name] : $name,
 							'logo' => $value['logo'],
-							'url' => preg_match('/^http:\/\//', $value['url']) ? $value['url'] : $_G['siteurl'].$value['url'],
+							'url' => preg_match('/^(?:https?:)?\/\//', $value['url']) ? $value['url'] : $_G['siteurl'].$value['url'],
 						);
 					}
 				}

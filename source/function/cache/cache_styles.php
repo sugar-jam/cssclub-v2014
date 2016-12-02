@@ -35,10 +35,10 @@ function build_cache_styles() {
 		if(strstr($data['boardimg'], ',')) {
 			$flash = explode(",", $data['boardimg']);
 			$flash[0] = trim($flash[0]);
-			$flash[0] = preg_match('/^http:\/\//i', $flash[0]) ? $flash[0] : $data['styleimgdir'].'/'.$flash[0];
+			$flash[0] = preg_match('/^(?:https?:)?\/\//i', $flash[0]) ? $flash[0] : $data['styleimgdir'].'/'.$flash[0];
 			$data['boardlogo'] = "<embed src=\"".$flash[0]."\" width=\"".trim($flash[1])."\" height=\"".trim($flash[2])."\" type=\"application/x-shockwave-flash\" wmode=\"transparent\"></embed>";
 		} else {
-			$data['boardimg'] = preg_match('/^http:\/\//i', $data['boardimg']) ? $data['boardimg'] : $data['styleimgdir'].'/'.$data['boardimg'];
+			$data['boardimg'] = preg_match('/^(?:https?:)?\/\//i', $data['boardimg']) ? $data['boardimg'] : $data['styleimgdir'].'/'.$data['boardimg'];
 			$data['boardlogo'] = "<img src=\"$data[boardimg]\" alt=\"".$_G['setting']['bbname']."\" border=\"0\" />";
 		}
 		$data['bold'] = $data['nobold'] ? 'normal' : 'bold';
@@ -82,7 +82,7 @@ function setcssbackground(&$data, $code) {
 				if($codes[$i]{0} == '#') {
 					$css .= strtoupper($codes[$i]).' ';
 					$codevalue = strtoupper($codes[$i]);
-				} elseif(preg_match('/^http:\/\//i', $codes[$i])) {
+				} elseif(preg_match('/^(?:https?:)?\/\//i', $codes[$i])) {
 					$css .= 'url("'.$codes[$i].'") ';
 				} else {
 					$css .= 'url("'.$data['styleimgdir'].'/'.$codes[$i].'") ';

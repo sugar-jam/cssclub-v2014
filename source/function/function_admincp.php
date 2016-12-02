@@ -774,7 +774,7 @@ function showsetting($setname, $varname, $value, $type = 'radio', $disabled = ''
 			if($code[$i] != '') {
 				if($code[$i]{0} == '#') {
 					$css .= strtoupper($code[$i]).' ';
-				} elseif(preg_match('/^http:\/\//i', $code[$i])) {
+				} elseif(preg_match('/^(?:https?:)?\/\//i', $code[$i])) {
 					$css .= 'url(\''.$code[$i].'\') ';
 				} else {
 					$css .= 'url(\''.$stylestuff['imgdir']['subst'].'/'.$code[$i].'\') ';
