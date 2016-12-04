@@ -345,10 +345,11 @@ function query_verifyinfo(input){
 	x.setRecvType('JSON');
 	x.post('admin.php?action=<?php echo $plugin_url;?>&ajax=1', send_string, function(){
 		var list = JSON.parse(x.XMLHttpRequest.responseText);
+		var input;
 		for(var i = 0; i < list.length; i++){
 			var info = list[i];
 
-			var input = document.createElement('input');
+			input = document.createElement('input');
 			input.type = 'radio';
 			input.name = 'verifyoption[' + uid + ']';
 			input.value = info.id;
@@ -362,6 +363,9 @@ function query_verifyinfo(input){
 			var box = document.getElementById('verifylist_' + uid);
 			box.innerHTML = '';
 			box.append(label);
+		}
+		if(list.length == 1 && input){
+			input.checked = true;
 		}
 	});
 }
