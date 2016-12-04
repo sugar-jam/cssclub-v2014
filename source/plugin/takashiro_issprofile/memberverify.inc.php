@@ -353,17 +353,29 @@ function query_verifyinfo(input){
 			input.name = 'verifyoption[' + uid + ']';
 			input.value = info.id;
 
-			var text = document.createTextNode(info.realname + ' ' + info.awardschool + ' ' + info.awardyear + '年');
+			var text = info.realname + ' ' + info.awardschool + ' ' + info.awardyear + '年';
+			var a = null;
+			if(info.uid){
+				input.disabled = true;
+				text += ' 已注册编号：';
+				a = document.createElement('a');
+				a.href = "home.php?mod=space&uid=" + info.uid;
+				a.target = '_blank';
+				a.innerText = info.uid;
+			}
 
 			var label = document.createElement('label');
 			label.appendChild(input);
-			label.appendChild(text);
+			label.appendChild(document.createTextNode(text));
+			if(a){
+				label.appendChild(a);
+			}
 
 			var box = document.getElementById('verifylist_' + uid);
 			box.innerHTML = '';
 			box.append(label);
 		}
-		if(list.length == 1 && input){
+		if(list.length == 1 && input && !input.disabled){
 			input.checked = true;
 		}
 	});
