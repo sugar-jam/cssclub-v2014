@@ -342,7 +342,6 @@ function query_verifyinfo(input){
 	send_string = send_string.join('&');
 
 	var x = new Ajax();
-	x.setRecvType('JSON');
 	x.post('admin.php?action=<?php echo $plugin_url;?>&ajax=1', send_string, function(){
 		var list = JSON.parse(x.XMLHttpRequest.responseText);
 		var input;
