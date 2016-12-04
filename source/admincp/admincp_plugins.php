@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
 
-cpheader();
+empty($_GET['ajax']) && cpheader();
 
 if(!empty($_GET['identifier']) && !empty($_GET['pmod'])) {
 	$operation = 'config';
@@ -821,8 +821,10 @@ if(!$operation) {
 		}
 
 		if($modfile) {
-			shownav('plugin', $plugin['name']);
-			showsubmenu($plugin['name'], $submenuitem);
+			if(empty($_GET['ajax'])){
+				shownav('plugin', $plugin['name']);
+				showsubmenu($plugin['name'], $submenuitem);
+			}
 			if(!@include(DISCUZ_ROOT.$modfile)) {
 				cpmsg('plugins_setting_module_nonexistence', '', 'error', array('modfile' => $modfile));
 			} else {

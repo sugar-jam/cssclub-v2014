@@ -6,7 +6,25 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 
 $plugin_url = 'plugins&operation=config&do='.$_GET['do'].'&identifier='.$_GET['identifier'].'&pmod='.$_GET['pmod'];
 
-if(submitcheck('modsubmit')){
+if(submitcheck('querysubmit')){
+	$condition = array();
+
+	if(!empty($_POST['realname'])){
+		$realname = daddslashes($_POST['realname']);
+		$condition[] = "realname='{$realname}'";
+	}
+
+	$infolist = array();
+	if($condition){
+		$condition = '('.implode(' AND ', $condition).')';
+		$plugin_member_verify_table = DB::table('plugin_member_verify');
+		$infolist = DB::fetch_all("SELECT * FROM $plugin_member_verify_table WHERE $condition");
+	}
+
+	echo json_encode($infolist);
+	exit;
+
+}elseif(submitcheck('modsubmit')){
 	$moderation = array('invalidate' => array(), 'validate' => array(), 'delete' => array(), 'ignore' => array());
 
 	$uids = array();
@@ -218,9 +236,6 @@ if($validatenum) {
 		$member['submitdate'] = dgmdate($member['submitdate']);
 		$member['moddate'] = $member['moddate'] ? dgmdate($member['moddate']) : $lang['none'];
 
-		$plugin_member_verify_table = DB::table('plugin_member_verify');
-		$verifyinfolist = DB::fetch_all("SELECT * FROM $plugin_member_verify_table WHERE realname='{$member['realname']}'");
-
 		$member['admin'] = $member['admin'] ? "<a href=\"home.php?mod=space&username=".rawurlencode($member['admin'])."\" target=\"_blank\">$member[admin]</a>" : $lang['none'];
 		$members .= "<tr class=\"hover\" id=\"mod_uid_{$member[uid]}\">".
 			"<td class=\"rowform\" style=\"width:80px;\"><ul class=\"nofloat\"><li><input id=\"mod_uid_{$member[uid]}_1\" class=\"radio\" type=\"radio\" name=\"modtype[$member[uid]]\" value=\"invalidate\" onclick=\"set_bg('invalidate', $member[uid]);\"><label for=\"mod_uid_{$member[uid]}_1\">$lang[invalidate]</label></li><li><input id=\"mod_uid_{$member[uid]}_2\" class=\"radio\" type=\"radio\" name=\"modtype[$member[uid]]\" value=\"validate\" onclick=\"set_bg('validate', $member[uid]);\"><label for=\"mod_uid_{$member[uid]}_2\">$lang[validate]</label></li>\n".
@@ -228,6 +243,7 @@ if($validatenum) {
 			"<br />$lang[members_edit_regdate]: $member[regdate]<br />$lang[members_edit_regip]: $member[regip] ".convertip($member['regip'])."<br />$lang[members_edit_lastip]: $member[lastip] ".convertip($member['lastip'])."<br />Email: $member[email]$str</td>\n";
 
 		$members.= '<td>';
+		$members.= '<div id="verifylist_'.$member['uid'].'">';
 		foreach($verifyinfolist as $verifyinfo){
 			if(empty($verifyinfo['uid'])){
 				$members.= "<label><input type=\"radio\" name=\"verifyoption[{$member['uid']}]\" value=\"{$verifyinfo['id']}\">";
@@ -240,7 +256,8 @@ if($validatenum) {
 			}
 			$members.= '</label><br>';
 		}
-		$members.= '</td>';
+		$members.= '</div>';
+		$members.= '<input type="text" onblur="query_verifyinfo(this)" data-uid="'.$member['uid'].'" placeholder="查找姓名"></td>';
 
 		$members.= "<td>$lang[moderate_members_submit_times]: $member[submittimes]<br />$lang[moderate_members_submit_time]: $member[submitdate]<br />$lang[moderate_members_admin]: $member[admin]<br />\n".
 			"$lang[moderate_members_mod_time]: $member[moddate]</td><td><textarea rows=\"4\" id=\"remark[$member[uid]]\" name=\"remark[$member[uid]]\" style=\"width: 95%; word-break: break-all\">$member[remark]</textarea></td></tr>\n";
@@ -248,72 +265,108 @@ if($validatenum) {
 }
 
 showtips('moderate_members_tips');
-$moderate_members_bad_reason = '请完善个人资料，必须填写姓名、获奖年份、获奖所在学校。';
-$moderate_members_succeed = '您的注册信息已填写完成，欢迎！';
-echo <<<EOT
-<script type="text/javascript">
+?>
+<script>
 function set_bg(operation, uid) {
-if(operation == 'invalidate') {
-$('mod_uid_' + uid).className = "mod_invalidate";
-$('remark[' + uid + ']').value = '$moderate_members_bad_reason';
-} else if(operation == 'validate') {
-$('mod_uid_' + uid).className = "mod_validate";
-$('remark[' + uid + ']').value = '$moderate_members_succeed';
-} else if(operation == 'ignore') {
-$('mod_uid_' + uid).className = "mod_ignore";
-$('remark[' + uid + ']').value = '';
-} else if(operation == 'delete') {
-$('mod_uid_' + uid).className = "mod_delete";
-$('remark[' + uid + ']').value = '';
-}
-$('chk_apply_all').disabled = true;
-$('chk_apply_all').checked = false;
-}
-function set_bg_all(operation) {
-var trs = $('cpform').getElementsByTagName('TR');
-for(var i in trs) {
-if(trs[i].id && trs[i].id.substr(0, 8) == 'mod_uid_') {
-	uid = trs[i].id.substr(8);
 	if(operation == 'invalidate') {
-		trs[i].className = 'mod_invalidate';
-		$('remark[' + uid + ']').value = '$moderate_members_bad_reason';
+		$('mod_uid_' + uid).className = "mod_invalidate";
+		$('remark[' + uid + ']').value = '请完善个人资料，必须填写姓名、获奖年份、获奖所在学校。';
 	} else if(operation == 'validate') {
-		trs[i].className = 'mod_validate';
-		$('remark[' + uid + ']').value = '$moderate_members_succeed';
+		$('mod_uid_' + uid).className = "mod_validate";
+		$('remark[' + uid + ']').value = '您的注册信息已填写完成，欢迎！';
 	} else if(operation == 'ignore') {
-		trs[i].className = 'mod_ignore';
+		$('mod_uid_' + uid).className = "mod_ignore";
 		$('remark[' + uid + ']').value = '';
 	} else if(operation == 'delete') {
-		trs[i].className = 'mod_delete';
-		$('remark[' + uid + ']').value = '';
-	}else if(operation == 'cancel') {
-		trs[i].className = '';
+		$('mod_uid_' + uid).className = "mod_delete";
 		$('remark[' + uid + ']').value = '';
 	}
-}
-}
-if(operation != 'cancel') {
-$('chk_apply_all').disabled = false;
-$('chk_apply_all').value = operation;
-} else {
-$('chk_apply_all').disabled = true;
-$('chk_apply_all').checked = false;
+	$('chk_apply_all').disabled = true;
+	$('chk_apply_all').checked = false;
 }
 
-
+function set_bg_all(operation) {
+	var trs = $('cpform').getElementsByTagName('TR');
+	for(var i in trs) {
+		if(trs[i].id && trs[i].id.substr(0, 8) == 'mod_uid_') {
+			uid = trs[i].id.substr(8);
+			if(operation == 'invalidate') {
+				trs[i].className = 'mod_invalidate';
+				$('remark[' + uid + ']').value = '$moderate_members_bad_reason';
+			} else if(operation == 'validate') {
+				trs[i].className = 'mod_validate';
+				$('remark[' + uid + ']').value = '$moderate_members_succeed';
+			} else if(operation == 'ignore') {
+				trs[i].className = 'mod_ignore';
+				$('remark[' + uid + ']').value = '';
+			} else if(operation == 'delete') {
+				trs[i].className = 'mod_delete';
+				$('remark[' + uid + ']').value = '';
+			}else if(operation == 'cancel') {
+				trs[i].className = '';
+				$('remark[' + uid + ']').value = '';
+			}
+		}
+	}
+	if(operation != 'cancel') {
+		$('chk_apply_all').disabled = false;
+		$('chk_apply_all').value = operation;
+	} else {
+		$('chk_apply_all').disabled = true;
+		$('chk_apply_all').checked = false;
+	}
 }
+
 function cancelallcheck() {
-var form = $('cpform');
-var checkall = 'chkall';
-for(var i = 0; i < form.elements.length; i++) {
-var e = form.elements[i];
-if(e.type == 'radio') {
-	e.checked = '';
+	var form = $('cpform');
+	var checkall = 'chkall';
+	for(var i = 0; i < form.elements.length; i++) {
+		var e = form.elements[i];
+		if(e.type == 'radio') {
+			e.checked = '';
+		}
+	}
 }
-}
+
+function query_verifyinfo(input){
+	var uid = input.dataset['uid'];
+	var params = {
+		'formhash' : '<?php echo FORMHASH;?>',
+		'querysubmit' : 'on',
+		'realname' : input.value
+	};
+	var send_string = [];
+	for(var i in params){
+		send_string.push(i + '=' + encodeURIComponent(params[i]));
+	}
+	send_string = send_string.join('&');
+
+	var x = new Ajax();
+	x.setRecvType('JSON');
+	x.post('admin.php?action=<?php echo $plugin_url;?>&ajax=1', send_string, function(){
+		var list = JSON.parse(x.XMLHttpRequest.responseText);
+		for(var i = 0; i < list.length; i++){
+			var info = list[i];
+
+			var input = document.createElement('input');
+			input.type = 'radio';
+			input.name = 'verifyoption[' + uid + ']';
+			input.value = info.id;
+
+			var text = document.createTextNode(info.realname + ' ' + info.awardschool + ' ' + info.awardyear + '年');
+
+			var label = document.createElement('label');
+			label.appendChild(input);
+			label.appendChild(text);
+
+			var box = document.getElementById('verifylist_' + uid);
+			box.innerHTML = '';
+			box.append(label);
+		}
+	});
 }
 </script>
-EOT;
+<?php
 showformheader('plugins&operation=config&do=16&identifier=takashiro_issprofile&pmod=memberverify');
 showtableheader('moderate_members', 'fixpadding');
 showsubtitle(array('operation', 'members_edit_info', '相似信息', 'moderate_members_info', 'moderate_members_remark'));
