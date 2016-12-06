@@ -32,8 +32,8 @@ if(submitcheck('importsubmit')){
 
 showformheader($mod_action, 'enctype');
 showtableheader('批量导入');
-showsetting('获奖名单csv文件', 'namelist', '', $type = 'file');
-showsubmit('importsubmit');
+showsetting('上传获奖名单csv文件', 'namelist', '', 'file');
+showsubmit('importsubmit', 'submit', '', '<a href="source/plugin/takashiro_issprofile/template/namelist.csv">下载名单csv模板</a>');
 showtablefooter();
 showformfooter();
 
