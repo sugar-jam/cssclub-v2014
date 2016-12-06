@@ -53,37 +53,13 @@ $query = DB::query("SELECT id,awardschool,awardyear,realname,subserial,uid FROM 
 
 showtableheader('用户列表', 'fixpadding');
 showsubtitle(array('VID', '获奖学校', '获奖年份', '真实姓名', '序号', 'UID'));
-while($row = DB::fetch($query, MYSQL_NUM)){
-	$row[4] = !empty($row[4]) ? $row[4] : '<div class="input_editor" data-verify-id="'.$row[0].'" data-uid="'.$row[5].'"></div>';
+while($row = DB::fetch($query, MYSQLI_NUM)){
+	if(!empty($row[5])){
+		$row[5] = '<a href="home.php?mod=space&do=profile&uid='.$row[5].'" target="_blank">'.$row[5].'</a>';
+	}
 	showtablerow('', array(), $row);
 }
 showtablefooter();
 
 $totalnum = DB::result_first("SELECT COUNT(*) FROM $table WHERE $condition");
 echo multi($totalnum, $limit, $page, ADMINSCRIPT.'?'.$mod_url);
-?>
-<script>
-var editors = document.getElementsByTagName('div');
-var edit_url = '<?php echo ADMINSCRIPT.'?'.$mod_url?>';
-for(var i = 0; i < editors.length; i++){
-	var editor = editors[i];
-	if(editor.className.indexOf('input_editor') == -1){
-		continue;
-	}
-
-	editor.ondblclick = function(){
-		var input = document.createElement('input');
-		input.type = 'text';
-		input.onblur = function(){
-			var id = this.dataset.verifyId;
-			var uid = this.dataset.uid;
-			var value = this.value;
-			this.parentNode.innerHTML = value;
-
-			ajaxget(edit_url + '&verifyid=' + id + '&uid=' + uid);
-		};
-		this.innerHTML = '';
-		this.appendChild(input);
-	};
-}
-</script>
