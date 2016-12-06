@@ -8,23 +8,83 @@ $table = DB::table('plugin_member_verify');
 $mod_action = 'plugins&operation=config&do='.$do.'&identifier=takashiro_issprofile&pmod=memberimport';
 $mod_url = 'action='.$mod_action;
 
+require_once dirname(__FILE__).'/cssclub.class.php';
+$admin = CSSClub::Admin();
+
 if(submitcheck('importsubmit')){
 	if(isset($_FILES['namelist'])){
 		$rows = file($_FILES['namelist']['tmp_name']);
+		if(empty($rows)){
+			cpmsg('文件内容无法读取。', $mod_url, 'error');
+		}
+
+		$titles = explode(',', array_shift($rows));
+		if(empty($rows)){
+			cpmsg('表格内容为空，导入失败。', $mod_url, 'error');
+		}
+
+		if($titles[0] != '序号'){
+			if($titles[0]{0} == '\xEF' && $titles[0]{1} == '\xBB' && $titles[0]{2} == '\xBF'){
+				$titles[0] = substr($titles[0], 3);
+			}else{
+				$titles[0] = iconv('gbk', 'utf-8', $titles[0]);
+				if($titles[0] == '序号'){
+					foreach($rows as &$row){
+						$row = iconv('gbk', 'utf-8', $row);
+					}
+					unset($row);
+				}else{
+					cpmsg('无法识别该文件编码。', $mod_url, 'error');
+				}
+			}
+		}
+
+		showformheader($mod_action);
+		showtableheader('请确认获奖名单', 'fixpadding');
+		showsubtitle(array('序号', '真实姓名', '获奖年份', '学校'));
 		foreach($rows as $row){
-			//1,方云哲,2014,浙江大学
 			$cells = explode(',', $row);
-			if(count($cells) < 4){
+			if(count($cells) < 3){
 				continue;
 			}
-			foreach($cells as &$cell){
-				$cell = addslashes(htmlspecialchars(trim($cell)));
-			}
-			unset($cell);
 
-			DB::query("INSERT INTO $table (`subserial`,`realname`,`awardyear`,`awardschool`) VALUES ('{$cells[0]}', '$cells[1]', '$cells[2]', '$cells[3]')");
+			//1,方云哲,2014,浙江大学
+			$cells[0] = intval($cells[0]);
+			$cells[1] = daddslashes(dhtmlspecialchars(trim($cells[1], "　\0\t\r\n\x0B ")));
+			$cells[2] = intval($cells[2]);
+			if(empty($cells[3]) || $admin['groupid'] !== CSSClub::WebMaster){
+				$cells[3] = $admin['awardschool'];
+			}else{
+				$cells[3] = daddslashes(dhtmlspecialchars(trim($cells[3], "　\0\t\r\n\x0B ")));
+				if(!CSSClub::Branch($cells[3], 'school')){
+					$cells[3] = $admin['awardschool'];
+				}
+			}
+
+			showtablerow('', array(), $cells);
 		}
-		cpmsg('成功导入。', $mod_url, 'succeed');
+		echo '<textarea style="display:none" name="csv">'.implode("\n", $rows).'</textarea>';
+		showsubmit('importsubmit');
+		showtablefooter();
+		showformfooter();
+		exit;
+
+	}elseif(isset($_POST['csv'])){
+		$rows = implode($_POST['csv']);
+		foreach($rows as $row){
+			if(count($row) < 4){
+				continue;
+			}
+			$serial = intval($row[0]);
+			$realname = dhtmlspecialchars(daddslashes(trim($row[1])));
+			$awardyear = intval($row[2]);
+			$awardschool = dhtmlspecialchars(daddslashes(trim($row[3])));
+
+			$table = DB::table('plugin_member_verify');
+			DB::query("INSERT IGNORE INTO $table (`subserial`,`realname`,`awardyear`,`awardschool`) VALUES ('$serial', '$realname', '$awardyear', '$awardschool')");
+		}
+		cpmsg('成功导入名单。', $mod_url, 'succeed');
+
 	}else{
 		cpmsg('请上传一个csv文件。', $mod_url, 'error');
 	}
@@ -42,8 +102,6 @@ $offset = ($page - 1) * $limit;
 
 $condition = array();
 
-require_once dirname(__FILE__).'/cssclub.class.php';
-$admin = CSSClub::Admin();
 if($admin['groupid'] !== CSSClub::WebMaster){
 	$condition[] = 'awardschool=\''.daddslashes($admin['awardschool']).'\'';
 }

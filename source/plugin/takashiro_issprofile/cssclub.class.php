@@ -9,7 +9,7 @@ class CSSClub{
 
 	public static function Branch($code, $key = 'school'){
 		foreach(self::$Data as $branch){
-			if($branch[$key] === $code){
+			if(isset($branch[$key]) && $branch[$key] === $code){
 				return $branch;
 			}
 		}
