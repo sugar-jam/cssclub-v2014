@@ -40,7 +40,16 @@ showformfooter();
 $limit = 60;
 $offset = ($page - 1) * $limit;
 
-$query = DB::query("SELECT id,awardschool,awardyear,realname,subserial,uid FROM $table WHERE 1 LIMIT $offset,$limit");
+$condition = array();
+
+require_once dirname(__FILE__).'/cssclub.class.php';
+$admin = CSSClub::Admin();
+if($admin['groupid'] !== CSSClub::WebMaster){
+	$condition[] = 'awardschool=\''.daddslashes($admin['awardschool']).'\'';
+}
+
+$condition = $condition ? '('.implode(')AND (', $condition).')' : '1';
+$query = DB::query("SELECT id,awardschool,awardyear,realname,subserial,uid FROM $table WHERE $condition LIMIT $offset,$limit");
 
 showtableheader('用户列表', 'fixpadding');
 showsubtitle(array('VID', '获奖学校', '获奖年份', '真实姓名', '序号', 'UID'));
@@ -50,7 +59,7 @@ while($row = DB::fetch($query, MYSQL_NUM)){
 }
 showtablefooter();
 
-$totalnum = DB::result_first("SELECT COUNT(*) FROM $table WHERE 1");
+$totalnum = DB::result_first("SELECT COUNT(*) FROM $table WHERE $condition");
 echo multi($totalnum, $limit, $page, ADMINSCRIPT.'?'.$mod_url);
 ?>
 <script>

@@ -28,25 +28,8 @@ if($anchor != 'pass') {
 	$_GET['orderby'] = 'uid';
 }
 
-$admin = array();
-if(isfounder()){
-	$admin['groupid'] = 0;
-}else{
-	$cpgroup = C::t('common_admincp_member')->fetch($_G['uid']);
-	if($cpgroup){
-		$admin['groupid'] = $cpgroup['cpgroupid'];
-	}else{
-		$admin['groupid'] = null;
-	}
-}
-
-$common_member_profile = DB::table('common_member_profile');
-$admin['issbranch'] = DB::result_first("SELECT issbranch FROM $common_member_profile WHERE uid={$_G['uid']}");
-
-require_once DISCUZ_ROOT.'source/plugin/takashiro_issprofile/cssclub.class.php';
-$branch = CSSClub::Branch($issbranch, 'name');
-$admin['awardschool'] = $branch['school'];
-unset($branch);
+require_once dirname(__FILE__).'/cssclub.class.php';
+$admin = CSSClub::Admin();
 
 require_once libfile('function/profile');
 if(!submitcheck('verifysubmit', true)) {
@@ -112,7 +95,7 @@ function singleverify(vid) {
 
 			$value['username'] = '<a href="home.php?mod=space&uid='.$value['uid'].'&do=profile" target="_blank">'.avatar($value['uid'], "small").'<br/>'.$value['username'].'</a>';
 			$fields = dunserialize($value['field']);
-			if($admin['groupid'] !== 0){
+			if($admin['groupid'] !== CSSClub::WebMaster){
 				if(isset($fields['issbranch'])){
 					if($fields['issbranch'] !== $admin['issbranch']){
 						continue;

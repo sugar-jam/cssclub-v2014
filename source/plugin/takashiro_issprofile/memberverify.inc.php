@@ -170,25 +170,8 @@ $count = C::t('common_member_validate')->fetch_all_status_by_count();
 $sendemail = isset($_GET['sendemail']) ? $_GET['sendemail'] : 0;
 $checksendemail = $sendemail ? 'checked' : '';
 
-$admin = array();
-if(isfounder()){
-	$admin['groupid'] = 0;
-}else{
-	$cpgroup = C::t('common_admincp_member')->fetch($_G['uid']);
-	if($cpgroup){
-		$admin['groupid'] = $cpgroup['cpgroupid'];
-	}else{
-		$admin['groupid'] = null;
-	}
-}
-
-$common_member_profile = DB::table('common_member_profile');
-$admin['issbranch'] = DB::result_first("SELECT issbranch FROM $common_member_profile WHERE uid={$_G['uid']}");
-
-require_once DISCUZ_ROOT.'source/plugin/takashiro_issprofile/cssclub.class.php';
-$branch = CSSClub::Branch($issbranch, 'name');
-$admin['awardschool'] = $branch['school'];
-unset($branch);
+require_once dirname(__FILE__).'/cssclub.class.php';
+$admin = CSSClub::Admin();
 
 $validatenum = C::t('common_member_validate')->count_by_status(0);
 $members = '';
@@ -211,7 +194,7 @@ if($validatenum) {
 		}
 
 		$fields = !empty($member['field']) ? dunserialize($member['field']) : array();
-		if($admin['groupid'] !== 0){
+		if($admin['groupid'] !== CSSClub::WebMaster){
 			if(empty($fields['awardschool']) && empty($fields['awardyear'])){
 				continue;
 			}

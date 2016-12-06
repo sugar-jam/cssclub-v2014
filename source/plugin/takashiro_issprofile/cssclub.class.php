@@ -5,6 +5,8 @@ if(!defined('IN_DISCUZ')) exit('access denied');
 class CSSClub{
 	public static $Data;
 
+	const WebMaster = 0;
+
 	public static function Branch($code, $key = 'school'){
 		foreach(self::$Data as $branch){
 			if($branch[$key] === $code){
@@ -12,6 +14,29 @@ class CSSClub{
 			}
 		}
 		return null;
+	}
+
+	public static function Admin(){
+		global $_G;
+		$admin = array();
+		if(isfounder()){
+			$admin['groupid'] = self::WebMaster;
+		}else{
+			$cpgroup = C::t('common_admincp_member')->fetch($_G['uid']);
+			if($cpgroup){
+				$admin['groupid'] = $cpgroup['cpgroupid'];
+			}else{
+				$admin['groupid'] = null;
+			}
+		}
+
+		$common_member_profile = DB::table('common_member_profile');
+		$admin['issbranch'] = DB::result_first("SELECT issbranch FROM $common_member_profile WHERE uid={$_G['uid']}");
+
+		$branch = self::Branch($issbranch, 'name');
+		$admin['awardschool'] = $branch['school'];
+
+		return $admin;
 	}
 }
 
