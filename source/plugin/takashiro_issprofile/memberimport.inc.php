@@ -5,7 +5,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 }
 
 $table = DB::table('plugin_member_verify');
-$mod_action = 'plugins&operation=config&identifier=takashiro_issprofile&pmod=memberimport';
+$mod_action = 'plugins&operation=config&do='.$do.'&identifier=takashiro_issprofile&pmod=memberimport';
 $mod_url = 'action='.$mod_action;
 
 if(submitcheck('importsubmit')){

@@ -33,7 +33,7 @@ class CSSClub{
 		$common_member_profile = DB::table('common_member_profile');
 		$admin['issbranch'] = DB::result_first("SELECT issbranch FROM $common_member_profile WHERE uid={$_G['uid']}");
 
-		$branch = self::Branch($issbranch, 'name');
+		$branch = self::Branch($admin['issbranch'], 'name');
 		$admin['awardschool'] = $branch['school'];
 
 		return $admin;
