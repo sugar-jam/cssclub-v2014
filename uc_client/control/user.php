@@ -127,7 +127,7 @@ class usercontrol extends base {
 			$user = $_ENV['user']->get_user_by_username($username);
 		}
 
-		$passwordmd5 = preg_match('/^\w{32}$/', $password) ? $password : md5($password);
+		$passwordmd5 = md5($password);
 		if(empty($user)) {
 			$status = -1;
 		} elseif($user['password'] != md5($passwordmd5.$user['salt'])) {
