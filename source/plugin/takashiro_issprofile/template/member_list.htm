@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>成员名单 - $_G['setting']['bbname']</title>
+</head>
+<body>
+<style type="text/css">
+table{
+	border-collapse: collapse;
+	margin: 1em;
+}
+table td{
+	border: 1px solid;
+	text-align: center;
+	padding: 0.25em;
+}
+</style>
+
+<table>
+	<thead>
+		<tr>
+			<td>获奖所在学校</td>
+			<td>获奖年份</td>
+			<td>姓名</td>
+		</tr>
+	</thead>
+	<tbody>
+	<!--{loop $members $m}-->
+		<tr>
+			<td>$m[awardschool]</td>
+			<td>$m[awardyear]</td>
+			<td>$m[realname]</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+</body>
+</html>
