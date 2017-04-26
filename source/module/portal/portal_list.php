@@ -27,13 +27,6 @@ if($cat['closed'] && !$_G['group']['allowdiy'] && !$categoryperm[$catid]['allowm
 	showmessage('list_category_is_closed', dreferer());
 }
 
-if(!isset($_G['makehtml'])) {
-	if(!empty($cat['url']))	dheader('location:'.$cat['url']);
-	if(defined('SUB_DIR') && $_G['siteurl']. substr(SUB_DIR, 1) != $cat['caturl'] || !defined('SUB_DIR') && $_G['siteurl'] != substr($cat['caturl'], 0, strrpos($cat['caturl'], '/')+1)) {
-		dheader('location:'.$cat['caturl'], '301');
-	}
-}
-
 $cat = category_remake($catid);
 $navid = 'mn_P'.$cat['topid'];
 foreach ($_G['setting']['navs'] as $navsvalue) {
