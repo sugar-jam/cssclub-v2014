@@ -30,9 +30,9 @@ function build_cache_portalcategory() {
 	$channelrootdomain = !empty($domain['root']) && !empty($domain['root']['channel']) ? $domain['root']['channel'] : '';
 	$portaldomain = '';
 	if(!empty($domain['app']['portal'])) {
-		$portaldomain = 'http://'.$domain['app']['portal'].$_G['siteroot'];
+		$portaldomain = '//'.$domain['app']['portal'].$_G['siteroot'];
 	} elseif(!empty($domain['app']['default'])) {
-		$portaldomain = 'http://'.$domain['app']['default'].$_G['siteroot'];
+		$portaldomain = '//'.$domain['app']['default'].$_G['siteroot'];
 	} else {
 		$portaldomain = $_G['siteurl'];
 	}
