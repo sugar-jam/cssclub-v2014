@@ -142,7 +142,7 @@ if($op == "finish") {
 			$fileurl = pic_get($uploadfiles['filepath'], 'album', $uploadfiles['thumb'], $uploadfiles['remote'], 0);
 			$remote = $uploadfiles['remote'] > 1 ? $uploadfiles['remote'] - 2 : $uploadfiles['remote'];
 			if(!$remote) {
-				if(!preg_match("/^http\:\/\//i", $fileurl)) {
+				if(!preg_match("/^https?\:\/\//i", $fileurl)) {
 					$fileurl = getsiteurl().$fileurl;
 				}
 			}
