@@ -323,7 +323,7 @@ function getHost(url) {
 }
 
 function hostconvert(url) {
-	if(!url.match(/^https?:\/\//)) url = SITEURL + url;
+	if(!url.match(/^(?:\w+:)?\/\//)) url = SITEURL + url;
 	var url_host = getHost(url);
 	var cur_host = getHost().toLowerCase();
 	if(url_host && cur_host != url_host) {
