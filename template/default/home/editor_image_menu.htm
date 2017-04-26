@@ -9,6 +9,7 @@
 		<li id="icoImg_btn_albumlist" {if $_G['basescript'] == 'home' && !$_G['group']['allowupload']} class="current"{/if}><a href="javascript:;" hidefocus="true" onclick="switchImagebutton('albumlist');">{lang e_img_albumlist}</a></li>
 		<!--{/if}-->
 		<li id="icoImg_btn_www" {if $_G['basescript'] == 'home' && !$_G['group']['allowupload'] && !helper_access::check_module('album')} class="current"{/if}><a href="javascript:;" hidefocus="true" onclick="switchImagebutton('www');">{lang e_img_www}</a></li>
+		<li id="icoImg_btn_tupload"><a href="javascript:switchImagebutton('tupload');" hidefocus="true">超大图片</a></li>
 	</ul>
 	<div class="p_opt popupfix" unselectable="on" id="icoImg_www" {if $_G['basescript'] == 'home' && ($_G['group']['allowupload'] || helper_access::check_module('album')) || $_G['basescript'] == 'portal'} style="display: none"{/if}>
 		<table cellpadding="0" cellspacing="0" width="100%">
@@ -74,6 +75,12 @@
 			<p class="notice">{lang click_pic_to_editor}</p>
 		</div>
 	<!--{/if}-->
+	<div  class="p_opt" unselectable="on" id="icoImg_tupload" style="display:none">
+		<div id="takashiro_pluploader">
+			<p>抱歉，您的浏览器不支持HTML5、Flash、SilverLight，实在没法上传……</p>
+		</div>
+	</div>
+
 	</div></td><td class="m_r"></td></tr><tr><td class="b_l"></td><td class="b_c"></td><td class="b_r"></td></tr></table>
 </div>
 
@@ -132,7 +139,7 @@
 	<script type="text/javascript">
 		var attachUpload = new SWFUpload({
 			// Backend Settings
-			upload_url: "{$_G[siteurl]}misc.php?mod=swfupload&action=swfupload&operation=<!--{if $_G['basescript'] == 'portal'}-->portal<!--{else}-->album<!--{/if}-->",
+			upload_url: "misc.php?mod=swfupload&action=swfupload&operation=<!--{if $_G['basescript'] == 'portal'}-->portal<!--{else}-->album<!--{/if}-->",
 			post_params: {"uid" : "$_G[uid]", "hash":"$swfconfig[hash]"<!--{if $_G['basescript'] == 'portal'}-->,"aid":$aid,"catid":$catid<!--{/if}-->},
 
 			// File Upload Settings
@@ -306,4 +313,69 @@
 			opObj.style.display = '';
 		}
 	}
+</script>
+
+<script src="./source/plugin/takashiro_upload/plupload/plupload.full.min.js" type="text/javascript"></script>
+<script src="./source/plugin/takashiro_upload/plupload/jquery.plupload.queue/jquery.plupload.queue.min.js" type="text/javascript"></script>
+<script src="./source/plugin/takashiro_upload/plupload/i18n/zh_CN.js" type="text/javascript"></script>
+<style type="text/css">@import url(./source/plugin/takashiro_upload/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css);</style>
+<script type="text/javascript">
+(function($){
+	// Initialize the widget when the DOM is ready
+	$(function() {
+		// Setup html5 version
+		$("#takashiro_pluploader").pluploadQueue({
+			// General settings
+			runtimes : 'html5,flash,silverlight,html4',
+			url : "misc.php?mod=swfupload&action=swfupload&operation=<!--{if $_G['basescript'] == 'portal'}-->portal<!--{else}-->album<!--{/if}-->",
+
+			file_data_name : 'Filedata',
+			multipart_params : {"uid" : "$_G[uid]", "hash":"$swfconfig[hash]"{if $_G['basescript'] == 'portal'},"aid":$aid,"catid":$catid{/if}},
+
+			chunk_size : '1mb',
+			rename : true,
+			dragdrop: true,
+
+			filters : {
+				// Maximum file size
+				max_file_size : '10mb',
+				// Specify what files to browse for
+				mime_types: [
+					{title : "Image files", extensions : "jpg,gif,png"}
+				]
+			},
+
+			// Resize images on clientside if we can
+			resize: {
+				width : 1024,
+				height : 1024,
+				quality : 80,
+				crop: false // crop to exact dimensions
+			},
+
+			// Flash settings
+			flash_swf_url : './source/plugin/takashiro_upload/plupload/Moxie.swf',
+
+			// Silverlight settings
+			silverlight_xap_url : './source/plugin/takashiro_upload/plupload/Moxie.xap',
+
+			init : {
+				PostInit : function(){
+					this.customSettings = imgUpload.customSettings;
+				},
+
+				FileUploaded : function(uploader, file, response){
+					alert(response.response);
+					uploadSuccess();
+				},
+
+				UploadComplete : function(){
+					switchImagebutton('imgattachlist');
+				}
+			}
+		});
+
+		switchImagebutton('tupload');
+	});
+})(jQuery);
 </script>
