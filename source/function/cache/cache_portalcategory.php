@@ -55,7 +55,7 @@ function build_cache_portalcategory() {
 		$value['topid'] = $topid;
 
 		if($channelrootdomain && $data[$topid]['domain']){
-			$url = 'http://'.$data[$topid]['domain'].'.'.$channelrootdomain.'/';
+			$url = '//'.$data[$topid]['domain'].'.'.$channelrootdomain.'/';
 			if($foldername) {
 
 				if(!empty($value['upid'])) {

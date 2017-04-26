@@ -17,9 +17,6 @@ function build_cache_relatedlink() {
 	$data = array();
 	$query = C::t('common_relatedlink')->range();
 	foreach($query as $link) {
-		if(substr($link['url'], 0, 7) != 'http://') {
-			$link['url'] = 'http://'.$link['url'];
-		}
 		$data[] = $link;
 	}
 	savecache('relatedlink', $data);
