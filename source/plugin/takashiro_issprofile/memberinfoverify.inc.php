@@ -11,7 +11,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 }
 cpheader();
 
-$root_url = 'plugins&operation='.$operation.'&do='.$do;
+$root_url = 'plugins&operation='.$operation.'&do='.$do.'&pmod=memberinfoverify';
 
 $anchor = in_array($_GET['anchor'], array('base', 'edit', 'verify', 'verify1', 'verify2', 'verify3', 'verify4', 'verify5', 'verify6', 'verify7', 'authstr', 'refusal', 'pass')) ? $_GET['anchor'] : 'base';
 $current = array($anchor => 1);
